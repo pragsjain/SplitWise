@@ -1,1 +1,12 @@
-<p>dashboard works!</p>
+<div class="dashboard-page">
+Groups  &nbsp;&nbsp; 
+<button type="button" class="btn btn-secondary" (click)="goTonewGroup()">+ Add</button>
+<div *ngIf="isGroupList">
+<span *ngFor="let element of this.groupList; let lastItem = last;">
+    <li><i class="material-icons close-class"> bookmark</i>
+        <a class="groupName" (click)="editGroup(element.groupId)">{{element.groupName}} </a>&nbsp;
+      <i class="material-icons close-class" (click)="removeGroup(element.groupId)">cancel </i>
+</span>
+</div>
+
+</div>

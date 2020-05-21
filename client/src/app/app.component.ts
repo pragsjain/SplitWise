@@ -48,12 +48,14 @@ if(this.appService.getUserInfoFromLocalstorage()['socialSignup']){
   .then(()=>{
     this.appService.setUserInfoInLocalStorage('')
     this.appService.setTokenInLocalStorage(null)
+    this.fullName=''
     this.appService.fullNameSource.next('');
     this.router.navigate(['/login']);
   }).catch((err)=>{
     console.log(err)
     this.appService.setUserInfoInLocalStorage('')
     this.appService.setTokenInLocalStorage(null)
+    this.fullName=''
     this.appService.fullNameSource.next('');
     this.router.navigate(['/login']);
   })

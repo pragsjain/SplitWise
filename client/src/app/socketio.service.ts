@@ -17,21 +17,21 @@ export class SocketioService {
   
   setupSocketConnection(data) {
     //console.log(this.socket);
-    this.socket.on('notification', (data)=>{
-      //console.log(data);
-          //get issue by issueId
-          this.appService.getIssueById(data.issueId).subscribe( (res) =>{
-            console.log('res',res);
-              if(!res.error){
-                let fullName=this.appService.getUserInfoFromLocalstorage().fullName;
-                if(res.data.assignee==fullName || res.data.reporter==fullName || res.data.watchers.indexOf(fullName)>-1)
-                {
-                console.log('notify eligible');
-                 this.toastr.info(data.message)
-                .onTap.subscribe(()=>this.router.navigate(['/issueDescription',data.issueId]));
-                }
-              }
-          });
-    })
+    // this.socket.on('notification', (data)=>{
+    //   //console.log(data);
+    //       //get issue by issueId
+    //       this.appService.getIssueById(data.issueId).subscribe( (res) =>{
+    //         console.log('res',res);
+    //           if(!res.error){
+    //             let fullName=this.appService.getUserInfoFromLocalstorage().fullName;
+    //             if(res.data.assignee==fullName || res.data.reporter==fullName || res.data.watchers.indexOf(fullName)>-1)
+    //             {
+    //             console.log('notify eligible');
+    //              this.toastr.info(data.message)
+    //             .onTap.subscribe(()=>this.router.navigate(['/issueDescription',data.issueId]));
+    //             }
+    //           }
+    //       });
+    // })
   }
 }

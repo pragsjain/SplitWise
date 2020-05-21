@@ -1,0 +1,28 @@
+<div class="group-new-page">
+    <div class="card" >
+        <div class="card-body">
+          <h5 class="card-title">START A NEW GROUP</h5>
+            <form class="card-text" [formGroup]="createGroupForm">
+                <div class="form-group">
+                  <label for="groupName">My group shall be called…</label>
+                  <input type="text" class="form-control" formControlName="groupName" #groupName aria-describedby="groupNameHelp">
+                  <small id="groupNameHelp" class="form-text text-muted">Group Name cabe like -Goa Trip, Farwell Party</small>
+                </div>
+                <h5 class="card-title">GROUP MEMBERS</h5>
+                    <span *ngFor="let element of this.selectedUserList; let lastItem = last;">
+                      <li>{{element.fullName}} &nbsp;
+                        <i class="material-icons close-class" (click)="removeUserFromGroup(element.userId)">cancel </i></li>
+                    </span>
+
+                    <br>
+                    <select class="form-control" (change)="addUserToGroup(userId.value)" #userId>
+                      <option *ngFor="let element of this.userList;" [value]="element.userId" >&nbsp;{{element.fullName}} </option>
+                    </select>  
+                    <small id="addMemberHelp" class="form-text text-muted">+ Add a Person</small> 
+                <br>
+                <button type="button"  [disabled]="(createGroupForm.pristine ||createGroupForm.invalid)" 
+                class="btn btn-primary" (click)="createGroup()">Create Group</button>
+            </form>
+        </div>
+      </div>
+</div>

@@ -1,0 +1,105 @@
+.group-desc-page{
+    padding-top: 1%;
+}
+.card-title{
+    text-transform: uppercase;
+    font-size: 16px;
+    color: #999;
+    font-weight: bold;
+    line-height: 20px;
+}
+.flex-spacebetween{
+    display: flex;
+    justify-content: space-between;
+    padding: 1.25rem;
+    border-bottom: 1px solid lightgrey;
+}
+.card{
+    min-width: 150px;
+    width: 48%;
+    margin: auto;
+    background: #F2F5F8;
+  }
+  @media only screen and (max-width: 600px) {
+    .card{
+        width: 98%;
+    }
+  }
+  .card-body{
+    padding: 0px;
+}
+
+  .material-icons.close-class {
+    font-size: 0.8rem;
+    position: relative;
+    bottom: -3px;
+ }
+ span.clickable{
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    padding: 2px 5px ;
+    margin: 0px 2px;
+    border: 1px dashed #ccc;
+    vertical-align: middle;
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: none;
+    overflow: hidden;
+    white-space: nowrap;
+ }
+ .flex-hover{
+    color: #666;
+    cursor: pointer;
+    padding: 10px 3px;
+    border-bottom: 1px solid grey;
+    display: flex;
+    justify-content: space-between;
+    vertical-align: middle;
+ }
+ .flex-hover:hover{
+    background: #eee;
+    color:black;
+
+ }
+ .selectedPayer{
+     background: #ddd;
+ }
+ .bg-grey{
+    background: #eee;
+ }
+ .splitBtn{
+     margin-bottom: 5px;;
+ }
+ .pull-right{
+     float: right;
+ }
+
+ @media only screen and (max-width: 600px) {
+    .splitOptionRow{
+        float: none;
+        position: static;
+    }
+  }
+ .owedShare{
+     width: 90px;;
+ }
+ .expenseListFlex{
+     display: flex;
+     justify-content: space-between;
+     padding: 1rem;
+     background: white;
+     border-bottom: 1px solid lightgray;
+     color: #666;
+ }
+ .expenseListFlex:hover{
+    background: #eee;
+    color:black;
+ }
+ .expenseListName{
+    font-size: 1.25rem;
+    position: relative;
+    bottom: 8px;
+    left: 10px;
+ }
+

@@ -1,0 +1,169 @@
+<div class="group-desc-page">
+    <div class="card">
+        <div class="card-body">
+            <div class="flex-spacebetween">
+                <h5 class="card-title">{{group?.groupName}}</h5>
+                <div>
+                <button (click)="isNewExpense=!isNewExpense" type="button" 
+                    class="btn btn-primary">Add Expense</button> &nbsp;
+                <button [routerLink]="['/group-edit',group?.groupId]" type="button" 
+                    class="btn btn-primary">Edit Group</button>
+                </div>
+            </div>
+            <div *ngIf="isNewExpense" class="card-text">
+                <form class="card-text" [formGroup]="createExpenseForm">
+                    <h5>Add Expense</h5>
+                    <div>
+                    <label>With : </label>
+                    <span *ngFor="let element of this.expenseMembers; let lastItem = last;">
+                        <span class="clickable" >{{element.firstName}} 
+                        <i class="material-icons close-class" (click)="removeExpenseMember(element.userId)">cancel </i></span>
+                    </span>
+                      <br>
+                      <select class="form-control" (change)="addExpenseMember(selectedGroupMember.value)" #selectedGroupMember>
+                        <option *ngFor="let element of this.group.groupMembers;" [value]="element.userId" >&nbsp;{{element.fullName}} </option>
+                      </select>  
+                      <small id="addMemberHelp" class="form-text text-muted">+ Add Expense Member</small> 
+                    <hr>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="expenseName" #expenseName aria-describedby="expenseNameHelp" placeholder="Restaurant Bill">
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text">Rs.</span>
+                        <input class="form-control" formControlName="amount" type="number" #amount aria-describedby="amountHelp" placeholder="0.00">
+                        </div>
+                    </div>
+                    <label>Paid by 
+                        <span class="clickable" data-toggle="modal" data-target="#ChoosePayer">
+                         {{displayPayer}} </span> 
+                         and split 
+                         <span class="clickable" data-toggle="modal" data-target="#SplitOption">
+                        {{splitOption=='equal'?'equally':'unequally'}} </span>
+                    </label>
+                    </div>
+                    </form>
+                    <button  type="button" class="btn btn-secondary">Cancel</button> &nbsp;
+                    <button class="btn btn-primary" (click)="createExpense()" 
+                    [disabled]="(createExpenseForm.pristine ||createExpenseForm.invalid)" >Save</button>
+            </div>
+            <div *ngIf="isExpenseRecords" class="card-text">
+                <div *ngFor="let expense of expenseList">
+                    <div class="expenseListFlex" (click)="expense.isExpand=!expense.isExpand">
+                        <div >
+                            <span class="material-icons">
+                                rate_review
+                            </span>
+                            <span class="expenseListName">{{expense?.expenseName}}</span>
+                        </div>
+                        <div>
+                            Rs.{{expense.amount}}
+                        </div>
+                    </div>
+                    <div *ngIf="expense.isExpand">
+                        {{expense?.expenseOn | date}}
+                        <button  (click)="getExpenseById(expense?.expenseId)">Edit Expense</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Choose Payer Modal -->
+    <div class="modal fade" id="ChoosePayer" tabindex="-1" role="dialog" aria-labelledby="ChoosePayerLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="ChoosePayerLabel">Choose Payer</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <div *ngFor="let element of this.expenseMembers;" 
+                [ngClass]="{'flex-hover': true, 'selectedPayer': element.isPayer==true}">
+                    <div (click)="addSinglePayer(element.userId)">{{element.fullName}} </div>
+                </div>
+                <div (click)="addMultiplePayer()" class="flex-hover"
+                [ngClass]="{'flex-hover': true, 'selectedPayer': displayMultiplePayer==true}">
+                    Multiple People
+                </div>
+                <div *ngIf="displayMultiplePayer" class="bg-grey">
+                    <div class="card-text" *ngFor="let element of this.expenseMembers;">
+                        <label>{{element.fullName}}</label>
+                            <div class="input-group-prepend">
+                            <span class="input-group-text">Rs.</span>
+                            <input type="number" class="form-control"  placeholder="0.00" [(ngModel)]="element.paidShare">
+                            </div>
+                            <br>
+                    </div> 
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Choose Slit Option Modal -->
+    <div class="modal fade" id="SplitOption" tabindex="-1" role="dialog" aria-labelledby="SplitOptionLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="SplitOptionLabel">Choose Split Options</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <div class="btn-group btn-group-toggle splitBtn" data-toggle="buttons">
+                    <label class="btn btn-secondary active" data-toggle="tooltip" data-placement="top" title="Split equally" (click)="splitOption='equal'" >
+                      <input type="radio" name="options" id="option1" autocomplete="off" checked > =
+                    </label>
+                    <label class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Split by exact amount" (click)="splitOption='exactAmount';" >
+                      <input type="radio" name="options" id="option2" autocomplete="off"> 1.23
+                    </label>
+                    <label class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Split by percentages" (click)="splitOption='percentage'">
+                      <input type="radio" name="options" id="option3" autocomplete="off"> %
+                    </label>
+                </div>
+                <div *ngIf="splitOption=='equal'">
+                <div *ngFor="let element of this.expenseMembers;" 
+                [ngClass]="{'flex-hover': true, 'selectedPayer': element.isPayer==true}">
+                    <span>
+                    <input type="checkbox" checked="element.isOwer" [(ngModel)]="element.isOwer"> &nbsp;
+                    <span (click)="addSinglePayer(element.userId)" class="">{{element.fullName}}</span>
+                    </span>
+                    <span class="pull-right">Rs.{{calculateOwedShare(element) |number:'1.0-2'}}</span>
+                </div>
+                </div>
+
+                <div *ngIf="splitOption=='exactAmount'">
+                <div *ngFor="let element of this.expenseMembers;" 
+                    [ngClass]="{'flex-hover': true, 'selectedPayer': element.isPayer==true}">   
+                        <span (click)="addSinglePayer(element.userId)" >{{element.fullName}}</span>
+                        <div class="input-group-prepend ">
+                        <span class="input-group-text">Rs.</span>
+                        <input class="form-control owedShare" type="number" placeholder="0.00" 
+                        [ngModel]="element.owedShare|number:'1.0-2'" 
+                        (ngModelChange)="element.owedShare=$event">
+                        </div>
+                </div>
+                </div>
+
+                <div *ngIf="splitOption=='percentage'">
+                <div *ngFor="let element of this.expenseMembers;" 
+                    [ngClass]="{'flex-hover': true, 'selectedPayer': element.isPayer==true}">
+                    <span class="name">
+                        <span (click)="addSinglePayer(element.userId)" class="">{{element.fullName}}</span><br>
+                        <span class="owedShareUnequal">Rs.{{calculateOwedSharePercentage(element) |number:'1.0-2'}}</span>
+                    </span>
+                    <div class="input-group-append ">
+                    <input class="form-control owedShare" type="number"  [(ngModel)]="element.owedPercentageShare">
+                    <span class="input-group-text">%</span>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -15,6 +15,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatIconModule} from '@angular/material/icon';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
  
@@ -25,15 +26,30 @@ import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RequestResetComponent } from './request-reset/request-reset.component';
 import { ResponseResetComponent } from './response-reset/response-reset.component';
+import { GroupNewComponent } from './group-new/group-new.component';
+import { GroupEditComponent } from './group-edit/group-edit.component';
+import { GroupDescComponent } from './group-desc/group-desc.component';
+import { ExpenseNewComponent } from './expense-new/expense-new.component';
+import { ExpenseHistoryComponent } from './expense-history/expense-history.component';
+import { ExpenseDescComponent } from './expense-desc/expense-desc.component';
+
+import { AuthService }from './auth/auth.service'
+import { TokenInterceptor } from './auth/token.interceptor';
+
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent  },
   { path: 'dashboard', component: DashboardComponent  },
-  { path: 'dashboard', component: DashboardComponent  },
   { path: 'request-reset-password', component: RequestResetComponent  },
   { path: 'response-reset-password/:token', component: ResponseResetComponent  },
   { path: '',redirectTo: '/login',pathMatch: 'full' },
+  { path: 'group-new', component: GroupNewComponent  },
+  { path: 'group-edit/:groupId', component: GroupEditComponent  },
+  { path: 'group/:groupId', component: GroupDescComponent  },
+  { path: 'expense-new', component: ExpenseNewComponent  },
+  { path: 'expense/:expenseId', component: ExpenseDescComponent  },
+  { path: 'expense-history', component: ExpenseHistoryComponent  },
   { path: '**', component: LoginComponent }
 ];
 // Configs 
@@ -62,7 +78,13 @@ export function tokenGetter() {
     RegisterComponent,
     DashboardComponent,
     RequestResetComponent,
-    ResponseResetComponent
+    ResponseResetComponent,
+    GroupNewComponent,
+    GroupDescComponent,
+    ExpenseNewComponent,
+    ExpenseHistoryComponent,
+    ExpenseDescComponent,
+    GroupEditComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +92,7 @@ export function tokenGetter() {
     FormsModule,
     ReactiveFormsModule,
     SocialLoginModule,
-    MatFormFieldModule,MatInputModule,MatSelectModule,MatCardModule,MatDividerModule,MatTableModule,MatPaginatorModule,MatSortModule,MatIconModule,
+    MatFormFieldModule,MatInputModule,MatSelectModule,MatCardModule,MatDividerModule,MatTableModule,MatPaginatorModule,MatSortModule,MatIconModule,MatTooltipModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false } // <-- debugging purposes only
@@ -84,11 +106,10 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [ {
-    provide: AuthServiceConfig,
-    useFactory: provideConfig
-  }],
-  bootstrap: [AppComponent]
+  providers: [ {provide: AuthServiceConfig,useFactory: provideConfig},
+    AuthService,
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
 

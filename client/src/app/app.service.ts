@@ -70,8 +70,13 @@ export class AppService {
     }))
   } 
 
-   getAllIssues(): Observable<any> {
-    return this.http.get(`${this.url}/api/v1/issues/all`)
+  //GROUPS
+  createGroup(formdata): Observable<any> {
+      return this.http.post(`${this.url}/api/v1/groups/create`, formdata);
+  } 
+
+  getAllGroups(): Observable<any> {
+    return this.http.get(`${this.url}/api/v1/groups/all`)
     .pipe(map((response:any) =>{
         return response;
     }),catchError(<T>(error: any, result?: T) => {
@@ -80,58 +85,112 @@ export class AppService {
     }))
   } 
 
-   getIssueById(issueId): Observable<any> {
-    return this.http.get(`${this.url}/api/v1/issues/view/${issueId}`);
+  getGroupById(groupId): Observable<any> {
+    return this.http.get(`${this.url}/api/v1/groups/view/${groupId}`);
+  }  
+
+  editGroup(data): Observable<any> {
+    return this.http.put(`${this.url}/api/v1/groups/${data['groupId']}/edit`, data);
   } 
+
+  deleteGroup(groupId): Observable<any> {
+    return this.http.post(`${this.url}/api/v1/groups/${groupId}/delete`,groupId);
+  } 
+
+  //EXPENSES
+  createExpense(formdata): Observable<any> {
+      return this.http.post(`${this.url}/api/v1/expenses/create`, formdata);
+  } 
+
+  getAllExpenses(): Observable<any> {
+    return this.http.get(`${this.url}/api/v1/expenses/all`)
+    .pipe(map((response:any) =>{
+        return response;
+    }),catchError(<T>(error: any, result?: T) => {
+      console.log(error);
+      return this.handleError(error)
+    }))
+  } 
+
+  getExpenseById(expenseId): Observable<any> {
+    return this.http.get(`${this.url}/api/v1/expenses/view/${expenseId}`);
+  }  
+
+  editExpense(data): Observable<any> {
+    return this.http.put(`${this.url}/api/v1/expenses/${data['expenseId']}/edit`, data);
+  } 
+
+  deleteExpense(expenseId): Observable<any> {
+    return this.http.post(`${this.url}/api/v1/expenses/${expenseId}/delete`,expenseId);
+  } 
+
+
+
+
+
+
+  //  getAllIssues(): Observable<any> {
+  //   return this.http.get(`${this.url}/api/v1/issues/all`)
+  //   .pipe(map((response:any) =>{
+  //       return response;
+  //   }),catchError(<T>(error: any, result?: T) => {
+  //     console.log(error);
+  //     return this.handleError(error)
+  //   }))
+  // } 
+
+  //  getIssueById(issueId): Observable<any> {
+  //   return this.http.get(`${this.url}/api/v1/issues/view/${issueId}`);
+  // } 
     
-  createIssue(formdata): Observable<any> {
-    return this.http.post(`${this.url}/api/v1/issues/create`, formdata);
-  } 
+  // createIssue(formdata): Observable<any> {
+  //   return this.http.post(`${this.url}/api/v1/issues/create`, formdata);
+  // } 
     
-  editIssue(data): Observable<any> {
-    return this.http.put(`${this.url}/api/v1/issues/${data['issueId']}/edit`, data);
-  } 
+  // editIssue(data): Observable<any> {
+  //   return this.http.put(`${this.url}/api/v1/issues/${data['issueId']}/edit`, data);
+  // } 
 
-  deleteIssue(issueId): Observable<any> {
-    return this.http.post(`${this.url}/api/v1/issues/${issueId}/delete`,issueId);
-  } 
+  // deleteIssue(issueId): Observable<any> {
+  //   return this.http.post(`${this.url}/api/v1/issues/${issueId}/delete`,issueId);
+  // } 
 
-  getCommentbyIssueId(issueId): Observable<any> {
-    return this.http.get(`${this.url}/api/v1/comments/view/${issueId}`)
-    .pipe(map((response:any) =>{
-        return response;
-    }),catchError(<T>(error: any, result?: T) => {
-      console.log(error);
-      return this.handleError(error)
-    }))
-  } 
+  // getCommentbyIssueId(issueId): Observable<any> {
+  //   return this.http.get(`${this.url}/api/v1/comments/view/${issueId}`)
+  //   .pipe(map((response:any) =>{
+  //       return response;
+  //   }),catchError(<T>(error: any, result?: T) => {
+  //     console.log(error);
+  //     return this.handleError(error)
+  //   }))
+  // } 
 
-  createComment(formdata): Observable<any> {
-    return this.http.post(`${this.url}/api/v1/comments/create`, formdata);
-  } 
+  // createComment(formdata): Observable<any> {
+  //   return this.http.post(`${this.url}/api/v1/comments/create`, formdata);
+  // } 
 
-  deleteComment(commentId): Observable<any> {
-    return this.http.post(`${this.url}/api/v1/comments/${commentId}/delete`,commentId);
-  } 
+  // deleteComment(commentId): Observable<any> {
+  //   return this.http.post(`${this.url}/api/v1/comments/${commentId}/delete`,commentId);
+  // } 
 
-  getFilebyIssueId(issueId): Observable<any> {
-    return this.http.get(`${this.url}/api/v1/files/view/${issueId}`)
-    .pipe(map((response:any) =>{
-        return response;
-    }),catchError(<T>(error: any, result?: T) => {
-      console.log(error);
-      return this.handleError(error)
-    }))
-  } 
+  // getFilebyIssueId(issueId): Observable<any> {
+  //   return this.http.get(`${this.url}/api/v1/files/view/${issueId}`)
+  //   .pipe(map((response:any) =>{
+  //       return response;
+  //   }),catchError(<T>(error: any, result?: T) => {
+  //     console.log(error);
+  //     return this.handleError(error)
+  //   }))
+  // } 
 
-  createFile(formdata): Observable<any> {
-    console.log('here too')
-    return this.http.post(`${this.url}/api/v1/files/create`, formdata);
-  } 
+  // createFile(formdata): Observable<any> {
+  //   console.log('here too')
+  //   return this.http.post(`${this.url}/api/v1/files/create`, formdata);
+  // } 
 
-  deleteFile(fileId): Observable<any> {
-    return this.http.post(`${this.url}/api/v1/files/${fileId}/delete`,fileId);
-  } 
+  // deleteFile(fileId): Observable<any> {
+  //   return this.http.post(`${this.url}/api/v1/files/${fileId}/delete`,fileId);
+  // } 
 
 
 

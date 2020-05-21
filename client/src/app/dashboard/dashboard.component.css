@@ -1,0 +1,20 @@
+.dashboard-page{
+    padding-top: 1%;
+}
+.material-icons.close-class {
+    font-size: 0.8rem;
+    position: relative;
+    bottom: -3px;
+ }
+ li{
+     list-style: none;
+ }
+ li a.groupName {
+    color: #666;
+    cursor: pointer;
+ }
+
+ li a.groupName:hover {
+    background: #eee;
+    color:black;
+ }
