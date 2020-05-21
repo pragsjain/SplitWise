@@ -16,7 +16,6 @@ let isAuthenticated = (req, res, next) => {
    if (token) {
     token = token.split("\"").join("");
     Auth.findOne({'authToken': token }, (err, authDetails) => {
-      //console.log('authdetails',authDetails)
       if (err) {
         console.log(err)
         logger.error(err.message, 'Authentication Middleware', 10)
@@ -27,8 +26,8 @@ let isAuthenticated = (req, res, next) => {
         let apiResponse = responseLib.generate(true, 'Invalid Or Expired Authentication Key', 404, null)
         res.send(apiResponse)
       } else {
-        //console.log(tokenLib.secretKey);
-        jwt.verify(authDetails.authToken, tokenLib.secretKey, (err, decoded) => {
+        let tokenSecret='someVeryRandomStringThatNobodyCanGuess'
+        jwt.verify(authDetails.authToken, tokenSecret, (err, decoded) => {
           if (err) {
             if (err.name === 'TokenExpiredError') {
               logger.error(err.message, 'Authorization Middleware', 10)
