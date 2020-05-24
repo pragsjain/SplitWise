@@ -1,18 +1,125 @@
 <div class="group-desc-page">
+<div class="group-section">
+    <div class="groupTitle"> 
+        <span>GROUPS  &nbsp;&nbsp;&nbsp;&nbsp; </span>
+        <span class="addGroupBtn" (click)="goTonewGroup()"><b>+ Add</b></span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="addGroupBtn" [routerLink]="['/group-edit',group?.groupId]" ><b>Edit </b></span>
+    </div>
+    <div *ngIf="isGroupList">
+    <span *ngFor="let element of this.groupList; let lastItem = last;">
+        <li><i class="material-icons close-class"> bookmark</i>
+            <a class="groupName" (click)="editGroup(element.groupId)">{{element.groupName}} </a>&nbsp;
+        <i class="material-icons close-class" (click)="removeGroup(element.groupId)">cancel </i>
+    </span>
+    </div>
+</div>
+
+<div class="expense-section">
     <div class="card">
         <div class="card-body">
             <div class="flex-spacebetween">
                 <h5 class="card-title">{{group?.groupName}}</h5>
                 <div>
-                <button (click)="isNewExpense=!isNewExpense" type="button" 
-                    class="btn btn-primary">Add Expense</button> &nbsp;
-                <button [routerLink]="['/group-edit',group?.groupId]" type="button" 
-                    class="btn btn-primary">Edit Group</button>
+                <button [routerLink]="['/dashboard']" type="button" 
+                    class="btn btn-secondary">Go to Dashboard</button> &nbsp;
+                <button type="button" 
+                    class="btn btn-primary" data-toggle="modal" data-target="#AddExpense" 
+                    (click)="addEditLabel='Add';resetExpense()">Add Expense</button> &nbsp;
                 </div>
             </div>
-            <div *ngIf="isNewExpense" class="card-text">
-                <form class="card-text" [formGroup]="createExpenseForm">
-                    <h5>Add Expense</h5>
+            <div *ngIf="isExpenseRecords" class="card-text">
+                <div *ngFor="let expense of expenseList">
+                    <div class="expenseUnxpanded" (click)="expense.isExpand=!expense.isExpand">
+                    <div class="expListFlex">
+                        <div >
+                            <span class="material-icons">
+                                rate_review
+                            </span>
+                            <span class="expListName">{{expense?.expenseName}}</span>
+                        </div>
+                        <span class="deleteExpense"><i class="material-icons close-class" (click)="deleteExpense(expense)">cancel </i></span>
+                    </div>
+                    <div class="expListExpMembers">
+                        <div class="expenseShare">
+                        <p>{{expensePayerText(expense)}} 
+                            <b>Rs.{{expense.amount |number:'1.0-2'}}</b>
+                        </p> 
+                        <p *ngIf="isUserInvolved(expense)">{{yourShareText(expense)}} 
+                            <b *ngIf="yourShare(expense)!=='nothing'">Rs.{{yourShare(expense) |number:'1.0-2'}}</b>
+                            <b *ngIf="yourShare(expense)=='nothing'">{{yourShare(expense)}}</b>
+                        </p> 
+                        <p *ngIf="!isUserInvolved(expense)">not involved</p>
+                        </div>
+                    </div>
+                    </div>
+                    <div *ngIf="expense.isExpand">
+                        <div class="expExpandFlex">
+                                <span class="material-icons expExpandIcon">
+                                    rate_review
+                                </span>
+                            <div>
+                                <p class="expDesc expExpandName">{{expense?.expenseName}}</p>
+                                <p class="expDesc expExpandAmount" *ngIf="expense?.amount"><b>Rs.{{expense.amount}}</b></p>
+                                <p class="expDesc expExpandDate" *ngIf="expense?.addedBy && expense?.addedOn">Added by {{expense?.addedBy}} on {{expense?.addedOn | date}}</p>
+                                <p class="expDesc expExpandDate" *ngIf="expense?.updatedBy && expense?.updatedOn">Updated by {{expense?.updatedBy}} on {{expense?.updatedOn | date}}</p>
+                                <p class="expDesc expExpandDate" *ngIf="expense?.expenseOn">Expense Done on {{expense?.expenseOn | date}}</p>
+                                <button  class="btn btn-secondary" data-toggle="modal" data-target="#AddExpense"
+                                (click)="getExpenseById(expense?.expenseId);addEditLabel='Edit'" >Edit Expense</button>
+                            </div>
+                        </div>
+                     <div class="expExpandDetailsFlex">
+                        <div  class="expExpandExpMembers">
+                            <div  *ngFor="let element of expense.expenseMembers">
+                                <span><b>{{element?.firstName}} </b></span>
+                                <span *ngIf="element?.paidShare">paid <b>Rs.{{element?.paidShare |number:'1.0-2'}}</b> and </span>
+                                <span *ngIf="element?.owedShare">owes <b>Rs.{{element.owedShare |number:'1.0-2'}}</b></span>
+                            </div> 
+                        </div>
+                       <div class="expExpandHistory">
+                           <strong *ngIf="expense?.expenseHistory">Expense History</strong>
+                           <div *ngFor="let element of expense?.expenseHistory" class="expenseHistory">
+                                <div>{{element.expenseHistoryNotesBy}}</div>
+                                <div *ngFor="let el of element.expenseHistoryNotes">
+                                    -{{el}}
+                                </div>
+                           </div>
+                       </div>
+                    </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="group-balance-section">
+    <div>
+        <div class="groupTitle"> 
+            <span>GROUP BALANCES (<b>{{group?.groupName}}</b>) </span>
+        </div>
+        <div *ngIf="isGroupList">
+        <span *ngFor="let element of this.group.groupMembers;">
+            <li><i class="material-icons close-class"> face</i>&nbsp;
+                <a class="groupMemberName" (click)="editGroup(element.groupId)"><b>{{element.firstName}} {{element.lastName}}</b> </a>&nbsp;
+                <span>{{calculateBalance(element)}}</span>
+            </li>
+        </span>
+        </div>
+    </div>
+</div>
+
+     <!-- Choose Add Expense Modal -->
+     <div class="modal fade" id="AddExpense" tabindex="-1" role="dialog" aria-labelledby="AddExpenseLabel" aria-hidden="true" #AddExpense>
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="AddExpenseLabel">{{addEditLabel}} Expense</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeBtnAddExpense>
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="createExpenseForm">
                     <div>
                     <label>With : </label>
                     <span *ngFor="let element of this.expenseMembers; let lastItem = last;">
@@ -21,7 +128,7 @@
                     </span>
                       <br>
                       <select class="form-control" (change)="addExpenseMember(selectedGroupMember.value)" #selectedGroupMember>
-                        <option *ngFor="let element of this.group.groupMembers;" [value]="element.userId" >&nbsp;{{element.fullName}} </option>
+                        <option *ngFor="let element of this.group?.groupMembers;" [value]="element.userId" >&nbsp;{{element.fullName}} </option>
                       </select>  
                       <small id="addMemberHelp" class="form-text text-muted">+ Add Expense Member</small> 
                     <hr>
@@ -45,27 +152,9 @@
                     </form>
                     <button  type="button" class="btn btn-secondary">Cancel</button> &nbsp;
                     <button class="btn btn-primary" (click)="createExpense()" 
-                    [disabled]="(createExpenseForm.pristine ||createExpenseForm.invalid)" >Save</button>
+                    [disabled]="(createExpenseForm.pristine ||createExpenseForm.invalid) &&!isExpenseChanged" >Save</button>
             </div>
-            <div *ngIf="isExpenseRecords" class="card-text">
-                <div *ngFor="let expense of expenseList">
-                    <div class="expenseListFlex" (click)="expense.isExpand=!expense.isExpand">
-                        <div >
-                            <span class="material-icons">
-                                rate_review
-                            </span>
-                            <span class="expenseListName">{{expense?.expenseName}}</span>
-                        </div>
-                        <div>
-                            Rs.{{expense.amount}}
-                        </div>
-                    </div>
-                    <div *ngIf="expense.isExpand">
-                        {{expense?.expenseOn | date}}
-                        <button  (click)="getExpenseById(expense?.expenseId)">Edit Expense</button>
-                    </div>
-                </div>
-            </div>
+        </div>
         </div>
     </div>
 
@@ -80,9 +169,9 @@
             </button>
             </div>
             <div class="modal-body">
-                <div *ngFor="let element of this.expenseMembers;" 
-                [ngClass]="{'flex-hover': true, 'selectedPayer': element.isPayer==true}">
-                    <div (click)="addSinglePayer(element.userId)">{{element.fullName}} </div>
+                <div *ngFor="let element of this.expenseMembers;" (click)="addSinglePayer(element.userId)"
+                [ngClass]="{'flex-hover': true, 'selectedPayer': element.isSolePayer==true}">
+                    {{element.fullName}} 
                 </div>
                 <div (click)="addMultiplePayer()" class="flex-hover"
                 [ngClass]="{'flex-hover': true, 'selectedPayer': displayMultiplePayer==true}">
@@ -115,19 +204,19 @@
             </div>
             <div class="modal-body">
                 <div class="btn-group btn-group-toggle splitBtn" data-toggle="buttons">
-                    <label class="btn btn-secondary active" data-toggle="tooltip" data-placement="top" title="Split equally" (click)="splitOption='equal'" >
+                    <label class="btn btn-secondary active" data-toggle="tooltip" data-placement="top" title="Split equally" (click)="splitOption='equal';isExpenseChanged=true" >
                       <input type="radio" name="options" id="option1" autocomplete="off" checked > =
                     </label>
-                    <label class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Split by exact amount" (click)="splitOption='exactAmount';" >
+                    <label class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Split by exact amount" (click)="splitOption='exactAmount';isExpenseChanged=true" >
                       <input type="radio" name="options" id="option2" autocomplete="off"> 1.23
                     </label>
-                    <label class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Split by percentages" (click)="splitOption='percentage'">
+                    <label class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Split by percentages" (click)="splitOption='percentage';isExpenseChanged=true">
                       <input type="radio" name="options" id="option3" autocomplete="off"> %
                     </label>
                 </div>
                 <div *ngIf="splitOption=='equal'">
                 <div *ngFor="let element of this.expenseMembers;" 
-                [ngClass]="{'flex-hover': true, 'selectedPayer': element.isPayer==true}">
+                [ngClass]="{'flex-hover': true, 'selectedPayer': element.isSolePayer==true}">
                     <span>
                     <input type="checkbox" checked="element.isOwer" [(ngModel)]="element.isOwer"> &nbsp;
                     <span (click)="addSinglePayer(element.userId)" class="">{{element.fullName}}</span>
@@ -138,12 +227,12 @@
 
                 <div *ngIf="splitOption=='exactAmount'">
                 <div *ngFor="let element of this.expenseMembers;" 
-                    [ngClass]="{'flex-hover': true, 'selectedPayer': element.isPayer==true}">   
+                    [ngClass]="{'flex-hover': true, 'selectedPayer': element.isSolePayer==true}">   
                         <span (click)="addSinglePayer(element.userId)" >{{element.fullName}}</span>
                         <div class="input-group-prepend ">
                         <span class="input-group-text">Rs.</span>
                         <input class="form-control owedShare" type="number" placeholder="0.00" 
-                        [ngModel]="element.owedShare|number:'1.0-2'" 
+                        [ngModel]="element.owedShare" 
                         (ngModelChange)="element.owedShare=$event">
                         </div>
                 </div>
@@ -151,7 +240,7 @@
 
                 <div *ngIf="splitOption=='percentage'">
                 <div *ngFor="let element of this.expenseMembers;" 
-                    [ngClass]="{'flex-hover': true, 'selectedPayer': element.isPayer==true}">
+                    [ngClass]="{'flex-hover': true, 'selectedPayer': element.isSolePayer==true}">
                     <span class="name">
                         <span (click)="addSinglePayer(element.userId)" class="">{{element.fullName}}</span><br>
                         <span class="owedShareUnequal">Rs.{{calculateOwedSharePercentage(element) |number:'1.0-2'}}</span>

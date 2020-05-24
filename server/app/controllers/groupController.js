@@ -8,7 +8,7 @@ const logger = require('./../libs/loggerLib');
 const GroupModel = mongoose.model('Group')
 
 let getAllGroup = (req, res) => {
-    GroupModel.find()
+    GroupModel.find({ 'groupMembers.userId': req.params.userId })
         .select('-__v -_id')
         .lean() //make it plain javascript object,not mongoose object
         .exec((err, result) => { //trying to execute this function

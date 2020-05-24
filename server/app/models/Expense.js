@@ -45,6 +45,9 @@ let expenseSchema = new Schema(
         },
         updatedBy: {
             type: String,
+        },
+        expenseHistory: {
+            type: Array
         }
     }
 )

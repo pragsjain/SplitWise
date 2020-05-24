@@ -75,8 +75,8 @@ export class AppService {
       return this.http.post(`${this.url}/api/v1/groups/create`, formdata);
   } 
 
-  getAllGroups(): Observable<any> {
-    return this.http.get(`${this.url}/api/v1/groups/all`)
+  getAllGroups(userId): Observable<any> {
+    return this.http.get(`${this.url}/api/v1/groups/${userId}/all`)
     .pipe(map((response:any) =>{
         return response;
     }),catchError(<T>(error: any, result?: T) => {
@@ -102,8 +102,8 @@ export class AppService {
       return this.http.post(`${this.url}/api/v1/expenses/create`, formdata);
   } 
 
-  getAllExpenses(): Observable<any> {
-    return this.http.get(`${this.url}/api/v1/expenses/all`)
+  getAllExpenses(groupId): Observable<any> {
+    return this.http.get(`${this.url}/api/v1/expenses/${groupId}/all`)
     .pipe(map((response:any) =>{
         return response;
     }),catchError(<T>(error: any, result?: T) => {

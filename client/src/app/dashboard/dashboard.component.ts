@@ -20,7 +20,8 @@ export class DashboardComponent implements OnInit {
   }
   
   getAllGroups(){
-    this.appService.getAllGroups().subscribe( (res) =>{
+    let userId= this.appService.getUserInfoFromLocalstorage().userId
+    this.appService.getAllGroups(userId).subscribe( (res) =>{
       //console.log('res',res);
       if(!res.error){
       this.isGroupList=true;

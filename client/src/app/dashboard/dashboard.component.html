@@ -1,6 +1,8 @@
 <div class="dashboard-page">
-Groups  &nbsp;&nbsp; 
-<button type="button" class="btn btn-secondary" (click)="goTonewGroup()">+ Add</button>
+<div class="groupTitle"> 
+    <span>GROUPS  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+    <span class="addGroupBtn" (click)="goTonewGroup()"><b>+ Add</b></span>
+</div>
 <div *ngIf="isGroupList">
 <span *ngFor="let element of this.groupList; let lastItem = last;">
     <li><i class="material-icons close-class"> bookmark</i>

@@ -1,6 +1,67 @@
 .group-desc-page{
     padding-top: 1%;
+    display:flex;
 }
+.group-section{
+    width: 20%;
+    padding-left: 1rem;
+}
+
+.expense-section{
+    width: 60%;
+    padding: 0 1rem;
+}
+.group-balance-section{
+    width: 20%;
+    padding-right: 1rem;
+}
+@media only screen and (max-width: 600px) {
+    .group-desc-page{
+        display:block;
+    }
+    .group-section{
+        display: none;
+    }
+    .expense-section{
+        width: 100%;
+        padding: 1rem;
+    }
+    .group-balance-section{
+        width: 100%;
+        padding: 1rem;
+    }
+    .flex-spacebetween{
+        display: block;
+        padding: .5rem;
+    }
+}
+
+ .groupTitle{
+    background: #F2F5F8;
+    border-bottom: 1px solid lightgrey ;
+    color: #666;
+    margin: 5px ;
+}
+.addGroupBtn{
+    color:  #0062cc;
+    cursor: pointer;
+}
+.addGroupBtn:hover{
+    color: #0069d9;
+}
+li{
+     list-style: none;
+ }
+li a.groupName {
+    color: #666;
+    cursor: pointer;
+ }
+
+li a.groupName:hover {
+    background: #eee;
+    color:black;
+ }
+
 .card-title{
     text-transform: uppercase;
     font-size: 16px;
@@ -14,9 +75,14 @@
     padding: 1.25rem;
     border-bottom: 1px solid lightgrey;
 }
+@media only screen and (max-width: 600px) {
+    .flex-spacebetween{
+        display: block;
+        padding: .5rem;
+    }
+}
 .card{
     min-width: 150px;
-    width: 48%;
     margin: auto;
     background: #F2F5F8;
   }
@@ -84,22 +150,75 @@
  .owedShare{
      width: 90px;;
  }
- .expenseListFlex{
+
+ .expenseUnxpanded{
+    background: white;
+    border-bottom: 1px solid lightgray;
+    padding: 1rem;
+ }
+ .expenseUnxpanded:hover{
+        background: #eee;
+        color:black;
+    }
+ .expListFlex{
      display: flex;
      justify-content: space-between;
-     padding: 1rem;
-     background: white;
-     border-bottom: 1px solid lightgray;
      color: #666;
  }
- .expenseListFlex:hover{
-    background: #eee;
-    color:black;
- }
- .expenseListName{
+ @media only screen and (max-width: 600px) {
+    .expListFlex{
+        display: block;
+    }
+  }
+ 
+ .expListName{
     font-size: 1.25rem;
     position: relative;
     bottom: 8px;
     left: 10px;
  }
+ .expExpandFlex{
+    display: flex;
+ }
+ .expExpandFlex div{
+     padding-top: 1rem;
+ }
+ .expExpandFlex .expExpandIcon{
+    font-size:8rem;
+ }
+ .expExpandDetailsFlex{
+    display: flex;
+    justify-content: space-between;
+ }
+ @media only screen and (max-width: 600px) {
+    .expExpandDetailsFlex{
+        display: block;
+    }
+  }
+ .expDesc{
+     margin: 0px;
+ }
+ .expExpandDate{
+    color: #999999;
+ }
+ .expExpandExpMembers,.expExpandHistory{
+     padding: 1rem;
+ }
+ .expenseHistory{
+     padding: 1rem ;
+     margin: 1rem 0;
+     border: 1px solid grey;
+     border-radius: 5px;
+ }
+ .deleteExpense{
+     float: right;
+ }
+ .deleteExpense .material-icons.close-class {
+    font-size: 1.5rem;
+    position: relative;
+    bottom: 0px;
+ }
+
+
+
 

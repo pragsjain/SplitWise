@@ -9,7 +9,7 @@ let setRouter = (app) => {
 
     // defining routes.
 
-    app.get(baseUrl+'/all',auth.isAuthenticated,expenseController.getAllExpense)
+    app.get(baseUrl+'/:groupId/all',auth.isAuthenticated,expenseController.getAllExpense)
 
     app.get(baseUrl+'/view/:expenseId',auth.isAuthenticated,expenseController.viewByExpenseId);
 

@@ -8,7 +8,7 @@ const logger = require('./../libs/loggerLib');
 const ExpenseModel = mongoose.model('Expense')
 
 let getAllExpense = (req, res) => {
-    ExpenseModel.find()
+    ExpenseModel.find({ 'groupId': req.params.groupId })
         .select('-__v -_id')
         .lean() //make it plain javascript object,not mongoose object
         .exec((err, result) => { //trying to execute this function
@@ -104,6 +104,8 @@ let createExpense = (req, res) => {
         expenseName: req.body.expenseName,
         expenseMembers: req.body.expenseMembers,
         amount: req.body.amount,
+        splitOption: req.body.splitOption,
+        groupId: req.body.groupId,
         expenseOn:req.body.expenseOn,
         addedOn: req.body.addedOn,
         addedBy: req.body.addedBy,
@@ -111,7 +113,7 @@ let createExpense = (req, res) => {
         deletedBy: req.body.deletedBy,
         updatedBy: req.body.updatedBy,
         updatedOn: req.body.updatedOn,
-        splitOption: req.body.splitOption
+        expenseHistory: req.body.expenseHistory
     }) // end new expense model
 
     newExpense.save((err, result) => {

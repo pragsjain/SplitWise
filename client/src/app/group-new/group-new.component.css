@@ -10,9 +10,10 @@
 }
 .card{
     min-width: 150px;
-    width: 48%;
+    width: 78%;
     margin: auto;
     background: #F2F5F8;
+    padding: 1rem;
   }
   .material-icons.close-class {
     font-size: 0.8rem;

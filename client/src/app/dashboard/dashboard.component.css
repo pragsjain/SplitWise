@@ -1,11 +1,24 @@
 .dashboard-page{
-    padding-top: 1%;
+    padding-top: 1rem;
+    padding-left: 1rem;;
 }
 .material-icons.close-class {
     font-size: 0.8rem;
     position: relative;
     bottom: -3px;
  }
+ .groupTitle{
+    background: #F2F5F8;
+    border-bottom: 1px solid lightgrey ;
+    color: #666;
+    margin: 5px ;
+}
+.addGroupBtn{
+    color:  #0062cc;
+}
+.addGroupBtn:hover{
+    color: #0069d9;
+}
  li{
      list-style: none;
  }
