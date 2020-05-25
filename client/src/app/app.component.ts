@@ -28,7 +28,7 @@ ngOnInit(){
     if(this.appService.getUserInfoFromLocalstorage()){
       this.appService.fullNameSource.next(this.appService.getUserInfoFromLocalstorage().fullName);
       //socket connection
-        this.socketService.setupSocketConnection({data:'user logged in ,socket established!'});
+        this.socketService.setupSocketConnection({data:'user logged in ,socket established!(App component)'});
     }
     this.appService.fullName.subscribe(result => {
       this.fullName = result; 

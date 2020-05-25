@@ -16,22 +16,24 @@ export class SocketioService {
   }
   
   setupSocketConnection(data) {
-    //console.log(this.socket);
-    // this.socket.on('notification', (data)=>{
-    //   //console.log(data);
-    //       //get issue by issueId
-    //       this.appService.getIssueById(data.issueId).subscribe( (res) =>{
-    //         console.log('res',res);
-    //           if(!res.error){
-    //             let fullName=this.appService.getUserInfoFromLocalstorage().fullName;
-    //             if(res.data.assignee==fullName || res.data.reporter==fullName || res.data.watchers.indexOf(fullName)>-1)
-    //             {
-    //             console.log('notify eligible');
-    //              this.toastr.info(data.message)
-    //             .onTap.subscribe(()=>this.router.navigate(['/issueDescription',data.issueId]));
-    //             }
-    //           }
-    //       });
-    // })
+    console.log(this.socket);
+    console.log(data);
+    this.socket.on('notification', (data)=>{
+    let userId=this.appService.getUserInfoFromLocalstorage().userId
+     data.expenseMembers.forEach(element => {
+       if(element.userId==userId){
+        console.log('socket',data);
+        let expenseHistoryNotes='';
+        if(data.expenseHistoryObj.expenseHistoryNotes){
+          data.expenseHistoryObj.expenseHistoryNotes.forEach(element => {
+            expenseHistoryNotes=expenseHistoryNotes+`- ${element}<br>`;
+          });
+        }
+        console.log(expenseHistoryNotes);
+          this.toastr.info(expenseHistoryNotes,data.expenseHistoryObj.expenseHistoryNotesBy, {enableHtml: true})   
+       }
+     });  
+    })         
   }
 }
+

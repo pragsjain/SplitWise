@@ -160,6 +160,10 @@ li a.groupName:hover {
         background: #eee;
         color:black;
     }
+ .expenseExpanded{
+    max-height: 400px;
+    overflow-y: scroll;
+ }
  .expListFlex{
      display: flex;
      justify-content: space-between;
@@ -194,6 +198,12 @@ li a.groupName:hover {
     .expExpandDetailsFlex{
         display: block;
     }
+    .expExpandExpMembers{
+        width: 100%;
+    }
+    .expExpandHistory{
+       width: 100%;
+    }
   }
  .expDesc{
      margin: 0px;
@@ -203,6 +213,12 @@ li a.groupName:hover {
  }
  .expExpandExpMembers,.expExpandHistory{
      padding: 1rem;
+ }
+ .expExpandExpMembers{
+     width: 40%;
+ }
+ .expExpandHistory{
+    width: 60%;
  }
  .expenseHistory{
      padding: 1rem ;
@@ -217,6 +233,18 @@ li a.groupName:hover {
     font-size: 1.5rem;
     position: relative;
     bottom: 0px;
+ }
+ nav.paginationNav{
+    display: flex;
+    justify-content: space-between;
+    vertical-align: middle;
+ }
+ ul.pagination,.totalExpense{
+     margin:1rem;
+ }
+ ul li.disable{
+     pointer-events: none;
+     opacity: 0.6;
  }
 
 

@@ -3,6 +3,7 @@ import { AppService } from '../app.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { Router, ActivatedRoute } from '@angular/router';
+import { SocketioService } from '../socketio.service';
 //declare var jQuery:any;
 
 @Component({
@@ -23,6 +24,7 @@ export class GroupDescComponent implements OnInit {
   createExpenseForm:FormGroup;
   expense;
   expenseList=[];
+  expenseListGroupBalance=[];
   expenseMembers=[];
   expenseHistory=[];
   displayMultiplePayer:boolean;
@@ -32,6 +34,10 @@ export class GroupDescComponent implements OnInit {
   expenseInitial;
   expenseMembersInitial;
   expenseHistoryNotes=[];
+  page=1;
+  countExpense;
+  numberOfExpensePerPage=2;
+  lastPage;
 
   @ViewChild('closeBtnAddExpense') closeBtn: ElementRef;
 
@@ -39,7 +45,8 @@ export class GroupDescComponent implements OnInit {
     private toastr: ToastrService,
     private fb: FormBuilder,
     private router: Router,
-    private route:ActivatedRoute) { 
+    private route:ActivatedRoute,
+    private socketService:SocketioService) { 
       this.resetForm()
       this.getAllGroups()
     }
@@ -126,7 +133,7 @@ export class GroupDescComponent implements OnInit {
       //console.log(this.expenseMembers)
       //console.log(this.createExpenseForm.value)
       let expenseFormValue=this.createExpenseForm.value;
-      let expenseHistoryNotesBy=`${this.currentUserName} created this expense`;
+      let expenseHistoryNotesBy=`${this.currentUserName} created expense '${expenseFormValue.expenseName}'`;
       let expenseHistoryObj ={
         expenseHistoryNotesBy:expenseHistoryNotesBy
       }
@@ -167,7 +174,7 @@ export class GroupDescComponent implements OnInit {
       //console.log(this.expenseMembers)
       //console.log(this.createExpenseForm.value)
       this.onFormChanges()
-      let expenseHistoryNotesBy=`${this.currentUserName} updated this expense`;
+      let expenseHistoryNotesBy=`${this.currentUserName} updated expense '${this.createExpenseForm.value.expenseName}'`;
       let expenseHistoryObj ={
         expenseHistoryNotesBy:expenseHistoryNotesBy,
         expenseHistoryNotes:this.expenseHistoryNotes
@@ -214,9 +221,9 @@ export class GroupDescComponent implements OnInit {
     let expenseFormValue=this.createExpenseForm.value;
     //let expenseHistoryNotes=[];
     if(this.expenseInitial.expenseName!==expenseFormValue.expenseName)
-    this.expenseHistoryNotes.push(`Expense Name has changed from '${this.expenseInitial.expenseName}' to '${expenseFormValue.expenseName}'`)
+    this.expenseHistoryNotes.push(`Expense Name changed from '${this.expenseInitial.expenseName}' to '${expenseFormValue.expenseName}'`)
     if(this.expenseInitial.amount!==expenseFormValue.amount)
-    this.expenseHistoryNotes.push(`Expense Name has changed from ${this.expenseInitial.amount} to ${expenseFormValue.amount}`)
+    this.expenseHistoryNotes.push(`Cost changed from ${this.expenseInitial.amount} to ${expenseFormValue.amount}`)
     //compare expense members 
     //console.log('expenseMembersInitial',JSON.parse(this.expenseMembersInitial));
     let isSolePayer=this.expenseMembers.filter(element =>element.isSolePayer==true);
@@ -246,7 +253,7 @@ export class GroupDescComponent implements OnInit {
       payshareText=payshareText+' to ';
       this.expenseMembers.forEach((element,index) => {
         if(element.paidShare!=0)
-        payshareText=payshareText+`${element.firstName}(Rs.${element.paidShare})${index==this.expenseInitial.length-1?'and':','}`
+        payshareText=payshareText+`${element.firstName}(Rs.${element.paidShare.toFixed(2)})${index==this.expenseInitial.length-1?'and':','}`
       });
       this.expenseHistoryNotes.push(payshareText);
     }
@@ -257,18 +264,36 @@ export class GroupDescComponent implements OnInit {
       let expenseObj=this.expenseMembers.filter(value=>value.userId==element.userId)
       if(expenseObj.length>0){
       if(expenseObj['0'].owedShare!==element.owedShare)
-      this.expenseHistoryNotes.push(`${element.fullName} share changed from Rs.${element.owedShare} to Rs.${expenseObj['0'].owedShare}`);
+      this.expenseHistoryNotes.push(`${element.fullName} share changed from Rs.${element.owedShare.toFixed(2)} to Rs.${expenseObj['0'].owedShare.toFixed(2)}`);
       }
   });
     
   }
 
   getAllExpenses(){
-    this.appService.getAllExpenses(this.group.groupId).subscribe( (res) =>{
+    this.appService.getAllExpenses(this.group.groupId,this.page,this.numberOfExpensePerPage).subscribe( (res) =>{
       if(!res.error){
       console.log(res.data);
-      this.expenseList=res.data;
+      this.expenseList=res.data.expenseList;
+      //change here
+      this.countExpense=res.data.count
+      this.lastPage=Math.ceil(res.data.count/this.numberOfExpensePerPage);
       this.isExpenseRecords=this.expenseList.length>0?true:false
+      this.getAllExpensesForGroupBalance();
+      }
+      else{
+       this.toastr.error(res.message)
+      }
+    },(error)=>{
+      console.log('error',error);
+    })
+  }
+
+  getAllExpensesForGroupBalance(){
+    this.appService.getAllExpenses(this.group.groupId,1,this.countExpense).subscribe( (res) =>{
+      if(!res.error){
+      console.log(res.data);
+      this.expenseListGroupBalance=res.data.expenseList;
       }
       else{
        this.toastr.error(res.message)
@@ -300,14 +325,26 @@ export class GroupDescComponent implements OnInit {
       this.createExpenseForm.get('expenseName').setValue(this.expense.expenseName);
       this.createExpenseForm.get('amount').setValue(this.expense.amount);
       this.createExpenseForm.get('expenseMembers').setValue(this.expense.expenseMembers);
+      //console.log('splitOption',this.expense.splitOption);
       this.splitOption=this.expense.splitOption;
+      if(this.splitOption=='equal'){
+        this.splitShareEqually()
+      }
       this.setDisplayPayer();
   }
 
   deleteExpense(expense){
     this.appService.deleteExpense(expense.expenseId).subscribe( (res) =>{
       console.log(res);
-      this.getAllExpenses()
+      this.getAllExpenses();
+
+      let expenseHistoryNotesBy=`${this.currentUserName} deleted expense '${expense.expenseName}'`;
+      let expenseHistoryObj ={
+        expenseHistoryNotesBy:expenseHistoryNotesBy
+      }
+      let expenseHistory=[]
+      //expenseHistory.push(expenseHistoryObj);
+      this.notify(expense.expenseMembers,expenseHistoryObj)
     })
   }
 
@@ -332,8 +369,9 @@ export class GroupDescComponent implements OnInit {
     this.isExpenseChanged=true;
     //console.log(userId)
     this.displayMultiplePayer=false;
-    let displayPayerObj= this.expenseMembers.filter(element => element.userId==userId)['0'];
-    this.displayPayer=displayPayerObj.userId==this.currentUserId?'you':displayPayerObj.fullName;
+    let displayPayerObj= this.expenseMembers.filter(element => element.userId==userId)
+    if(displayPayerObj.length>0)
+    this.displayPayer=displayPayerObj['0'].userId==this.currentUserId?'you':displayPayerObj['0'].fullName;
 
     this.expenseMembers.forEach(element => {
       element.isMultiplePayer=false;
@@ -366,12 +404,12 @@ export class GroupDescComponent implements OnInit {
   calculateOwedShare(element){
     let noOfSplitMembers=this.expenseMembers.filter(element =>element.isOwer==true).length;
     element.owedShare=element.isOwer?this.createExpenseForm.value.amount/noOfSplitMembers:0;
-    return element.isOwer?this.createExpenseForm.value.amount/noOfSplitMembers:0;
+    return element.isOwer?(this.createExpenseForm.value.amount/noOfSplitMembers).toFixed(2):0;
   }
 
   calculateOwedSharePercentage(element){
     element.owedShare=element.owedPercentageShare?element.owedPercentageShare/100*this.createExpenseForm.value.amount:0;
-    return element.owedShare;
+    return element.owedShare.toFixed(2);
   }
 
   removeExpenseMember(userId){
@@ -394,9 +432,17 @@ export class GroupDescComponent implements OnInit {
       selectedItemExist=true;
     });
     if(!selectedItemExist){
-    this.expenseMembers.push(filtered['0'])  
-    this.expenseHistoryNotes.push(`${filtered['0'].fullName} is added in Expense`);
+      this.expenseMembers.push(filtered['0'])  
+      this.expenseHistoryNotes.push(`${filtered['0'].fullName} is added in Expense`);
+      if(this.splitOption=='equal')
+      this.splitShareEqually()
     }
+  }
+
+  splitShareEqually(){
+    this.expenseMembers.forEach(element => {
+      element.isOwer=true;
+    });
   }
 
   expensePayerText(expense){
@@ -432,7 +478,7 @@ export class GroupDescComponent implements OnInit {
     let isCurrentUserExpense=expense.expenseMembers.filter(value=>value.userId==this.currentUserId);
     if(isCurrentUserExpense.length>0){
       let netBalance=isCurrentUserExpense['0'].paidShare-isCurrentUserExpense['0'].owedShare;
-    return netBalance==0?`nothing`:Math.abs(netBalance);
+    return netBalance==0?`nothing`:Math.abs(netBalance).toFixed(2);
     }else{
       return 0;
     }
@@ -473,13 +519,14 @@ export class GroupDescComponent implements OnInit {
   }
 
   editGroup(groupId){
+    this.page=1;
     this.router.navigate(['/group',groupId]);
   }
 
   calculateBalance(groupMember){
     let paidAmount=0;
     let owedAmount=0
-    this.expenseList.forEach(element => {
+    this.expenseListGroupBalance.forEach(element => {
        let member=element.expenseMembers.filter(value=>value.userId==groupMember.userId);
         if(member.length>0)
         {paidAmount=paidAmount+member['0'].paidShare
@@ -487,14 +534,15 @@ export class GroupDescComponent implements OnInit {
         }
     });
     let netBalance=paidAmount-owedAmount
-    return  netBalance>0?`gets back Rs.${netBalance}`:`owes Rs.${Math.abs(netBalance)} `;
+    return  netBalance>0?`gets back Rs.${netBalance.toFixed(2)}`:`owes Rs.${Math.abs(netBalance).toFixed(2)} `;
   }
 
   notify(expenseMembers,expenseHistoryObj){
-//   let notification={}
-//   notification['expenseMembers']=expenseMembers;
-//   notification['expenseHistoryObj']=expenseHistoryObj
-//   this.socketService.socket.emit('sendnotification', notification);
+    let notification={}
+    notification['expenseMembers']=expenseMembers;
+    notification['expenseHistoryObj']=expenseHistoryObj
+    console.log('sendnotification',notification)
+    this.socketService.socket.emit('sendnotification', notification);
   }
   
 

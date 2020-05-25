@@ -16,6 +16,7 @@
 
                     <br>
                     <select class="form-control" (change)="addUserToGroup(userId.value)" #userId>
+                      <option>&nbsp;Select Group Member </option>
                       <option *ngFor="let element of this.userList;" [value]="element.userId" >&nbsp;{{element.fullName}} </option>
                     </select>  
                     <small id="addMemberHelp" class="form-text text-muted">+ Add a Person to Group</small> 

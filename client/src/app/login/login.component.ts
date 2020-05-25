@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
              this.appService.setTokenInLocalStorage(apiResponse.data.token)
              this.appService.fullNameSource.next(apiResponse.data.userDetails.fullName);
               //socket connection
-              this.socketService.setupSocketConnection({data:'used logged in ,socket established!'});
+              this.socketService.setupSocketConnection({data:'user logged in ,socket established!(Login Component)'});
               //console.log(this.socketService.socket)
              this.router.navigate(['/dashboard']);
           } else {
