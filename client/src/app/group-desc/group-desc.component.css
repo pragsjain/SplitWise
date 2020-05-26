@@ -93,10 +93,14 @@ li:hover {
         width: 98%;
     }
   }
-  .card-body{
+  .card-body{ 
     padding: 0px;
 }
- .material-icons.close-class {
+ .material-icons.faceIcon{
+    position: relative;
+    bottom: -5px;
+ }
+ .material-icons.deleteGroupIcon {
     position: relative;
     bottom: -5px;
     float: right;
@@ -107,11 +111,19 @@ li:hover {
     color: #666;
     padding-right: 5px;
  }
+ .material-icons.deleteExpenseIcon {
+    position: relative;
+    bottom: -8px;
+ }
+ .expenseMembers{
+     position: relative;
+     bottom: 8px;
+ }
  span.clickable{
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
-    padding: 2px 5px ;
+    padding: 5px ;
     margin: 0px 2px;
     border: 1px dashed #ccc;
     vertical-align: middle;

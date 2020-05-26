@@ -3,13 +3,13 @@
     <div class="groupTitle"> 
         <span>GROUPS  &nbsp;&nbsp;&nbsp;&nbsp; </span>
         <span class="addGroupBtn" (click)="goTonewGroup()"><b>+ Add</b></span>&nbsp;&nbsp;&nbsp;&nbsp;
-        <span class="addGroupBtn" [routerLink]="['/group-edit',group?.groupId]" ><b>Edit </b></span>
+        <!-- <span class="addGroupBtn" [routerLink]="['/group-edit',group?.groupId]" ><b>Edit </b></span> -->
     </div>
     <div *ngIf="isGroupList">
     <span *ngFor="let element of this.groupList; let lastItem = last;">
         <li (click)="editGroup(element.groupId)"><i class="material-icons groupIcon"> bookmark</i>
         <a class="groupName">{{element.groupName}} </a>&nbsp;
-        <i class="material-icons close-class" (click)="removeGroup(element.groupId)">cancel </i>
+        <i class="material-icons deleteGroupIcon" (click)="removeGroup(element.groupId)">cancel </i>
         </li>
     </span>
     </div>
@@ -38,7 +38,7 @@
                             </span>
                             <span class="expListName">{{expense?.expenseName}}</span>
                         </div>
-                        <span class="deleteExpense"><i class="material-icons close-class" (click)="deleteExpense(expense)">cancel </i></span>
+                        <span class="deleteExpense"><i class="material-icons" (click)="deleteExpense(expense)">cancel </i></span>
                     </div>
                     <div class="expListExpMembers">
                         <div class="expenseShare">
@@ -128,7 +128,7 @@
         </div>
         <div *ngIf="isGroupList">
         <span *ngFor="let element of this.group?.groupMembers;">
-            <li><i class="material-icons close-class"> face</i> &nbsp;
+            <li><i class="material-icons faceIcon"> face</i> &nbsp;
                 <a class="groupMemberName" (click)="editGroup(element.groupId)"><b>{{element.firstName}} {{element.lastName}}</b>&nbsp; </a>
                 <span>{{calculateBalance(element) }}</span>
                 <hr>
@@ -152,9 +152,9 @@
                 <form [formGroup]="createExpenseForm">
                     <div>
                     <label>With : </label>
-                    <span *ngFor="let element of this.expenseMembers; let lastItem = last;">
+                    <span *ngFor="let element of this.expenseMembers; let lastItem = last;" class="expenseMembers">
                         <span class="clickable" >{{element.firstName}} 
-                        <i class="material-icons close-class" (click)="removeExpenseMember(element.userId)">cancel </i></span>
+                        <i class="material-icons deleteExpenseIcon" (click)="removeExpenseMember(element.userId)">cancel </i></span>
                     </span>
                       <br>
                       <select class="form-control" (change)="addExpenseMember(selectedGroupMember.value)" #selectedGroupMember>
