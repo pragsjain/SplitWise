@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  SOCKET_ENDPOINT: 'http://localhost:3000',
+  //SOCKET_ENDPOINT: 'http://localhost:3000',
   //SOCKET_ENDPOINT: 'http://52.66.252.216:3000'
-  //SOCKET_ENDPOINT: 'http://52.66.252.216:3001'
+  SOCKET_ENDPOINT: 'http://52.66.252.216:5001'
 };
 
 /*
