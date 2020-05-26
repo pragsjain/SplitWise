@@ -53,11 +53,13 @@ li{
      list-style: none;
  }
 li a.groupName {
+    font-size: 1.25rem;
     color: #666;
     cursor: pointer;
+    text-transform: uppercase;
  }
 
-li a.groupName:hover {
+li:hover {
     background: #eee;
     color:black;
  }
@@ -94,11 +96,16 @@ li a.groupName:hover {
   .card-body{
     padding: 0px;
 }
-
-  .material-icons.close-class {
-    font-size: 0.8rem;
+ .material-icons.close-class {
     position: relative;
-    bottom: -3px;
+    bottom: -5px;
+    float: right;
+ }
+ .material-icons.groupIcon {
+    position: relative;
+    bottom: -5px;
+    color: #666;
+    padding-right: 5px;
  }
  span.clickable{
     -webkit-border-radius: 10px;

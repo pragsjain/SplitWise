@@ -1,14 +1,28 @@
 <div class="dashboard-page">
-<div class="groupTitle"> 
-    <span>GROUPS  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
-    <span class="addGroupBtn" (click)="goTonewGroup()"><b>+ Add</b></span>
+<div class="group-section">
+    <div class="groupTitle"> 
+        <span>GROUPS  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+        <span class="addGroupBtn" (click)="goTonewGroup()"><b>+ Add</b></span>
+    </div>
+    <div *ngIf="isGroupList">
+        <span *ngFor="let element of this.groupList; let lastItem = last;">
+            <li (click)="editGroup(element.groupId)"><i class="material-icons groupIcon"> bookmark</i>
+                <a class="groupName">{{element.groupName}} </a>&nbsp;
+            <i class="material-icons close-class" (click)="removeGroup(element.groupId)">cancel </i>
+            </li>
+        </span>
+    </div>
 </div>
-<div *ngIf="isGroupList">
-<span *ngFor="let element of this.groupList; let lastItem = last;">
-    <li><i class="material-icons close-class"> bookmark</i>
-        <a class="groupName" (click)="editGroup(element.groupId)">{{element.groupName}} </a>&nbsp;
-      <i class="material-icons close-class" (click)="removeGroup(element.groupId)">cancel </i>
-</span>
-</div>
+<div class="your-share-section" *ngIf="yourShareArray.length>0" >
+    <div class="groupTitle"> 
+        <span>YOUR SHARE IN GROUPS </span>
+    </div>
+    <div *ngFor="let element of yourShareArray" class="yourShareArray">
+        <span class="material-icons card-icon">
+            credit_card
+        </span>
+        <span [innerHTML]="element"></span>
+        <hr>
+    </div>
 
 </div>
