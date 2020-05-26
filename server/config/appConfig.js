@@ -1,14 +1,14 @@
 let appConfig = {};
 
-appConfig.port = 3000;
+appConfig.port = 5000;
 appConfig.allowedCorsOrigin = "*";
 appConfig.env = "dev";
 appConfig.db = {
     uri: 'mongodb://127.0.0.1:27017/splitwiseDb'
   }
 appConfig.apiVersion = '/api/v1';
-appConfig.url='http://localhost:3000/';
-//appConfig.url='http://52.66.252.216:3001/';
+//appConfig.url='http://localhost:3000/';
+appConfig.url='http://52.66.252.216:5001/';
 
 
 module.exports = {

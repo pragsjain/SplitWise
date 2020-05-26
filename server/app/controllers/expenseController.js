@@ -8,9 +8,45 @@ const logger = require('./../libs/loggerLib');
 const ExpenseModel = mongoose.model('Expense')
 
 let getAllExpense = (req, res) => {
+    if(parseInt(req.query.numberOfExpensePerPage)==0 && parseInt(req.query.page==0))
+    getAllExpenseWithPagination(req, res)
+    else
+    {
+        ExpenseModel.find({ 'groupId': req.params.groupId })
+            .select('-__v -_id')
+            .lean() //make it plain javascript object,not mongoose object
+            .exec((err, result) => { //trying to execute this function
+                if (err) {
+                    logger.error(err, 'expenseController: getAllExpense()', 5)
+                    let apiResponse = response.generate(true, 'Failed To Find Expenses', 500, null)
+                    res.send(apiResponse)
+                } else if (result == undefined || result == null || result == '') {
+                    logger.error('No Expense Found', 'expenseController: getAllExpense()', 5)
+                    let apiResponse = response.generate(true, 'No Expense Found', 404, null)
+                    res.send(apiResponse)
+                } else {
+                    ExpenseModel.count({ 'groupId': req.params.groupId }, function( err, count){
+                        console.log( "Number of expense:", count );
+                        let data={}
+                        data.count=count;
+                        data.expenseList=result;
+                        let apiResponse = response.generate(false, 'All Expense Details Found', 200, data)
+                        res.send(apiResponse) ; 
+                    })
+                }
+            })
+    }
+}// end get all expenses
+
+let getAllExpenseWithPagination = (req, res) => {
+    let numberOfExpensePerPage=parseInt(req.query.numberOfExpensePerPage);
+    let page=parseInt(req.query.page);
+    console.log(page,numberOfExpensePerPage);
+    if(numberOfExpensePerPage)
     ExpenseModel.find({ 'groupId': req.params.groupId })
         .select('-__v -_id')
         .lean() //make it plain javascript object,not mongoose object
+        .skip(numberOfExpensePerPage * (page - 1)).limit(numberOfExpensePerPage )
         .exec((err, result) => { //trying to execute this function
             if (err) {
                 logger.error(err, 'expenseController: getAllExpense()', 5)
@@ -21,8 +57,14 @@ let getAllExpense = (req, res) => {
                 let apiResponse = response.generate(true, 'No Expense Found', 404, null)
                 res.send(apiResponse)
             } else {
-                let apiResponse = response.generate(false, 'All Expense Details Found', 200, result)
-                res.send(apiResponse)
+                ExpenseModel.count({ 'groupId': req.params.groupId }, function( err, count){
+                    console.log( "Number of expense:", count );
+                    let data={}
+                    data.count=count;
+                    data.expenseList=result;
+                    let apiResponse = response.generate(false, 'All Expense Details Found', 200, data)
+                    res.send(apiResponse) ; 
+                })
             }
         })
 }// end get all expenses
@@ -54,14 +96,8 @@ let viewByExpenseId = (req, res) => {
  * function to edit expense by admin.
  */
 let editExpense = (req, res) => {
-
-    // console.log('expenseId',expenseId);
     editExpense=req.body
-    //console.log(req);
-    //  console.log('title',req.body['title']);
-     console.log('watchers->',req.body.watchers);
-
-    console.log('édit Expense->',editExpense)
+    //console.log('édit Expense->',editExpense)
     ExpenseModel.findOneAndUpdate({ 'expenseId': req.params.expenseId }, {$set:editExpense}, { new: true }).exec((err, result) => {
         if (err) {
             logger.error(err, 'expenseController: editExpense()', 5)
@@ -73,9 +109,11 @@ let editExpense = (req, res) => {
             res.send(apiResponse)
         } else {
             let apiResponse = response.generate(false, 'All Expense Details Found', 200, result)
-            res.send(apiResponse)
+                res.send(apiResponse)
         }
     })
+
+    
 }
 
 

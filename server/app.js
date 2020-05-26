@@ -10,6 +10,7 @@ const routeLoggerMiddleware = require('./app/middlewares/routeLogger.js');
 const globalErrorMiddleware = require('./app/middlewares/appErrorHandler');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
+const nodemailer = require('nodemailer');
 //const cors =require('cors')
 
 
@@ -90,17 +91,50 @@ server.on('listening', onListening);
 const io = require('socket.io')(server);
   io.on('connection', (socket) => {
     console.log('a user connected');
-    socket.on('disconnect', () => {
-      console.log('user disconnected');
-      //socket.removeAllListeners();
+    socket.on('disconnect', (msg) => {
+      console.log(`user disconnected->${msg}`);
     });
-     socket.on('sendnotification', (msg) => {
-       console.log('message: ' + msg.message);
-       socket.broadcast.emit('notification',msg );
-     });
-    
+    socket.on('sendnotification', (msg) => {
+      console.log(`sendnotification`);
+      socket.broadcast.emit('notification',msg );
+      sendMail(msg)
+    }); 
   });
 
+function sendMail(msg){
+  msg.expenseMembers.forEach(element => {
+      var transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        auth: {
+            user: 'atestmail2020@gmail.com',
+            pass: 'atestmail'
+        },
+        secure: true,
+        requireTLS: false,
+        tls: {
+            rejectUnauthorized: false
+        }
+      });
+
+    let expenseHistoryNotes=`${msg.expenseHistoryObj.expenseHistoryNotesBy} \n\n`;
+    if(msg.expenseHistoryObj.expenseHistoryNotes){
+            msg.expenseHistoryObj.expenseHistoryNotes.forEach(element => {
+              expenseHistoryNotes=expenseHistoryNotes+`- ${element} \n`;
+            });
+      }
+    var mailOptions = {
+        to: element.email,
+        from: 'atestmail2020@gmail.com',
+        subject: msg.expenseHistoryObj.expenseHistoryNotesBy,
+        text: expenseHistoryNotes
+    }
+    transporter.sendMail(mailOptions, (err, info) => {
+        console.log('err', err);
+        console.log('info', info);
+    })
+  })
+}
 
 
 
@@ -122,7 +156,7 @@ function onError(error) {
       process.exit(1);
       break;
     case 'EADDRINUSE':
-      logger.error(error.code + ':port is already in use.', 'serverOnErrorHandler', 10);
+      logger.error(error.code + appConfig.port+ ':port is already in use.', 'serverOnErrorHandler', 10);
       process.exit(1);
       break;
     default:
