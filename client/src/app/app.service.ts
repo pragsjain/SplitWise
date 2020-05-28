@@ -135,11 +135,11 @@ export class AppService {
 
     } else {
 
-      errorMessage = `Server returned code: ${err.status}, error message is: ${err.error.text}`;
+      errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
 
     } // end condition *if
 
-    this.toastr.error(err.error.text);
+    this.toastr.error(err.message);
     return throwError(errorMessage);
 
   }  // END handleError

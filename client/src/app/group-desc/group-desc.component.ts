@@ -30,6 +30,7 @@ export class GroupDescComponent implements OnInit {
   displayMultiplePayer:boolean;
   displayPayer;
   splitOption:string;
+  splitOptionSelected:string;
   isExpenseChanged:boolean;
   expenseInitial;
   expenseMembersInitial;
@@ -99,6 +100,7 @@ export class GroupDescComponent implements OnInit {
     this.addSinglePayer(this.currentUserId);
     //initially split equally and split share to all group members
     this.splitOption='equal';
+    this.splitOptionSelected='equal';
     this.expenseMembers.forEach(element => {
       element.isOwer=true;
     });
@@ -106,8 +108,10 @@ export class GroupDescComponent implements OnInit {
 
   createExpense(){
     let amountFilled =this.createExpenseForm.value.amount
+    let expenseName =this.createExpenseForm.value.expenseName
     //if single payer, add paidShare 
-    if(!this.displayMultiplePayer){
+    let isSolePayer= this.expenseMembers.filter(element => element.isSolePayer==true)
+    if(isSolePayer.length==1){
       this.expenseMembers.forEach(element => {
         element.paidShare=element.isSolePayer?amountFilled:0;
       })
@@ -117,8 +121,10 @@ export class GroupDescComponent implements OnInit {
     let owedAmount = this.expenseMembers.reduce((total, element) => total + element.owedShare, 0);
     //console.log(paidAmount);
     //console.log(owedAmount);
-    //if amount is 0
-    if(amountFilled==0){
+    if(expenseName==''){
+      this.toastr.error(`You must enter Expense Name` )
+    }
+    else if(amountFilled==0){
       this.toastr.error(`You must enter an amount.` )
     }
     else if(paidAmount!==amountFilled)
@@ -327,6 +333,7 @@ export class GroupDescComponent implements OnInit {
       this.createExpenseForm.get('expenseMembers').setValue(this.expense.expenseMembers);
       //console.log('splitOption',this.expense.splitOption);
       this.splitOption=this.expense.splitOption;
+      this.splitOptionSelected=this.expense.splitOption;
       if(this.splitOption=='equal'){
         this.splitShareEqually()
       }
@@ -360,7 +367,7 @@ export class GroupDescComponent implements OnInit {
         return value.isMultiplePayer == true;
       });
       if(isMultiplePayer.length>0){
-        this.displayMultiplePayer=true
+        //this.displayMultiplePayer=true
         this.displayPayer='multiple people'
       }
   }
@@ -369,7 +376,7 @@ export class GroupDescComponent implements OnInit {
   addSinglePayer(userId){
     this.isExpenseChanged=true;
     //console.log(userId)
-    this.displayMultiplePayer=false;
+    //this.displayMultiplePayer=false;
     let displayPayerObj= this.expenseMembers.filter(element => element.userId==userId)
     if(displayPayerObj.length>0)
     this.displayPayer=displayPayerObj['0'].userId==this.currentUserId?'you':displayPayerObj['0'].fullName;
@@ -389,17 +396,27 @@ export class GroupDescComponent implements OnInit {
   }
 
   addMultiplePayer(){
-    this.isExpenseChanged=true;
-    this.displayMultiplePayer=true;
-    this.displayPayer= 'multiple people'
-    this.expenseMembers.forEach(element => {
-      {
-        element.isSolePayer=false;
-        element.isMultiplePayer=true;
-      }
-    });
+    let multiplePayer= this.expenseMembers.filter(element => element.paidShare>0)
+    if(multiplePayer.length>1){
+      this.isExpenseChanged=true;
+      this.displayPayer= 'multiple people'
+      this.expenseMembers.forEach(element => {
+        {
+          element.isSolePayer=false;
+          element.isMultiplePayer=true;
+        }
+      });
+    }else if(multiplePayer.length==1){
+      this.addSinglePayer(multiplePayer['0'].userId)
+    }
   }
 
+  saveSplitOption(){
+    this.splitOption=this.splitOptionSelected
+    this.isExpenseChanged=true;
+    if(this.splitOption=='equal')
+    this.splitShareEqually();
+  }
   
 
   calculateOwedShare(element){
@@ -417,9 +434,19 @@ export class GroupDescComponent implements OnInit {
     this.isExpenseChanged=true;
     var filteredName = this.expenseMembers.filter(value=> value.userId == userId)['0'].fullName;
     var filtered = this.expenseMembers.filter(function(value){ return value.userId !== userId});
-    this.expenseMembers=filtered;
-    
-    this.expenseHistoryNotes.push(`${filteredName} is removed from Expense`);
+    if(filtered.length>0){
+      //if thats the sole payer, change it and add 1st element of array
+      let isSolePayer=this.expenseMembers.filter(value=>value.isSolePayer==true);
+        if(isSolePayer.length==1)
+          {
+            if(isSolePayer['0'].fullName==filteredName)
+            this.addSinglePayer(filtered['0'].userId)
+          }
+      this.expenseMembers=filtered;
+      this.expenseHistoryNotes.push(`${filteredName} is removed from Expense`);
+    }else{
+      this.toastr.error(`Expense should have atleast One Member.Either Add another member before removing the last one.` )
+    }
   }
 
   addExpenseMember(userId){
@@ -443,6 +470,7 @@ export class GroupDescComponent implements OnInit {
   splitShareEqually(){
     this.expenseMembers.forEach(element => {
       element.isOwer=true;
+      element.owedPercentageShare='';
     });
   }
 

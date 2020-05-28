@@ -853,11 +853,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           if (err.error instanceof Error) {
             errorMessage = "An error occurred: ".concat(err.error.message);
           } else {
-            errorMessage = "Server returned code: ".concat(err.status, ", error message is: ").concat(err.error.text);
+            errorMessage = "Server returned code: ".concat(err.status, ", error message is: ").concat(err.message);
           } // end condition *if
 
 
-          this.toastr.error(err.error.text);
+          this.toastr.error(err.message);
           return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["throwError"])(errorMessage);
         } // END handleError
 
@@ -1751,7 +1751,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "span");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "li", 56);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "li", 57);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GroupDescComponent_div_9_span_1_Template_li_click_1_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r80);
@@ -1763,13 +1763,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return ctx_r79.editGroup(element_r77.groupId);
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "i", 57);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "i", 58);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, " bookmark");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "a", 58);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "a", 59);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
 
@@ -1777,7 +1777,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "\xA0 ");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "i", 59);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "i", 60);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GroupDescComponent_div_9_span_1_Template_i_click_7_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r80);
@@ -1815,7 +1815,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, GroupDescComponent_div_9_span_1_Template, 9, 2, "span", 55);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, GroupDescComponent_div_9_span_1_Template, 9, 2, "span", 56);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
@@ -1915,7 +1915,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     function GroupDescComponent_div_23_div_1_div_20_p_7_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p", 82);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p", 83);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "b");
 
@@ -1937,7 +1937,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     function GroupDescComponent_div_23_div_1_div_20_p_8_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p", 83);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p", 84);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
 
@@ -1957,7 +1957,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     function GroupDescComponent_div_23_div_1_div_20_p_9_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p", 83);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p", 84);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
 
@@ -1977,7 +1977,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     function GroupDescComponent_div_23_div_1_div_20_p_10_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p", 83);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p", 84);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
 
@@ -2117,7 +2117,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     function GroupDescComponent_div_23_div_1_div_20_div_18_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 84);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 85);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div");
 
@@ -2125,7 +2125,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, GroupDescComponent_div_23_div_1_div_20_div_18_div_3_Template, 2, 1, "div", 55);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, GroupDescComponent_div_23_div_1_div_20_div_18_div_3_Template, 2, 1, "div", 56);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
@@ -2147,11 +2147,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       if (rf & 1) {
         var _r114 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 71);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 72);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 72);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 73);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 73);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 74);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, " rate_review ");
 
@@ -2159,21 +2159,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "p", 74);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "p", 75);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](7, GroupDescComponent_div_23_div_1_div_20_p_7_Template, 3, 1, "p", 75);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](7, GroupDescComponent_div_23_div_1_div_20_p_7_Template, 3, 1, "p", 76);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](8, GroupDescComponent_div_23_div_1_div_20_p_8_Template, 3, 4, "p", 76);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](8, GroupDescComponent_div_23_div_1_div_20_p_8_Template, 3, 4, "p", 77);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](9, GroupDescComponent_div_23_div_1_div_20_p_9_Template, 3, 4, "p", 76);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](9, GroupDescComponent_div_23_div_1_div_20_p_9_Template, 3, 4, "p", 77);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](10, GroupDescComponent_div_23_div_1_div_20_p_10_Template, 3, 3, "p", 76);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](10, GroupDescComponent_div_23_div_1_div_20_p_10_Template, 3, 3, "p", 77);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "button", 77);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "button", 78);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GroupDescComponent_div_23_div_1_div_20_Template_button_click_11_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r114);
@@ -2194,19 +2194,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "div", 78);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "div", 79);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "div", 79);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "div", 80);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](15, GroupDescComponent_div_23_div_1_div_20_div_15_Template, 6, 3, "div", 55);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](15, GroupDescComponent_div_23_div_1_div_20_div_15_Template, 6, 3, "div", 56);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "div", 80);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "div", 81);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](17, GroupDescComponent_div_23_div_1_div_20_strong_17_Template, 2, 0, "strong", 4);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](18, GroupDescComponent_div_23_div_1_div_20_div_18_Template, 4, 2, "div", 81);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](18, GroupDescComponent_div_23_div_1_div_20_div_18_Template, 4, 2, "div", 82);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -2258,24 +2258,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 62);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 63);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GroupDescComponent_div_23_div_1_Template_div_click_1_listener() {
           var expense_r84 = ctx.$implicit;
           return expense_r84.isExpand = !expense_r84.isExpand;
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 63);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 64);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 64);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 65);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, " rate_review ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "span", 65);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "span", 66);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7);
 
@@ -2283,9 +2283,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "span", 66);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "span", 67);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "i", 67);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "i", 68);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GroupDescComponent_div_23_div_1_Template_i_click_9_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r118);
@@ -2305,9 +2305,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 68);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 69);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div", 69);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div", 70);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "p");
 
@@ -2333,7 +2333,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](20, GroupDescComponent_div_23_div_1_div_20_Template, 19, 8, "div", 70);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](20, GroupDescComponent_div_23_div_1_div_20_Template, 19, 8, "div", 71);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
@@ -2377,9 +2377,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     function GroupDescComponent_div_23_nav_2_li_13_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "li", 94);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "li", 95);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 91);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 92);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "...");
 
@@ -2405,17 +2405,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       if (rf & 1) {
         var _r121 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nav", 85);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nav", 86);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "b", 86);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "b", 87);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "ul", 87);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "ul", 88);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "li", 88);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "li", 89);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GroupDescComponent_div_23_nav_2_Template_li_click_4_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r121);
@@ -2426,7 +2426,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return ctx_r120.getAllExpenses();
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "a", 89);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "a", 90);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "span", 22);
 
@@ -2434,7 +2434,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "span", 90);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "span", 91);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Previous");
 
@@ -2444,7 +2444,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "li", 88);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "li", 89);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GroupDescComponent_div_23_nav_2_Template_li_click_10_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r121);
@@ -2455,7 +2455,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return ctx_r122.getAllExpenses();
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "a", 91);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "a", 92);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "1");
 
@@ -2463,9 +2463,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](13, GroupDescComponent_div_23_nav_2_li_13_Template, 3, 3, "li", 92);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](13, GroupDescComponent_div_23_nav_2_li_13_Template, 3, 3, "li", 93);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "li", 88);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "li", 89);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GroupDescComponent_div_23_nav_2_Template_li_click_14_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r121);
@@ -2476,7 +2476,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return ctx_r123.getAllExpenses();
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "a", 91);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "a", 92);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16);
 
@@ -2484,7 +2484,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "li", 88);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "li", 89);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GroupDescComponent_div_23_nav_2_Template_li_click_17_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r121);
@@ -2495,7 +2495,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return ctx_r124.getAllExpenses();
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "a", 93);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "a", 94);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "span", 22);
 
@@ -2503,7 +2503,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "span", 90);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "span", 91);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22, "Next");
 
@@ -2553,11 +2553,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     function GroupDescComponent_div_23_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 60);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 61);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, GroupDescComponent_div_23_div_1_Template, 21, 9, "div", 55);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, GroupDescComponent_div_23_div_1_Template, 21, 9, "div", 56);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, GroupDescComponent_div_23_nav_2_Template, 23, 15, "nav", 61);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, GroupDescComponent_div_23_nav_2_Template, 23, 15, "nav", 62);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
@@ -2583,7 +2583,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "li");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "i", 95);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "i", 96);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, " face");
 
@@ -2591,7 +2591,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, " \xA0 ");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "a", 96);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "a", 97);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GroupDescComponent_div_32_span_1_Template_a_click_5_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r128);
@@ -2645,7 +2645,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, GroupDescComponent_div_32_span_1_Template, 12, 3, "span", 55);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, GroupDescComponent_div_32_span_1_Template, 12, 3, "span", 56);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
@@ -2663,13 +2663,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       if (rf & 1) {
         var _r132 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "span", 97);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "span", 98);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "span", 98);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "span", 99);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "i", 99);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "i", 100);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GroupDescComponent_span_49_Template_i_click_3_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r132);
@@ -2701,7 +2701,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     function GroupDescComponent_option_55_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 100);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 101);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
 
@@ -2761,7 +2761,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       if (rf & 1) {
         var _r140 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 60);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 61);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "label");
 
@@ -2777,7 +2777,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "input", 103);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "input", 104);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function GroupDescComponent_div_93_div_1_Template_input_ngModelChange_6_listener($event) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r140);
@@ -2810,9 +2810,33 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     function GroupDescComponent_div_93_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 101);
+        var _r142 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, GroupDescComponent_div_93_div_1_Template, 8, 2, "div", 102);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 102);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, GroupDescComponent_div_93_div_1_Template, 8, 2, "div", 103);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "button", 39);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Cancel");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, " \xA0 ");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 55);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GroupDescComponent_div_93_Template_button_click_5_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r142);
+
+          var ctx_r141 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r141.addMultiplePayer();
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "Save");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
@@ -2828,41 +2852,41 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     function GroupDescComponent_div_114_div_1_Template(rf, ctx) {
       if (rf & 1) {
-        var _r144 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r146 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 105);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 106);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "span");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "input", 106);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "input", 107);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function GroupDescComponent_div_114_div_1_Template_input_ngModelChange_2_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r144);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r146);
 
-          var element_r142 = ctx.$implicit;
-          return element_r142.isOwer = $event;
+          var element_r144 = ctx.$implicit;
+          return element_r144.isOwer = $event;
         })("click", function GroupDescComponent_div_114_div_1_Template_input_click_2_listener() {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r144);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r146);
 
-          var ctx_r145 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+          var ctx_r147 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-          return ctx_r145.isExpenseChanged = true;
+          return ctx_r147.isExpenseChanged = true;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, " \xA0 ");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 107);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 108);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GroupDescComponent_div_114_div_1_Template_span_click_4_listener() {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r144);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r146);
 
-          var element_r142 = ctx.$implicit;
+          var element_r144 = ctx.$implicit;
 
-          var ctx_r146 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+          var ctx_r148 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-          return ctx_r146.addSinglePayer(element_r142.userId);
+          return ctx_r148.addSinglePayer(element_r144.userId);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
@@ -2871,7 +2895,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "span", 108);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "span", 109);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7);
 
@@ -2883,23 +2907,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
 
       if (rf & 2) {
-        var element_r142 = ctx.$implicit;
+        var element_r144 = ctx.$implicit;
 
-        var ctx_r141 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r143 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](7, _c3, element_r142.isSolePayer == true));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](7, _c3, element_r144.isSolePayer == true));
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", element_r142.isOwer);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", element_r144.isOwer);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](element_r142.fullName);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](element_r144.fullName);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Rs.", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](8, 4, ctx_r141.calculateOwedShare(element_r142), "1.0-2"), "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Rs.", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](8, 4, ctx_r143.calculateOwedShare(element_r144), "1.0-2"), "");
       }
     }
 
@@ -2907,7 +2931,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, GroupDescComponent_div_114_div_1_Template, 9, 9, "div", 104);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, GroupDescComponent_div_114_div_1_Template, 9, 9, "div", 105);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
@@ -2923,20 +2947,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     function GroupDescComponent_div_115_div_1_Template(rf, ctx) {
       if (rf & 1) {
-        var _r150 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r152 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 105);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 106);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "span", 56);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "span", 57);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GroupDescComponent_div_115_div_1_Template_span_click_1_listener() {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r150);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r152);
 
-          var element_r148 = ctx.$implicit;
+          var element_r150 = ctx.$implicit;
 
-          var ctx_r149 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+          var ctx_r151 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-          return ctx_r149.addSinglePayer(element_r148.userId);
+          return ctx_r151.addSinglePayer(element_r150.userId);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
@@ -2951,13 +2975,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "input", 109);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "input", 110);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function GroupDescComponent_div_115_div_1_Template_input_ngModelChange_6_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r150);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r152);
 
-          var element_r148 = ctx.$implicit;
-          return element_r148.owedShare = $event;
+          var element_r150 = ctx.$implicit;
+          return element_r150.owedShare = $event;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -2968,17 +2992,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
 
       if (rf & 2) {
-        var element_r148 = ctx.$implicit;
+        var element_r150 = ctx.$implicit;
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](3, _c3, element_r148.isSolePayer == true));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](3, _c3, element_r150.isSolePayer == true));
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](element_r148.fullName);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](element_r150.fullName);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", element_r148.owedShare);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", element_r150.owedShare);
       }
     }
 
@@ -2986,7 +3010,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, GroupDescComponent_div_115_div_1_Template, 7, 5, "div", 104);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, GroupDescComponent_div_115_div_1_Template, 7, 5, "div", 105);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
@@ -3002,22 +3026,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     function GroupDescComponent_div_116_div_1_Template(rf, ctx) {
       if (rf & 1) {
-        var _r155 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r157 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 105);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 106);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "span", 110);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "span", 111);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 107);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 108);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GroupDescComponent_div_116_div_1_Template_span_click_2_listener() {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r155);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r157);
 
-          var element_r153 = ctx.$implicit;
+          var element_r155 = ctx.$implicit;
 
-          var ctx_r154 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+          var ctx_r156 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-          return ctx_r154.addSinglePayer(element_r153.userId);
+          return ctx_r156.addSinglePayer(element_r155.userId);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
@@ -3026,7 +3050,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "br");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "span", 111);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "span", 112);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
 
@@ -3036,15 +3060,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div", 112);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div", 113);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "input", 113);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "input", 114);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function GroupDescComponent_div_116_div_1_Template_input_ngModelChange_9_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r155);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r157);
 
-          var element_r153 = ctx.$implicit;
-          return element_r153.owedPercentageShare = $event;
+          var element_r155 = ctx.$implicit;
+          return element_r155.owedPercentageShare = $event;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -3061,23 +3085,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
 
       if (rf & 2) {
-        var element_r153 = ctx.$implicit;
+        var element_r155 = ctx.$implicit;
 
-        var ctx_r152 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r154 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](7, _c3, element_r153.isSolePayer == true));
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](element_r153.fullName);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](7, _c3, element_r155.isSolePayer == true));
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Rs.", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](7, 4, ctx_r152.calculateOwedSharePercentage(element_r153), "1.0-2"), "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](element_r155.fullName);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", element_r153.owedPercentageShare);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Rs.", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](7, 4, ctx_r154.calculateOwedSharePercentage(element_r155), "1.0-2"), "");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", element_r155.owedPercentageShare);
       }
     }
 
@@ -3085,7 +3109,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, GroupDescComponent_div_116_div_1_Template, 12, 9, "div", 104);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, GroupDescComponent_div_116_div_1_Template, 12, 9, "div", 105);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
@@ -3182,6 +3206,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.addSinglePayer(this.currentUserId); //initially split equally and split share to all group members
 
           this.splitOption = 'equal';
+          this.splitOptionSelected = 'equal';
           this.expenseMembers.forEach(function (element) {
             element.isOwer = true;
           });
@@ -3191,9 +3216,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function createExpense() {
           var _this10 = this;
 
-          var amountFilled = this.createExpenseForm.value.amount; //if single payer, add paidShare 
+          var amountFilled = this.createExpenseForm.value.amount;
+          var expenseName = this.createExpenseForm.value.expenseName; //if single payer, add paidShare 
 
-          if (!this.displayMultiplePayer) {
+          var isSolePayer = this.expenseMembers.filter(function (element) {
+            return element.isSolePayer == true;
+          });
+
+          if (isSolePayer.length == 1) {
             this.expenseMembers.forEach(function (element) {
               element.paidShare = element.isSolePayer ? amountFilled : 0;
             });
@@ -3207,9 +3237,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             return total + element.owedShare;
           }, 0); //console.log(paidAmount);
           //console.log(owedAmount);
-          //if amount is 0
 
-          if (amountFilled == 0) {
+          if (expenseName == '') {
+            this.toastr.error("You must enter Expense Name");
+          } else if (amountFilled == 0) {
             this.toastr.error("You must enter an amount.");
           } else if (paidAmount !== amountFilled) {
             this.toastr.error("The total of everyone's paid share (Rs.".concat(paidAmount, ") is different than total cost (Rs.").concat(amountFilled, ")"));
@@ -3433,6 +3464,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.createExpenseForm.get('expenseMembers').setValue(this.expense.expenseMembers); //console.log('splitOption',this.expense.splitOption);
 
           this.splitOption = this.expense.splitOption;
+          this.splitOptionSelected = this.expense.splitOption;
 
           if (this.splitOption == 'equal') {
             this.splitShareEqually();
@@ -3475,7 +3507,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           });
 
           if (isMultiplePayer.length > 0) {
-            this.displayMultiplePayer = true;
+            //this.displayMultiplePayer=true
             this.displayPayer = 'multiple people';
           }
         }
@@ -3485,8 +3517,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var _this16 = this;
 
           this.isExpenseChanged = true; //console.log(userId)
+          //this.displayMultiplePayer=false;
 
-          this.displayMultiplePayer = false;
           var displayPayerObj = this.expenseMembers.filter(function (element) {
             return element.userId == userId;
           });
@@ -3506,15 +3538,29 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "addMultiplePayer",
         value: function addMultiplePayer() {
-          this.isExpenseChanged = true;
-          this.displayMultiplePayer = true;
-          this.displayPayer = 'multiple people';
-          this.expenseMembers.forEach(function (element) {
-            {
-              element.isSolePayer = false;
-              element.isMultiplePayer = true;
-            }
+          var multiplePayer = this.expenseMembers.filter(function (element) {
+            return element.paidShare > 0;
           });
+
+          if (multiplePayer.length > 1) {
+            this.isExpenseChanged = true;
+            this.displayPayer = 'multiple people';
+            this.expenseMembers.forEach(function (element) {
+              {
+                element.isSolePayer = false;
+                element.isMultiplePayer = true;
+              }
+            });
+          } else if (multiplePayer.length == 1) {
+            this.addSinglePayer(multiplePayer['0'].userId);
+          }
+        }
+      }, {
+        key: "saveSplitOption",
+        value: function saveSplitOption() {
+          this.splitOption = this.splitOptionSelected;
+          this.isExpenseChanged = true;
+          if (this.splitOption == 'equal') this.splitShareEqually();
         }
       }, {
         key: "calculateOwedShare",
@@ -3541,8 +3587,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var filtered = this.expenseMembers.filter(function (value) {
             return value.userId !== userId;
           });
-          this.expenseMembers = filtered;
-          this.expenseHistoryNotes.push("".concat(filteredName, " is removed from Expense"));
+
+          if (filtered.length > 0) {
+            //if thats the sole payer, change it and add 1st element of array
+            var isSolePayer = this.expenseMembers.filter(function (value) {
+              return value.isSolePayer == true;
+            });
+
+            if (isSolePayer.length == 1) {
+              if (isSolePayer['0'].fullName == filteredName) this.addSinglePayer(filtered['0'].userId);
+            }
+
+            this.expenseMembers = filtered;
+            this.expenseHistoryNotes.push("".concat(filteredName, " is removed from Expense"));
+          } else {
+            this.toastr.error("Expense should have atleast One Member.Either Add another member before removing the last one.");
+          }
         }
       }, {
         key: "addExpenseMember",
@@ -3567,6 +3627,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function splitShareEqually() {
           this.expenseMembers.forEach(function (element) {
             element.isOwer = true;
+            element.owedPercentageShare = '';
           });
         }
       }, {
@@ -3732,12 +3793,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.closeBtn = _t.first);
         }
       },
-      decls: 117,
+      decls: 123,
       vars: 31,
-      consts: [[1, "group-desc-page"], [1, "group-section"], [1, "groupTitle"], [1, "addGroupBtn", 3, "click"], [4, "ngIf"], [1, "expense-section"], [1, "card"], [1, "card-body"], [1, "flex-spacebetween"], [1, "card-title"], ["type", "button", 1, "btn", "btn-secondary", 3, "routerLink"], ["type", "button", "data-toggle", "modal", "data-target", "#AddExpense", 1, "btn", "btn-primary", 3, "click"], ["class", "card-text", 4, "ngIf"], [1, "group-balance-section"], ["id", "AddExpense", "tabindex", "-1", "role", "dialog", "aria-labelledby", "AddExpenseLabel", "aria-hidden", "true", 1, "modal", "fade"], ["AddExpense", ""], ["role", "document", 1, "modal-dialog"], [1, "modal-content"], [1, "modal-header"], ["id", "AddExpenseLabel", 1, "modal-title"], ["type", "button", "data-dismiss", "modal", "aria-label", "Close", 1, "close"], ["closeBtnAddExpense", ""], ["aria-hidden", "true"], [1, "modal-body"], [3, "formGroup"], ["class", "expenseMembers", 4, "ngFor", "ngForOf"], [1, "form-control", 3, "change"], ["selectedGroupMember", ""], [3, "value", 4, "ngFor", "ngForOf"], ["id", "addMemberHelp", 1, "form-text", "text-muted"], [1, "form-group"], ["type", "text", "formControlName", "expenseName", "aria-describedby", "expenseNameHelp", "placeholder", "Restaurant Bill", 1, "form-control"], ["expenseName", ""], [1, "input-group-prepend"], [1, "input-group-text"], ["formControlName", "amount", "type", "number", "aria-describedby", "amountHelp", "placeholder", "0.00", 1, "form-control"], ["amount", ""], ["data-toggle", "modal", "data-target", "#ChoosePayer", 1, "clickable"], ["data-toggle", "modal", "data-target", "#SplitOption", 1, "clickable"], ["type", "button", "data-dismiss", "modal", 1, "btn", "btn-secondary"], [1, "btn", "btn-primary", 3, "disabled", "click"], ["id", "ChoosePayer", "tabindex", "-1", "role", "dialog", "aria-labelledby", "ChoosePayerLabel", "aria-hidden", "true", 1, "modal", "fade"], ["id", "ChoosePayerLabel", 1, "modal-title"], ["class", "flex-hover", 3, "ngClass", "click", 4, "ngFor", "ngForOf"], [1, "flex-hover", 3, "ngClass", "click"], ["class", "bg-grey", 4, "ngIf"], ["id", "SplitOption", "tabindex", "-1", "role", "dialog", "aria-labelledby", "SplitOptionLabel", "aria-hidden", "true", 1, "modal", "fade"], ["id", "SplitOptionLabel", 1, "modal-title"], ["data-toggle", "buttons", 1, "btn-group", "btn-group-toggle", "splitBtn"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Split equally", 1, "btn", "btn-secondary", 3, "ngClass", "click"], ["type", "radio", "name", "options", "id", "option1", "autocomplete", "off"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Split by exact amount", 1, "btn", "btn-secondary", 3, "ngClass", "click"], ["type", "radio", "name", "options", "id", "option2", "autocomplete", "off"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Split by percentages", 1, "btn", "btn-secondary", 3, "ngClass", "click"], ["type", "radio", "name", "options", "id", "option3", "autocomplete", "off"], [4, "ngFor", "ngForOf"], [3, "click"], [1, "material-icons", "groupIcon"], [1, "groupName", 3, "title"], [1, "material-icons", "deleteGroupIcon", 3, "click"], [1, "card-text"], ["aria-label", "Page navigation", "class", "paginationNav", 4, "ngIf"], [1, "expenseUnxpanded", 3, "click"], [1, "expListFlex"], [1, "material-icons"], [1, "expListName"], [1, "deleteExpense"], [1, "material-icons", 3, "click"], [1, "expListExpMembers"], [1, "expenseShare"], ["class", "expenseExpanded", 4, "ngIf"], [1, "expenseExpanded"], [1, "expExpandFlex"], [1, "material-icons", "expExpandIcon"], [1, "expDesc", "expExpandName"], ["class", "expDesc expExpandAmount", 4, "ngIf"], ["class", "expDesc expExpandDate", 4, "ngIf"], ["data-toggle", "modal", "data-target", "#AddExpense", 1, "btn", "btn-secondary", 3, "click"], [1, "expExpandDetailsFlex"], [1, "expExpandExpMembers"], [1, "expExpandHistory"], ["class", "expenseHistory", 4, "ngFor", "ngForOf"], [1, "expDesc", "expExpandAmount"], [1, "expDesc", "expExpandDate"], [1, "expenseHistory"], ["aria-label", "Page navigation", 1, "paginationNav"], [1, "totalExpense"], [1, "pagination"], [1, "page-item", 3, "ngClass", "click"], ["aria-label", "Previous", 1, "page-link"], [1, "sr-only"], [1, "page-link"], ["class", "page-item", 3, "ngClass", 4, "ngIf"], ["aria-label", "Next", 1, "page-link"], [1, "page-item", 3, "ngClass"], [1, "material-icons", "faceIcon"], [1, "groupMemberName", 3, "click"], [1, "expenseMembers"], [1, "clickable"], [1, "material-icons", "deleteExpenseIcon", 3, "click"], [3, "value"], [1, "bg-grey"], ["class", "card-text", 4, "ngFor", "ngForOf"], ["type", "number", "placeholder", "0.00", 1, "form-control", 3, "ngModel", "ngModelChange"], ["class", "flex-hover", 3, "ngClass", 4, "ngFor", "ngForOf"], [1, "flex-hover", 3, "ngClass"], ["type", "checkbox", "checked", "element.isOwer", 3, "ngModel", "ngModelChange", "click"], [1, "", 3, "click"], [1, "pull-right"], ["type", "number", "placeholder", "0.00", 1, "form-control", "owedShare", 3, "ngModel", "ngModelChange"], [1, "name"], [1, "owedShareUnequal"], [1, "input-group-append"], ["type", "number", 1, "form-control", "owedShare", 3, "ngModel", "ngModelChange"]],
+      consts: [[1, "group-desc-page"], [1, "group-section"], [1, "groupTitle"], [1, "addGroupBtn", 3, "click"], [4, "ngIf"], [1, "expense-section"], [1, "card"], [1, "card-body"], [1, "flex-spacebetween"], [1, "card-title"], ["type", "button", 1, "btn", "btn-secondary", 3, "routerLink"], ["type", "button", "data-toggle", "modal", "data-target", "#AddExpense", 1, "btn", "btn-primary", 3, "click"], ["class", "card-text", 4, "ngIf"], [1, "group-balance-section"], ["id", "AddExpense", "tabindex", "-1", "role", "dialog", "aria-labelledby", "AddExpenseLabel", "aria-hidden", "true", 1, "modal", "fade"], ["AddExpense", ""], ["role", "document", 1, "modal-dialog"], [1, "modal-content"], [1, "modal-header"], ["id", "AddExpenseLabel", 1, "modal-title"], ["type", "button", "data-dismiss", "modal", "aria-label", "Close", 1, "close"], ["closeBtnAddExpense", ""], ["aria-hidden", "true"], [1, "modal-body"], [3, "formGroup"], ["class", "expenseMembers", 4, "ngFor", "ngForOf"], [1, "form-control", 3, "change"], ["selectedGroupMember", ""], [3, "value", 4, "ngFor", "ngForOf"], ["id", "addMemberHelp", 1, "form-text", "text-muted"], [1, "form-group"], ["type", "text", "formControlName", "expenseName", "aria-describedby", "expenseNameHelp", "placeholder", "Restaurant Bill", 1, "form-control"], ["expenseName", ""], [1, "input-group-prepend"], [1, "input-group-text"], ["formControlName", "amount", "type", "number", "aria-describedby", "amountHelp", "placeholder", "0.00", 1, "form-control"], ["amount", ""], ["data-toggle", "modal", "data-target", "#ChoosePayer", 1, "clickable"], ["data-toggle", "modal", "data-target", "#SplitOption", 1, "clickable"], ["type", "button", "data-dismiss", "modal", 1, "btn", "btn-secondary"], [1, "btn", "btn-primary", 3, "disabled", "click"], ["id", "ChoosePayer", "tabindex", "-1", "role", "dialog", "aria-labelledby", "ChoosePayerLabel", "aria-hidden", "true", 1, "modal", "fade"], ["id", "ChoosePayerLabel", 1, "modal-title"], ["class", "flex-hover", 3, "ngClass", "click", 4, "ngFor", "ngForOf"], [1, "flex-hover", 3, "ngClass", "click"], ["class", "bg-grey", 4, "ngIf"], ["id", "SplitOption", "tabindex", "-1", "role", "dialog", "aria-labelledby", "SplitOptionLabel", "aria-hidden", "true", 1, "modal", "fade"], ["id", "SplitOptionLabel", 1, "modal-title"], ["data-toggle", "buttons", 1, "btn-group", "btn-group-toggle", "splitBtn"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Split equally", 1, "btn", "btn-secondary", 3, "ngClass", "click"], ["type", "radio", "name", "options", "id", "option1", "autocomplete", "off"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Split by exact amount", 1, "btn", "btn-secondary", 3, "ngClass", "click"], ["type", "radio", "name", "options", "id", "option2", "autocomplete", "off"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Split by percentages", 1, "btn", "btn-secondary", 3, "ngClass", "click"], ["type", "radio", "name", "options", "id", "option3", "autocomplete", "off"], ["data-dismiss", "modal", 1, "btn", "btn-primary", 3, "click"], [4, "ngFor", "ngForOf"], [3, "click"], [1, "material-icons", "groupIcon"], [1, "groupName", 3, "title"], [1, "material-icons", "deleteGroupIcon", 3, "click"], [1, "card-text"], ["aria-label", "Page navigation", "class", "paginationNav", 4, "ngIf"], [1, "expenseUnxpanded", 3, "click"], [1, "expListFlex"], [1, "material-icons"], [1, "expListName"], [1, "deleteExpense"], [1, "material-icons", 3, "click"], [1, "expListExpMembers"], [1, "expenseShare"], ["class", "expenseExpanded", 4, "ngIf"], [1, "expenseExpanded"], [1, "expExpandFlex"], [1, "material-icons", "expExpandIcon"], [1, "expDesc", "expExpandName"], ["class", "expDesc expExpandAmount", 4, "ngIf"], ["class", "expDesc expExpandDate", 4, "ngIf"], ["data-toggle", "modal", "data-target", "#AddExpense", 1, "btn", "btn-secondary", 3, "click"], [1, "expExpandDetailsFlex"], [1, "expExpandExpMembers"], [1, "expExpandHistory"], ["class", "expenseHistory", 4, "ngFor", "ngForOf"], [1, "expDesc", "expExpandAmount"], [1, "expDesc", "expExpandDate"], [1, "expenseHistory"], ["aria-label", "Page navigation", 1, "paginationNav"], [1, "totalExpense"], [1, "pagination"], [1, "page-item", 3, "ngClass", "click"], ["aria-label", "Previous", 1, "page-link"], [1, "sr-only"], [1, "page-link"], ["class", "page-item", 3, "ngClass", 4, "ngIf"], ["aria-label", "Next", 1, "page-link"], [1, "page-item", 3, "ngClass"], [1, "material-icons", "faceIcon"], [1, "groupMemberName", 3, "click"], [1, "expenseMembers"], [1, "clickable"], [1, "material-icons", "deleteExpenseIcon", 3, "click"], [3, "value"], [1, "bg-grey"], ["class", "card-text", 4, "ngFor", "ngForOf"], ["type", "number", "placeholder", "0.00", 1, "form-control", 3, "ngModel", "ngModelChange"], ["class", "flex-hover", 3, "ngClass", 4, "ngFor", "ngForOf"], [1, "flex-hover", 3, "ngClass"], ["type", "checkbox", "checked", "element.isOwer", 3, "ngModel", "ngModelChange", "click"], [1, "", 3, "click"], [1, "pull-right"], ["type", "number", "placeholder", "0.00", 1, "form-control", "owedShare", 3, "ngModel", "ngModelChange"], [1, "name"], [1, "owedShareUnequal"], [1, "input-group-append"], ["type", "number", 1, "form-control", "owedShare", 3, "ngModel", "ngModelChange"]],
       template: function GroupDescComponent_Template(rf, ctx) {
         if (rf & 1) {
-          var _r157 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+          var _r159 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
 
@@ -3895,7 +3956,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "select", 26, 27);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function GroupDescComponent_Template_select_change_51_listener() {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r157);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r159);
 
             var _r67 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](52);
 
@@ -4025,14 +4086,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](91, "div", 44);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GroupDescComponent_Template_div_click_91_listener() {
-            return ctx.addMultiplePayer();
+            return ctx.displayMultiplePayer = !ctx.displayMultiplePayer;
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](92, " Multiple People ");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](93, GroupDescComponent_div_93_Template, 2, 1, "div", 45);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](93, GroupDescComponent_div_93_Template, 7, 1, "div", 45);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -4075,9 +4136,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](105, "label", 49);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GroupDescComponent_Template_label_click_105_listener() {
-            ctx.splitOption = "equal";
-            ctx.isExpenseChanged = true;
-            return ctx.splitShareEqually();
+            return ctx.splitOptionSelected = "equal";
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](106, "input", 50);
@@ -4089,8 +4148,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](108, "label", 51);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GroupDescComponent_Template_label_click_108_listener() {
-            ctx.splitOption = "exactAmount";
-            return ctx.isExpenseChanged = true;
+            return ctx.splitOptionSelected = "exactAmount";
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](109, "input", 52);
@@ -4102,8 +4160,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](111, "label", 53);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GroupDescComponent_Template_label_click_111_listener() {
-            ctx.splitOption = "percentage";
-            return ctx.isExpenseChanged = true;
+            return ctx.splitOptionSelected = "percentage";
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](112, "input", 54);
@@ -4119,6 +4176,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](115, GroupDescComponent_div_115_Template, 2, 1, "div", 4);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](116, GroupDescComponent_div_116_Template, 2, 1, "div", 4);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](117, "br");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](118, "button", 39);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](119, "Cancel");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](120, " \xA0 ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](121, "button", 55);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GroupDescComponent_Template_button_click_121_listener() {
+            return ctx.saveSplitOption();
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](122, "Save");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -4178,7 +4255,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx.splitOption == "equal" ? "equally" : "unequally", " ");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx.splitOption == "equal" ? "equally" : "unequally", "");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
@@ -4190,7 +4267,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](23, _c3, ctx.displayMultiplePayer == true));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](23, _c3, (ctx.expenseMembers["0"] == null ? null : ctx.expenseMembers["0"].isMultiplePayer) == true));
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
@@ -4198,27 +4275,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](12);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](25, _c1, ctx.splitOption == "equal"));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](25, _c1, ctx.splitOptionSelected == "equal"));
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](27, _c1, ctx.splitOption == "exactAmount"));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](27, _c1, ctx.splitOptionSelected == "exactAmount"));
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](29, _c1, ctx.splitOption == "percentage"));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](29, _c1, ctx.splitOptionSelected == "percentage"));
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.splitOption == "equal");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.splitOptionSelected == "equal");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.splitOption == "exactAmount");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.splitOptionSelected == "exactAmount");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.splitOption == "percentage");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.splitOptionSelected == "percentage");
         }
       },
       directives: [_angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterLink"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroupDirective"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgForOf"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["ɵangular_packages_forms_forms_x"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControlName"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NumberValueAccessor"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgClass"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["CheckboxControlValueAccessor"]],
