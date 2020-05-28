@@ -360,6 +360,7 @@ export class GroupDescComponent implements OnInit {
         return value.isMultiplePayer == true;
       });
       if(isMultiplePayer.length>0){
+        this.displayMultiplePayer=true
         this.displayPayer='multiple people'
       }
   }

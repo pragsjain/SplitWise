@@ -1,10 +1,60 @@
 define({ "api": [
   {
-    "group": "Comment",
-    "version": "1.0.0",
+    "group": "Expense",
+    "version": "0.0.1",
     "type": "get",
-    "url": "/api/v1/files/create",
-    "title": "Create Comment",
+    "url": "/api/v1/expenses/create",
+    "title": "Create Expense",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "string",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>auth-token of the user. (auth headers) (required)</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n   \"Authorization\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkXVCJ9.eyJqd3RpZCI6Imk2ejAwUkJWcyIsImlhdCI6MTU4Nzc0ODA2MDA3MywiZXhwIjoxNTg3ODM0NDYwLCJzdWIiOiJhdXRoVG9rZW4iLCJpc3MiOiJlZENoYXQiLCJkYXRhIjp7InVzZXJOYW1lIjoibGlzYSIsImZ1bGxOYW1lIjoibGlzYSBhbmNoYWxpYSAobGlzYSkiLCJsYXN0TmFtZSI6ImFuY2hhbGlhIiwiZmlyc3ROYW1lIjoibGlzYSIsInVzZXJJZCI6IjZCOVBMeGdvSyJ9fQ.iqXZDKNfG-kHZLVSPJLJpRWw7IBezEBtbKFrnYyOQPg\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "myResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n   \"error\": false,\n   \"message\": \"All Expense Details Found\",\n   \"status\": 200,\n   \"data\": {\n       \"__v\": 0,\n       \"expenseId\": \"q3P7Q8w1C\",\n       \"expenseName\": \"Adventure Sports\",\n       \"amount\": 10000,\n       \"groupId\": \"nXSO1O5ZG\",\n       \"addedOn\": \"2020-05-27T17:30:30.190Z\",\n       \"addedBy\": \"Pragati Dugar (pragsjainprags@gmail.com)\",\n       \"_id\": \"5ecea38fdcf1411cf7b866d3\",\n       \"expenseHistory\": [\n       {\n           \"expenseHistoryNotesBy\": \"Pragati Dugar (pragsjainprags@gmail.com) created expense 'Adventure Sports'\"\n       }\n       ],\n       \"splitOption\": \"equal\",\n       \"expenseMembers\": [\n       {\n           \"owedShare\": 3333.3333333333335,\n           \"isOwer\": true,\n           \"paidShare\": 10000,\n           \"isSolePayer\": true,\n           \"isMultiplePayer\": false,\n           \"userId\": \"KwMD65RIY\",\n           \"firstName\": \"Pragati\",\n           \"lastName\": \"Dugar\",\n           \"fullName\": \"Pragati Dugar (pragsjainprags@gmail.com)\",\n           \"password\": \"$2a$10$S3Mkpc2diOcD3B/CBWSrxeUt/N7lzErLh7cdB7kKBvOYLV.zCZulS\",\n           \"userName\": \"prags\",\n           \"mobileNo\": \"\",\n           \"email\": \"pragsjainprags@gmail.com\",\n           \"createdOn\": \"2020-05-26T12:21:04.000Z\"\n       },\n       {\n           \"owedShare\": 3333.3333333333335,\n           \"isOwer\": true,\n           \"paidShare\": 0,\n           \"isSolePayer\": false,\n           \"isMultiplePayer\": false,\n           \"userId\": \"kLvhBFqEt\",\n           \"firstName\": \"Khushi\",\n           \"lastName\": \"Dugar\",\n           \"fullName\": \"Khushi Dugar (khushidugar@gmail.com)\",\n           \"password\": \"$2a$10$D6gZ3a5SQzivl5RUFbp5heVQJsISSjV5355Qcwxrle31QgXK9N976\",\n           \"userName\": \"khushi\",\n           \"mobileNo\": \"\",\n           \"email\": \"khushidugar@gmail.com\",\n           \"createdOn\": \"2020-05-26T12:23:45.000Z\"\n       },\n       {\n           \"owedShare\": 3333.3333333333335,\n           \"isOwer\": true,\n           \"paidShare\": 0,\n           \"isSolePayer\": false,\n           \"isMultiplePayer\": false,\n           \"userId\": \"iwtLFJxMJ\",\n           \"firstName\": \"Yuvraj\",\n           \"lastName\": \"Dugar\",\n           \"fullName\": \"Yuvraj Dugar (yuvrajdugar@gmail.com)\",\n           \"password\": \"$2a$10$JRH7zpZ2wQvavz8Zg8TNjOcxoshykWcU/uC8G2mJYpz3M2nvycPPK\",\n           \"userName\": \"yuvraj\",\n           \"mobileNo\": \"\",\n           \"email\": \"yuvrajdugar@gmail.com\",\n           \"createdOn\": \"2020-05-26T12:24:25.000Z\"\n       }\n       ]\n   }\n   }",
+          "type": "object"
+        }
+      ]
+    },
+    "filename": "app/routes/expense.js",
+    "groupTitle": "Expense",
+    "name": "GetApiV1ExpensesCreate"
+  },
+  {
+    "group": "Expense",
+    "version": "0.0.1",
+    "type": "get",
+    "url": "/api/v1/expenses/:expenseId/edit",
+    "title": "Edit Expense",
     "header": {
       "fields": {
         "Header": [
@@ -32,59 +82,92 @@ define({ "api": [
             "group": "Parameter",
             "type": "string",
             "optional": false,
-            "field": "issueId",
-            "description": "<p>Issue Id for which comment is added (body params) (required)</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": false,
-            "field": "firstName",
-            "description": "<p>First Name of the user. (body params) (required)</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": false,
-            "field": "message",
-            "description": "<p>Comment message. (body params)</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": false,
-            "field": "userFullName",
-            "description": "<p>Full Name of the user. (body params) (required)</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": false,
-            "field": "userName",
-            "description": "<p>User Name of the user. (body params) (required)</p>"
+            "field": "expenseId",
+            "description": "<p>Expense Id. (body params) (required)</p>"
           }
         ]
       }
     },
     "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "myResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n    \"error\": false,\n    \"message\": \"All Comment Details Found\",\n    \"status\": 200,\n    \"data\": {\n        \"__v\": 0,\n        \"commentId\": \"sXr8RNJo0\",\n        \"issueId\": \"rWm7i0ApM\",\n        \"userName\": \"lisa\",\n        \"userFullName\": \"lisa anchalia (lisa)\",\n        \"message\": \"hello !\",\n        \"_id\": \"5ea3285e5291094744d9a0a2\"\n    }\n}",
+          "content": " {\n    \"error\": false,\n    \"message\": \"All Expense Details Found\",\n    \"status\": 200,\n    \"data\": {\n        \"_id\": \"5ecea38fdcf1411cf7b866d3\",\n        \"expenseId\": \"q3P7Q8w1C\",\n        \"expenseName\": \"Adventure Sports\",\n        \"amount\": 10000,\n        \"groupId\": \"nXSO1O5ZG\",\n        \"addedOn\": \"2020-05-27T17:30:30.190Z\",\n        \"addedBy\": \"Pragati Dugar (pragsjainprags@gmail.com)\",\n        \"__v\": 0,\n        \"updatedBy\": \"Pragati Dugar (pragsjainprags@gmail.com)\",\n        \"updatedOn\": \"2020-05-27T17:32:14.893Z\",\n        \"expenseHistory\": [\n        {\n            \"expenseHistoryNotesBy\": \"Pragati Dugar (pragsjainprags@gmail.com) created expense 'Adventure Sports'\"\n        },\n        {\n            \"expenseHistoryNotesBy\": \"Pragati Dugar (pragsjainprags@gmail.com) updated expense 'Adventure Sports'\",\n            \"expenseHistoryNotes\": [\n            \"Khushi Dugar (khushidugar@gmail.com) is removed from Expense\",\n            \"Pragati Dugar (pragsjainprags@gmail.com) share changed from Rs.3333.33 to Rs.6000.00\",\n            \"Yuvraj Dugar (yuvrajdugar@gmail.com) share changed from Rs.3333.33 to Rs.4000.00\"\n            ]\n        }\n        ],\n        \"splitOption\": \"percentage\",\n        \"expenseMembers\": [\n        {\n            \"createdOn\": \"2020-05-26T12:21:04.000Z\",\n            \"email\": \"pragsjainprags@gmail.com\",\n            \"mobileNo\": \"\",\n            \"userName\": \"prags\",\n            \"password\": \"$2a$10$S3Mkpc2diOcD3B/CBWSrxeUt/N7lzErLh7cdB7kKBvOYLV.zCZulS\",\n            \"fullName\": \"Pragati Dugar (pragsjainprags@gmail.com)\",\n            \"lastName\": \"Dugar\",\n            \"firstName\": \"Pragati\",\n            \"userId\": \"KwMD65RIY\",\n            \"isMultiplePayer\": false,\n            \"isSolePayer\": true,\n            \"paidShare\": 10000,\n            \"isOwer\": true,\n            \"owedShare\": 6000,\n            \"owedPercentageShare\": 60\n        },\n        {\n            \"createdOn\": \"2020-05-26T12:24:25.000Z\",\n            \"email\": \"yuvrajdugar@gmail.com\",\n            \"mobileNo\": \"\",\n            \"userName\": \"yuvraj\",\n            \"password\": \"$2a$10$JRH7zpZ2wQvavz8Zg8TNjOcxoshykWcU/uC8G2mJYpz3M2nvycPPK\",\n            \"fullName\": \"Yuvraj Dugar (yuvrajdugar@gmail.com)\",\n            \"lastName\": \"Dugar\",\n            \"firstName\": \"Yuvraj\",\n            \"userId\": \"iwtLFJxMJ\",\n            \"isMultiplePayer\": false,\n            \"isSolePayer\": false,\n            \"paidShare\": 0,\n            \"isOwer\": true,\n            \"owedShare\": 4000,\n            \"owedPercentageShare\": 40\n        }\n        ]\n    }\n}",
           "type": "object"
         }
       ]
     },
-    "filename": "app/routes/comments.js",
-    "groupTitle": "Comment",
-    "name": "GetApiV1FilesCreate"
+    "filename": "app/routes/expense.js",
+    "groupTitle": "Expense",
+    "name": "GetApiV1ExpensesExpenseidEdit"
   },
   {
-    "group": "Comment",
-    "version": "1.0.0",
+    "group": "Expense",
+    "version": "0.0.1",
     "type": "get",
-    "url": "/api/v1/files/view/:issueId",
-    "title": "Get Comments for an Issue",
+    "url": "/api/v1/expenses/:groupId/all",
+    "title": "Get all expenses for a Group",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "string",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>auth-token of the user. (auth headers) (required)</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n   \"Authorization\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkXVCJ9.eyJqd3RpZCI6Imk2ejAwUkJWcyIsImlhdCI6MTU4Nzc0ODA2MDA3MywiZXhwIjoxNTg3ODM0NDYwLCJzdWIiOiJhdXRoVG9rZW4iLCJpc3MiOiJlZENoYXQiLCJkYXRhIjp7InVzZXJOYW1lIjoibGlzYSIsImZ1bGxOYW1lIjoibGlzYSBhbmNoYWxpYSAobGlzYSkiLCJsYXN0TmFtZSI6ImFuY2hhbGlhIiwiZmlyc3ROYW1lIjoibGlzYSIsInVzZXJJZCI6IjZCOVBMeGdvSyJ9fQ.iqXZDKNfG-kHZLVSPJLJpRWw7IBezEBtbKFrnYyOQPg\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "myResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " {\n    \"error\": false,\n    \"message\": \"All Expense Details Found\",\n    \"status\": 200,\n    \"data\": {\n        \"count\": 2,\n        \"expenseList\": [\n        {\n            \"expenseId\": \"zTU_G-M3f\",\n            \"expenseName\": \"Magic show Tickets\",\n            \"amount\": 900,\n            \"groupId\": \"nXSO1O5ZG\",\n            \"addedOn\": \"2020-05-26T12:26:19.617Z\",\n            \"addedBy\": \"Pragati Dugar (pragsjainprags@gmail.com)\",\n            \"expenseHistory\": [\n            {\n                \"expenseHistoryNotesBy\": \"Pragati Dugar (pragsjainprags@gmail.com) created expense 'Magic show Tickets'\"\n            }\n            ],\n            \"splitOption\": \"equal\",\n            \"expenseMembers\": [\n            {\n                \"owedShare\": 300,\n                \"isOwer\": true,\n                \"paidShare\": 900,\n                \"isSolePayer\": true,\n                \"isMultiplePayer\": false,\n                \"userId\": \"KwMD65RIY\",\n                \"firstName\": \"Pragati\",\n                \"lastName\": \"Dugar\",\n                \"fullName\": \"Pragati Dugar (pragsjainprags@gmail.com)\",\n                \"password\": \"$2a$10$S3Mkpc2diOcD3B/CBWSrxeUt/N7lzErLh7cdB7kKBvOYLV.zCZulS\",\n                \"userName\": \"prags\",\n                \"mobileNo\": \"\",\n                \"email\": \"pragsjainprags@gmail.com\",\n                \"createdOn\": \"2020-05-26T12:21:04.000Z\"\n            },\n            {\n                \"owedShare\": 300,\n                \"isOwer\": true,\n                \"paidShare\": 0,\n                \"isSolePayer\": false,\n                \"isMultiplePayer\": false,\n                \"userId\": \"kLvhBFqEt\",\n                \"firstName\": \"Khushi\",\n                \"lastName\": \"Dugar\",\n                \"fullName\": \"Khushi Dugar (khushidugar@gmail.com)\",\n                \"password\": \"$2a$10$D6gZ3a5SQzivl5RUFbp5heVQJsISSjV5355Qcwxrle31QgXK9N976\",\n                \"userName\": \"khushi\",\n                \"mobileNo\": \"\",\n                \"email\": \"khushidugar@gmail.com\",\n                \"createdOn\": \"2020-05-26T12:23:45.000Z\"\n            },\n            {\n                \"owedShare\": 300,\n                \"isOwer\": true,\n                \"paidShare\": 0,\n                \"isSolePayer\": false,\n                \"isMultiplePayer\": false,\n                \"userId\": \"iwtLFJxMJ\",\n                \"firstName\": \"Yuvraj\",\n                \"lastName\": \"Dugar\",\n                \"fullName\": \"Yuvraj Dugar (yuvrajdugar@gmail.com)\",\n                \"password\": \"$2a$10$JRH7zpZ2wQvavz8Zg8TNjOcxoshykWcU/uC8G2mJYpz3M2nvycPPK\",\n                \"userName\": \"yuvraj\",\n                \"mobileNo\": \"\",\n                \"email\": \"yuvrajdugar@gmail.com\",\n                \"createdOn\": \"2020-05-26T12:24:25.000Z\"\n            }\n            ]\n        },\n        {\n            \"expenseId\": \"TtkQyc3vp\",\n            \"expenseName\": \"Dinner at Lalit Palace\",\n            \"amount\": 2000,\n            \"groupId\": \"nXSO1O5ZG\",\n            \"addedOn\": \"2020-05-26T12:27:19.377Z\",\n            \"addedBy\": \"Pragati Dugar (pragsjainprags@gmail.com)\",\n            \"expenseHistory\": [\n            {\n                \"expenseHistoryNotesBy\": \"Pragati Dugar (pragsjainprags@gmail.com) created expense 'Dinner at Lalit Palace'\"\n            }\n            ],\n            \"splitOption\": \"equal\",\n            \"expenseMembers\": [\n            {\n                \"owedShare\": 666.6666666666666,\n                \"isOwer\": true,\n                \"paidShare\": 2000,\n                \"isSolePayer\": true,\n                \"isMultiplePayer\": false,\n                \"userId\": \"KwMD65RIY\",\n                \"firstName\": \"Pragati\",\n                \"lastName\": \"Dugar\",\n                \"fullName\": \"Pragati Dugar (pragsjainprags@gmail.com)\",\n                \"password\": \"$2a$10$S3Mkpc2diOcD3B/CBWSrxeUt/N7lzErLh7cdB7kKBvOYLV.zCZulS\",\n                \"userName\": \"prags\",\n                \"mobileNo\": \"\",\n                \"email\": \"pragsjainprags@gmail.com\",\n                \"createdOn\": \"2020-05-26T12:21:04.000Z\"\n            },\n            {\n                \"owedShare\": 666.6666666666666,\n                \"isOwer\": true,\n                \"paidShare\": 0,\n                \"isSolePayer\": false,\n                \"isMultiplePayer\": false,\n                \"userId\": \"kLvhBFqEt\",\n                \"firstName\": \"Khushi\",\n                \"lastName\": \"Dugar\",\n                \"fullName\": \"Khushi Dugar (khushidugar@gmail.com)\",\n                \"password\": \"$2a$10$D6gZ3a5SQzivl5RUFbp5heVQJsISSjV5355Qcwxrle31QgXK9N976\",\n                \"userName\": \"khushi\",\n                \"mobileNo\": \"\",\n                \"email\": \"khushidugar@gmail.com\",\n                \"createdOn\": \"2020-05-26T12:23:45.000Z\"\n            },\n            {\n                \"owedShare\": 666.6666666666666,\n                \"isOwer\": true,\n                \"paidShare\": 0,\n                \"isSolePayer\": false,\n                \"isMultiplePayer\": false,\n                \"userId\": \"iwtLFJxMJ\",\n                \"firstName\": \"Yuvraj\",\n                \"lastName\": \"Dugar\",\n                \"fullName\": \"Yuvraj Dugar (yuvrajdugar@gmail.com)\",\n                \"password\": \"$2a$10$JRH7zpZ2wQvavz8Zg8TNjOcxoshykWcU/uC8G2mJYpz3M2nvycPPK\",\n                \"userName\": \"yuvraj\",\n                \"mobileNo\": \"\",\n                \"email\": \"yuvrajdugar@gmail.com\",\n                \"createdOn\": \"2020-05-26T12:24:25.000Z\"\n            }\n            ]\n        }\n        ]\n    }\n}",
+          "type": "object"
+        }
+      ]
+    },
+    "filename": "app/routes/expense.js",
+    "groupTitle": "Expense",
+    "name": "GetApiV1ExpensesGroupidAll"
+  },
+  {
+    "group": "Expense",
+    "version": "0.0.1",
+    "type": "get",
+    "url": "/api/v1/expenses/view/:expenseId",
+    "title": "Get Expense Detail",
     "header": {
       "fields": {
         "Header": [
@@ -112,8 +195,8 @@ define({ "api": [
             "group": "Parameter",
             "type": "string",
             "optional": false,
-            "field": "issueId",
-            "description": "<p>Issue Id. (body params) (required)</p>"
+            "field": "expenseId",
+            "description": "<p>Expense Id. (body params) (required)</p>"
           }
         ]
       }
@@ -133,21 +216,21 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": " {\n    \"error\": false,\n    \"message\": \"All Comment Details Found\",\n    \"status\": 200,\n    \"data\": [\n        {\n        \"_id\": \"5ea02f3b2b395d093cc9b380\",\n        \"commentId\": \"Z80cnYvi1\",\n        \"issueId\": \"rWm7i0ApM\",\n        \"userName\": \"gauri\",\n        \"userFullName\": \"Gaurav Dugar (gauri)\",\n        \"message\": \"hi\",\n        \"__v\": 0\n        },\n        {\n        \"_id\": \"5ea1cd403fd74d474c5b4782\",\n        \"commentId\": \"E1FKiyoZA\",\n        \"issueId\": \"rWm7i0ApM\",\n        \"userName\": \"prags\",\n        \"userFullName\": \"Pragati Dugar (prags)\",\n        \"message\": \"hey\",\n        \"__v\": 0\n        }\n    ]\n}",
+          "content": " {\n    \"error\": false,\n    \"message\": \"All Expense Details Found\",\n    \"status\": 200,\n    \"data\": {\n        \"_id\": \"5ecd0ac7dcf1411cf7b866bd\",\n        \"expenseId\": \"zTU_G-M3f\",\n        \"expenseName\": \"Magic show Tickets\",\n        \"amount\": 900,\n        \"groupId\": \"nXSO1O5ZG\",\n        \"addedOn\": \"2020-05-26T12:26:19.617Z\",\n        \"addedBy\": \"Pragati Dugar (pragsjainprags@gmail.com)\",\n        \"__v\": 0,\n        \"expenseHistory\": [\n        {\n            \"expenseHistoryNotesBy\": \"Pragati Dugar (pragsjainprags@gmail.com) created expense 'Magic show Tickets'\"\n        }\n        ],\n        \"splitOption\": \"equal\",\n        \"expenseMembers\": [\n        {\n            \"createdOn\": \"2020-05-26T12:21:04.000Z\",\n            \"email\": \"pragsjainprags@gmail.com\",\n            \"mobileNo\": \"\",\n            \"userName\": \"prags\",\n            \"password\": \"$2a$10$S3Mkpc2diOcD3B/CBWSrxeUt/N7lzErLh7cdB7kKBvOYLV.zCZulS\",\n            \"fullName\": \"Pragati Dugar (pragsjainprags@gmail.com)\",\n            \"lastName\": \"Dugar\",\n            \"firstName\": \"Pragati\",\n            \"userId\": \"KwMD65RIY\",\n            \"isMultiplePayer\": false,\n            \"isSolePayer\": true,\n            \"paidShare\": 900,\n            \"isOwer\": true,\n            \"owedShare\": 300\n        },\n        {\n            \"createdOn\": \"2020-05-26T12:23:45.000Z\",\n            \"email\": \"khushidugar@gmail.com\",\n            \"mobileNo\": \"\",\n            \"userName\": \"khushi\",\n            \"password\": \"$2a$10$D6gZ3a5SQzivl5RUFbp5heVQJsISSjV5355Qcwxrle31QgXK9N976\",\n            \"fullName\": \"Khushi Dugar (khushidugar@gmail.com)\",\n            \"lastName\": \"Dugar\",\n            \"firstName\": \"Khushi\",\n            \"userId\": \"kLvhBFqEt\",\n            \"isMultiplePayer\": false,\n            \"isSolePayer\": false,\n            \"paidShare\": 0,\n            \"isOwer\": true,\n            \"owedShare\": 300\n        },\n        {\n            \"createdOn\": \"2020-05-26T12:24:25.000Z\",\n            \"email\": \"yuvrajdugar@gmail.com\",\n            \"mobileNo\": \"\",\n            \"userName\": \"yuvraj\",\n            \"password\": \"$2a$10$JRH7zpZ2wQvavz8Zg8TNjOcxoshykWcU/uC8G2mJYpz3M2nvycPPK\",\n            \"fullName\": \"Yuvraj Dugar (yuvrajdugar@gmail.com)\",\n            \"lastName\": \"Dugar\",\n            \"firstName\": \"Yuvraj\",\n            \"userId\": \"iwtLFJxMJ\",\n            \"isMultiplePayer\": false,\n            \"isSolePayer\": false,\n            \"paidShare\": 0,\n            \"isOwer\": true,\n            \"owedShare\": 300\n        }\n        ]\n    }\n}",
           "type": "object"
         }
       ]
     },
-    "filename": "app/routes/comments.js",
-    "groupTitle": "Comment",
-    "name": "GetApiV1FilesViewIssueid"
+    "filename": "app/routes/expense.js",
+    "groupTitle": "Expense",
+    "name": "GetApiV1ExpensesViewExpenseid"
   },
   {
-    "group": "File",
-    "version": "1.0.0",
+    "group": "Expense",
+    "version": "0.0.1",
     "type": "get",
-    "url": "/api/v1/files/create",
-    "title": "Create File",
+    "url": "/api/v1/expenses/view/:expenseId/delete",
+    "title": "Delete Expense",
     "header": {
       "fields": {
         "Header": [
@@ -175,36 +258,8 @@ define({ "api": [
             "group": "Parameter",
             "type": "string",
             "optional": false,
-            "field": "issueId",
-            "description": "<p>Issue Id for which file is added (body params) (required)</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": false,
-            "field": "url",
-            "description": "<p>File Link. (body params) (required)</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": false,
-            "field": "userFullName",
-            "description": "<p>Full Name of the user. (body params) (required)</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": false,
-            "field": "userName",
-            "description": "<p>User Name of the user. (body params) (required)</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "binary",
-            "optional": false,
-            "field": "file",
-            "description": "<p>File to be attached (body params) (required)</p>"
+            "field": "expenseId",
+            "description": "<p>Expense Id. (body params) (required)</p>"
           }
         ]
       }
@@ -224,21 +279,121 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n    \"error\": false,\n    \"message\": \"All File Details Found\",\n    \"status\": 200,\n    \"data\": {\n        \"__v\": 0,\n        \"fileId\": \"oRtlB7vNT\",\n        \"issueId\": \"SkA3DZJlz\",\n        \"userName\": \"lisa\",\n        \"userFullName\": \"lisa anchalia (lisa)\",\n        \"url\": \"http://52.66.252.216:3000/uploads\\\\ideas.txt\",\n        \"file\": \"uploads\\\\ideas.txt\",\n        \"_id\": \"5ea326645291094744d9a0a1\"\n    }\n}",
+          "content": " {\n    \"error\": false,\n    \"message\": \"Expense is Deleted Successfully\",\n    \"status\": 200,\n    \"data\": {\n        \"n\": 1,\n        \"ok\": 1\n    }\n}",
           "type": "object"
         }
       ]
     },
-    "filename": "app/routes/file.js",
-    "groupTitle": "File",
-    "name": "GetApiV1FilesCreate"
+    "filename": "app/routes/expense.js",
+    "groupTitle": "Expense",
+    "name": "GetApiV1ExpensesViewExpenseidDelete"
   },
   {
-    "group": "File",
-    "version": "1.0.0",
+    "group": "Group",
+    "version": "0.0.1",
     "type": "get",
-    "url": "/api/v1/files/view/:fileId/delete",
-    "title": "Delete File",
+    "url": "/api/v1/groups/create",
+    "title": "Create Group",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "string",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>auth-token of the user. (auth headers) (required)</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n   \"Authorization\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkXVCJ9.eyJqd3RpZCI6Imk2ejAwUkJWcyIsImlhdCI6MTU4Nzc0ODA2MDA3MywiZXhwIjoxNTg3ODM0NDYwLCJzdWIiOiJhdXRoVG9rZW4iLCJpc3MiOiJlZENoYXQiLCJkYXRhIjp7InVzZXJOYW1lIjoibGlzYSIsImZ1bGxOYW1lIjoibGlzYSBhbmNoYWxpYSAobGlzYSkiLCJsYXN0TmFtZSI6ImFuY2hhbGlhIiwiZmlyc3ROYW1lIjoibGlzYSIsInVzZXJJZCI6IjZCOVBMeGdvSyJ9fQ.iqXZDKNfG-kHZLVSPJLJpRWw7IBezEBtbKFrnYyOQPg\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "myResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " {\n    \"error\": false,\n    \"message\": \"All Group Details Found\",\n    \"status\": 200,\n    \"data\": {\n        \"__v\": 0,\n        \"groupId\": \"0PTQa_DQq\",\n        \"created\": \"2020-05-27T17:04:28.000Z\",\n        \"_id\": \"5ece9d9cdcf1411cf7b866d2\",\n        \"groupMembers\": [\n        {\n            \"userId\": \"KwMD65RIY\",\n            \"firstName\": \"Pragati\",\n            \"lastName\": \"Dugar\",\n            \"fullName\": \"Pragati Dugar (pragsjainprags@gmail.com)\",\n            \"password\": \"$2a$10$S3Mkpc2diOcD3B/CBWSrxeUt/N7lzErLh7cdB7kKBvOYLV.zCZulS\",\n            \"userName\": \"prags\",\n            \"mobileNo\": \"\",\n            \"email\": \"pragsjainprags@gmail.com\",\n            \"createdOn\": \"2020-05-26T12:21:04.000Z\"\n        },\n        {\n            \"userId\": \"kLvhBFqEt\",\n            \"firstName\": \"Khushi\",\n            \"lastName\": \"Dugar\",\n            \"fullName\": \"Khushi Dugar (khushidugar@gmail.com)\",\n            \"password\": \"$2a$10$D6gZ3a5SQzivl5RUFbp5heVQJsISSjV5355Qcwxrle31QgXK9N976\",\n            \"userName\": \"khushi\",\n            \"mobileNo\": \"\",\n            \"email\": \"khushidugar@gmail.com\",\n            \"createdOn\": \"2020-05-26T12:23:45.000Z\"\n        }\n        ],\n        \"groupName\": \"goa trip\"\n    }\n}",
+          "type": "object"
+        }
+      ]
+    },
+    "filename": "app/routes/group.js",
+    "groupTitle": "Group",
+    "name": "GetApiV1GroupsCreate"
+  },
+  {
+    "group": "Group",
+    "version": "0.0.1",
+    "type": "get",
+    "url": "/api/v1/groups/:userId/all",
+    "title": "Get all groups for a User",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "string",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>auth-token of the user. (auth headers) (required)</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n   \"Authorization\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkXVCJ9.eyJqd3RpZCI6Imk2ejAwUkJWcyIsImlhdCI6MTU4Nzc0ODA2MDA3MywiZXhwIjoxNTg3ODM0NDYwLCJzdWIiOiJhdXRoVG9rZW4iLCJpc3MiOiJlZENoYXQiLCJkYXRhIjp7InVzZXJOYW1lIjoibGlzYSIsImZ1bGxOYW1lIjoibGlzYSBhbmNoYWxpYSAobGlzYSkiLCJsYXN0TmFtZSI6ImFuY2hhbGlhIiwiZmlyc3ROYW1lIjoibGlzYSIsInVzZXJJZCI6IjZCOVBMeGdvSyJ9fQ.iqXZDKNfG-kHZLVSPJLJpRWw7IBezEBtbKFrnYyOQPg\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "myResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " {\n    \"error\": false,\n    \"message\": \"All Group Details Found\",\n    \"status\": 200,\n    \"data\": [\n        {\n        \"groupId\": \"nXSO1O5ZG\",\n        \"created\": \"2020-05-26T12:24:58.000Z\",\n        \"groupMembers\": [\n            {\n            \"userId\": \"KwMD65RIY\",\n            \"firstName\": \"Pragati\",\n            \"lastName\": \"Dugar\",\n            \"fullName\": \"Pragati Dugar (pragsjainprags@gmail.com)\",\n            \"password\": \"$2a$10$S3Mkpc2diOcD3B/CBWSrxeUt/N7lzErLh7cdB7kKBvOYLV.zCZulS\",\n            \"userName\": \"prags\",\n            \"mobileNo\": \"\",\n            \"email\": \"pragsjainprags@gmail.com\",\n            \"createdOn\": \"2020-05-26T12:21:04.000Z\"\n            }\n            {\n            \"userId\": \"iwtLFJxMJ\",\n            \"firstName\": \"Yuvraj\",\n            \"lastName\": \"Dugar\",\n            \"fullName\": \"Yuvraj Dugar (yuvrajdugar@gmail.com)\",\n            \"password\": \"$2a$10$JRH7zpZ2wQvavz8Zg8TNjOcxoshykWcU/uC8G2mJYpz3M2nvycPPK\",\n            \"userName\": \"yuvraj\",\n            \"mobileNo\": \"\",\n            \"email\": \"yuvrajdugar@gmail.com\",\n            \"createdOn\": \"2020-05-26T12:24:25.000Z\"\n            }\n        ],\n        \"groupName\": \"Ahmedabad Trip\"\n        },\n        {\n        \"groupId\": \"7UyizcPMw\",\n        \"created\": \"2020-05-26T13:08:25.000Z\",\n        \"groupMembers\": [\n            {\n            \"userId\": \"Bt9sf2ew7\",\n            \"firstName\": \"Akshay\",\n            \"lastName\": \"Soni\",\n            \"fullName\": \"Akshay Soni (mailakkiy@gmail.com)\",\n            \"password\": \"$2a$10$1s2mIQ8m/GXA3a5FlCFxCeF6ro34AqLTPIuW0N83iM6uBpInvyS2S\",\n            \"userName\": \"akshay.soni\",\n            \"mobileNo\": \"\",\n            \"email\": \"mailakkiy@gmail.com\",\n            \"createdOn\": \"2020-05-26T13:07:40.000Z\"\n            },\n            {\n            \"userId\": \"KwMD65RIY\",\n            \"firstName\": \"Pragati\",\n            \"lastName\": \"Dugar\",\n            \"fullName\": \"Pragati Dugar (pragsjainprags@gmail.com)\",\n            \"password\": \"$2a$10$S3Mkpc2diOcD3B/CBWSrxeUt/N7lzErLh7cdB7kKBvOYLV.zCZulS\",\n            \"userName\": \"prags\",\n            \"mobileNo\": \"\",\n            \"email\": \"pragsjainprags@gmail.com\",\n            \"createdOn\": \"2020-05-26T12:21:04.000Z\"\n            }\n        ],\n        \"groupName\": \"Himachal Ki Masti\"\n        }\n    ]\n}",
+          "type": "object"
+        }
+      ]
+    },
+    "filename": "app/routes/group.js",
+    "groupTitle": "Group",
+    "name": "GetApiV1GroupsUseridAll"
+  },
+  {
+    "group": "Group",
+    "version": "0.0.1",
+    "type": "get",
+    "url": "/api/v1/groups/view/:groupId",
+    "title": "Get Group Detail",
     "header": {
       "fields": {
         "Header": [
@@ -266,8 +421,8 @@ define({ "api": [
             "group": "Parameter",
             "type": "string",
             "optional": false,
-            "field": "fileId",
-            "description": "<p>File Id of file to be deleted (body params) (required)</p>"
+            "field": "groupId",
+            "description": "<p>Group Id. (body params) (required)</p>"
           }
         ]
       }
@@ -287,21 +442,21 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": " {\n    \"error\": false,\n    \"message\": \"File is Deleted Successfully\",\n    \"status\": 200,\n    \"data\": {\n        \"n\": 1,\n        \"ok\": 1\n    }\n}",
+          "content": "{\n   \"error\": false,\n   \"message\": \"All Group Details Found\",\n   \"status\": 200,\n   \"data\": {\n       \"_id\": \"5ecd0a9adcf1411cf7b866bc\",\n       \"groupId\": \"nXSO1O5ZG\",\n       \"created\": \"2020-05-26T12:24:58.000Z\",\n       \"__v\": 0,\n       \"groupMembers\": [\n       {\n           \"createdOn\": \"2020-05-26T12:21:04.000Z\",\n           \"email\": \"pragsjainprags@gmail.com\",\n           \"mobileNo\": \"\",\n           \"userName\": \"prags\",\n           \"password\": \"$2a$10$S3Mkpc2diOcD3B/CBWSrxeUt/N7lzErLh7cdB7kKBvOYLV.zCZulS\",\n           \"fullName\": \"Pragati Dugar (pragsjainprags@gmail.com)\",\n           \"lastName\": \"Dugar\",\n           \"firstName\": \"Pragati\",\n           \"userId\": \"KwMD65RIY\"\n       },\n       {\n           \"createdOn\": \"2020-05-26T12:23:45.000Z\",\n           \"email\": \"khushidugar@gmail.com\",\n           \"mobileNo\": \"\",\n           \"userName\": \"khushi\",\n           \"password\": \"$2a$10$D6gZ3a5SQzivl5RUFbp5heVQJsISSjV5355Qcwxrle31QgXK9N976\",\n           \"fullName\": \"Khushi Dugar (khushidugar@gmail.com)\",\n           \"lastName\": \"Dugar\",\n           \"firstName\": \"Khushi\",\n           \"userId\": \"kLvhBFqEt\"\n       }\n       ],\n       \"groupName\": \"Ahmedabad Trip\"\n   }\n   }",
           "type": "object"
         }
       ]
     },
-    "filename": "app/routes/file.js",
-    "groupTitle": "File",
-    "name": "GetApiV1FilesViewFileidDelete"
+    "filename": "app/routes/group.js",
+    "groupTitle": "Group",
+    "name": "GetApiV1GroupsViewGroupid"
   },
   {
-    "group": "File",
-    "version": "1.0.0",
+    "group": "Group",
+    "version": "0.0.1",
     "type": "get",
-    "url": "/api/v1/files/view/:issueId",
-    "title": "Get Files for an Issue",
+    "url": "/api/v1/groups/view/:groupId/delete",
+    "title": "Delete Group",
     "header": {
       "fields": {
         "Header": [
@@ -329,8 +484,8 @@ define({ "api": [
             "group": "Parameter",
             "type": "string",
             "optional": false,
-            "field": "issueId",
-            "description": "<p>Issue Id. (body params) (required)</p>"
+            "field": "groupId",
+            "description": "<p>Group Id. (body params) (required)</p>"
           }
         ]
       }
@@ -350,310 +505,21 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": " {\n    \"error\": false,\n    \"message\": \"All File Details Found\",\n    \"status\": 200,\n    \"data\": [\n        {\n        \"_id\": \"5ea02eed2b395d093cc9b37f\",\n        \"fileId\": \"TE3Ug7Z9R\",\n        \"issueId\": \"rWm7i0ApM\",\n        \"userName\": \"gauri\",\n        \"userFullName\": \"Gaurav Dugar (gauri)\",\n        \"url\": \"http://localhost:3000/uploads\\\\ideas.txt\",\n        \"file\": \"uploads\\\\ideas.txt\",\n        \"__v\": 0\n        }\n    ]\n}",
+          "content": "{\n     \"error\": false,\n     \"message\": \"Group is Deleted Successfully\",\n     \"status\": 200,\n     \"data\": {\n         \"n\": 1,\n         \"ok\": 1\n     }\n }",
           "type": "object"
         }
       ]
     },
-    "filename": "app/routes/file.js",
-    "groupTitle": "File",
-    "name": "GetApiV1FilesViewIssueid"
-  },
-  {
-    "group": "Issue",
-    "version": "1.0.0",
-    "type": "get",
-    "url": "/api/v1/issues/all",
-    "title": "Get all issues",
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "string",
-            "optional": false,
-            "field": "Authorization",
-            "description": "<p>auth-token of the user. (auth headers) (required)</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Request-Example:",
-          "content": "{\n   \"Authorization\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkXVCJ9.eyJqd3RpZCI6Imk2ejAwUkJWcyIsImlhdCI6MTU4Nzc0ODA2MDA3MywiZXhwIjoxNTg3ODM0NDYwLCJzdWIiOiJhdXRoVG9rZW4iLCJpc3MiOiJlZENoYXQiLCJkYXRhIjp7InVzZXJOYW1lIjoibGlzYSIsImZ1bGxOYW1lIjoibGlzYSBhbmNoYWxpYSAobGlzYSkiLCJsYXN0TmFtZSI6ImFuY2hhbGlhIiwiZmlyc3ROYW1lIjoibGlzYSIsInVzZXJJZCI6IjZCOVBMeGdvSyJ9fQ.iqXZDKNfG-kHZLVSPJLJpRWw7IBezEBtbKFrnYyOQPg\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "object",
-            "optional": false,
-            "field": "myResponse",
-            "description": "<p>shows error status, message, http status code, result.</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "{\n   \"error\": false,\n   \"message\": \"All Issue Details Found\",\n   \"status\": 200,\n   \"data\": [\n       {\n       \"issueId\": \"stjcwBEaq\",\n       \"created\": \"2020-04-22T11:25:03.000Z\",\n       \"watchers\": [\n           \"Gaurav Dugar (gauri)\"\n       ],\n       \"assignee\": \"Gaurav Dugar (gauri)\",\n       \"reporter\": \"Pragati Dugar (prags)\",\n       \"status\": \"In Progress\",\n       \"description\": \"<h1>sf<em><u> sdasdds d ds dd </u></em></h1>\",\n       \"title\": \"sfssada d  s d fd\"\n       },\n       {\n       \"issueId\": \"XKpilZuU7\",\n       \"created\": \"2020-04-22T11:36:59.000Z\",\n       \"watchers\": [],\n       \"assignee\": \"Pragati Dugar (prags)\",\n       \"reporter\": \"Pragati Dugar (prags)\",\n       \"status\": \"Done\",\n       \"description\": \"<h1><em><u>wdsed</u><span class=\\\"ql-cursor\\\">﻿</span></em></h1>\",\n       \"title\": \"wdw\"\n       }\n   ]\n   }",
-          "type": "object"
-        }
-      ]
-    },
-    "filename": "app/routes/issue.js",
-    "groupTitle": "Issue",
-    "name": "GetApiV1IssuesAll"
-  },
-  {
-    "group": "Issue",
-    "version": "1.0.0",
-    "type": "get",
-    "url": "/api/v1/issues/create",
-    "title": "Create Issue",
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "string",
-            "optional": false,
-            "field": "Authorization",
-            "description": "<p>auth-token of the user. (auth headers) (required)</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Request-Example:",
-          "content": "{\n   \"Authorization\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkXVCJ9.eyJqd3RpZCI6Imk2ejAwUkJWcyIsImlhdCI6MTU4Nzc0ODA2MDA3MywiZXhwIjoxNTg3ODM0NDYwLCJzdWIiOiJhdXRoVG9rZW4iLCJpc3MiOiJlZENoYXQiLCJkYXRhIjp7InVzZXJOYW1lIjoibGlzYSIsImZ1bGxOYW1lIjoibGlzYSBhbmNoYWxpYSAobGlzYSkiLCJsYXN0TmFtZSI6ImFuY2hhbGlhIiwiZmlyc3ROYW1lIjoibGlzYSIsInVzZXJJZCI6IjZCOVBMeGdvSyJ9fQ.iqXZDKNfG-kHZLVSPJLJpRWw7IBezEBtbKFrnYyOQPg\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "object",
-            "optional": false,
-            "field": "myResponse",
-            "description": "<p>shows error status, message, http status code, result.</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": " {\n    \"error\": false,\n    \"message\": \"All Issue Details Found\",\n    \"status\": 200,\n    \"data\": {\n        \"__v\": 0,\n        \"issueId\": \"Qj2dU-1MV\",\n        \"_id\": \"5ea325135291094744d9a0a0\",\n        \"created\": \"2020-04-24T17:42:43.000Z\",\n        \"watchers\": [],\n        \"assignee\": \"Pragati Dugar (prags)\",\n        \"reporter\": \"lisa anchalia (lisa)\",\n        \"status\": \"Open\",\n        \"description\": \"\",\n        \"title\": \"Socket Issue \"\n    }\n}",
-          "type": "object"
-        }
-      ]
-    },
-    "filename": "app/routes/issue.js",
-    "groupTitle": "Issue",
-    "name": "GetApiV1IssuesCreate"
-  },
-  {
-    "group": "Issue",
-    "version": "1.0.0",
-    "type": "get",
-    "url": "/api/v1/issues/:issueId/edit",
-    "title": "Edit Issue",
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "string",
-            "optional": false,
-            "field": "Authorization",
-            "description": "<p>auth-token of the user. (auth headers) (required)</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Request-Example:",
-          "content": "{\n   \"Authorization\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkXVCJ9.eyJqd3RpZCI6Imk2ejAwUkJWcyIsImlhdCI6MTU4Nzc0ODA2MDA3MywiZXhwIjoxNTg3ODM0NDYwLCJzdWIiOiJhdXRoVG9rZW4iLCJpc3MiOiJlZENoYXQiLCJkYXRhIjp7InVzZXJOYW1lIjoibGlzYSIsImZ1bGxOYW1lIjoibGlzYSBhbmNoYWxpYSAobGlzYSkiLCJsYXN0TmFtZSI6ImFuY2hhbGlhIiwiZmlyc3ROYW1lIjoibGlzYSIsInVzZXJJZCI6IjZCOVBMeGdvSyJ9fQ.iqXZDKNfG-kHZLVSPJLJpRWw7IBezEBtbKFrnYyOQPg\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": false,
-            "field": "issueId",
-            "description": "<p>Issue Id. (body params) (required)</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "object",
-            "optional": false,
-            "field": "myResponse",
-            "description": "<p>shows error status, message, http status code, result.</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": " {\n    \"error\": false,\n    \"message\": \"All Issue Details Found\",\n    \"status\": 200,\n    \"data\": {\n        \"_id\": \"5ea029cd2b395d093cc9b377\",\n        \"issueId\": \"rWm7i0ApM\",\n        \"__v\": 0,\n        \"created\": \"2020-04-22T11:26:05.000Z\",\n        \"watchers\": [\n        \"Gaurav Dugar (gauri)\"\n        ],\n        \"assignee\": \"Gaurav Dugar (gauri)\",\n        \"reporter\": \"Pragati Dugar (prags)\",\n        \"status\": \"Not picked\",\n        \"description\": \"<p>Edited Description here</p>\",\n        \"title\": \"Edited Issue \"\n    }\n}",
-          "type": "object"
-        }
-      ]
-    },
-    "filename": "app/routes/issue.js",
-    "groupTitle": "Issue",
-    "name": "GetApiV1IssuesIssueidEdit"
-  },
-  {
-    "group": "Issue",
-    "version": "1.0.0",
-    "type": "get",
-    "url": "/api/v1/issues/view/:issueId",
-    "title": "Get Issue Detail",
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "string",
-            "optional": false,
-            "field": "Authorization",
-            "description": "<p>auth-token of the user. (auth headers) (required)</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Request-Example:",
-          "content": "{\n   \"Authorization\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkXVCJ9.eyJqd3RpZCI6Imk2ejAwUkJWcyIsImlhdCI6MTU4Nzc0ODA2MDA3MywiZXhwIjoxNTg3ODM0NDYwLCJzdWIiOiJhdXRoVG9rZW4iLCJpc3MiOiJlZENoYXQiLCJkYXRhIjp7InVzZXJOYW1lIjoibGlzYSIsImZ1bGxOYW1lIjoibGlzYSBhbmNoYWxpYSAobGlzYSkiLCJsYXN0TmFtZSI6ImFuY2hhbGlhIiwiZmlyc3ROYW1lIjoibGlzYSIsInVzZXJJZCI6IjZCOVBMeGdvSyJ9fQ.iqXZDKNfG-kHZLVSPJLJpRWw7IBezEBtbKFrnYyOQPg\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": false,
-            "field": "issueId",
-            "description": "<p>Issue Id. (body params) (required)</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "object",
-            "optional": false,
-            "field": "myResponse",
-            "description": "<p>shows error status, message, http status code, result.</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": " {\n    \"error\": false,\n    \"message\": \"All Issue Details Found\",\n    \"status\": 200,\n    \"data\": {\n        \"_id\": \"5ea0298f2b395d093cc9b376\",\n        \"issueId\": \"stjcwBEaq\",\n        \"__v\": 0,\n        \"created\": \"2020-04-22T11:25:03.000Z\",\n        \"watchers\": [\n        \"Gaurav Dugar (gauri)\"\n        ],\n        \"assignee\": \"Gaurav Dugar (gauri)\",\n        \"reporter\": \"Pragati Dugar (prags)\",\n        \"status\": \"In Progress\",\n        \"description\": \"<h1>sf<em><u> some thing here </u></em></h1>\",\n        \"title\": \"sfssada d  s d fd\"\n    }\n}",
-          "type": "object"
-        }
-      ]
-    },
-    "filename": "app/routes/issue.js",
-    "groupTitle": "Issue",
-    "name": "GetApiV1IssuesViewIssueid"
-  },
-  {
-    "group": "Issue",
-    "version": "1.0.0",
-    "type": "get",
-    "url": "/api/v1/issues/view/:issueId/delete",
-    "title": "Delete Issue",
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "string",
-            "optional": false,
-            "field": "Authorization",
-            "description": "<p>auth-token of the user. (auth headers) (required)</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Request-Example:",
-          "content": "{\n   \"Authorization\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkXVCJ9.eyJqd3RpZCI6Imk2ejAwUkJWcyIsImlhdCI6MTU4Nzc0ODA2MDA3MywiZXhwIjoxNTg3ODM0NDYwLCJzdWIiOiJhdXRoVG9rZW4iLCJpc3MiOiJlZENoYXQiLCJkYXRhIjp7InVzZXJOYW1lIjoibGlzYSIsImZ1bGxOYW1lIjoibGlzYSBhbmNoYWxpYSAobGlzYSkiLCJsYXN0TmFtZSI6ImFuY2hhbGlhIiwiZmlyc3ROYW1lIjoibGlzYSIsInVzZXJJZCI6IjZCOVBMeGdvSyJ9fQ.iqXZDKNfG-kHZLVSPJLJpRWw7IBezEBtbKFrnYyOQPg\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": false,
-            "field": "issueId",
-            "description": "<p>Issue Id. (body params) (required)</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "object",
-            "optional": false,
-            "field": "myResponse",
-            "description": "<p>shows error status, message, http status code, result.</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": " {\n    \"error\": false,\n    \"message\": \"Issue is Deleted Successfully\",\n    \"status\": 200,\n    \"data\": {\n        \"n\": 1,\n        \"ok\": 1\n    }\n}",
-          "type": "object"
-        }
-      ]
-    },
-    "filename": "app/routes/issue.js",
-    "groupTitle": "Issue",
-    "name": "GetApiV1IssuesViewIssueidDelete"
+    "filename": "app/routes/group.js",
+    "groupTitle": "Group",
+    "name": "GetApiV1GroupsViewGroupidDelete"
   },
   {
     "group": "User",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "type": "post",
     "url": "/api/v1/users/login",
-    "title": "User Login.",
+    "title": "User Login",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -689,7 +555,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": " {\n    \"error\": false,\n    \"message\": \"Login Successful\",\n    \"status\": 200,\n    \"data\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqd3RpZCI6InpDSXVRbHEwWiIsImlhdCI6MTU4Nzc0NjU5NDUzMywiZXhwIjoxNTg3ODMyOTk0LCJzdWIiOiJhdXRoVG9rZW4iLCJpc3MiOiJlZENoYXQiLCJkYXRhIjp7InVzZXJOYW1lIjoicHJhZ3MiLCJmdWxsTmFtZSI6IlByYWdhdGkgRHVnYXIgKHByYWdzKSIsImxhc3ROYW1lIjoiRHVnYXIiLCJmaXJzdE5hbWUiOiJQcmFnYXRpIiwidXNlcklkIjoiSkRxandTVy16In19.qE8iYfyelv15chdd-BLsefXX8DpfCijZdqYj3F51d2I\",\n        \"userId\": \"JDqjwSW-z\",\n        \"userDetails\": {\n        \"userName\": \"prags\",\n        \"fullName\": \"Pragati Dugar (prags)\",\n        \"lastName\": \"Dugar\",\n        \"firstName\": \"Pragati\",\n        \"userId\": \"JDqjwSW-z\"\n        }\n    }\n}",
+          "content": "{\n    \"error\": false,\n    \"message\": \"Login Successful\",\n    \"status\": 200,\n    \"data\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqd3RpZCI6IkVGODdtNmNsTSIsImlhdCI6MTU5MDU5NzUxNjQxNiwiZXhwIjoxNTkwNjgzOTE2LCJzdWIiOiJhdXRoVG9rZW4iLCJpc3MiOiJlZENoYXQiLCJkYXRhIjoiMnhBZ2pPM3RvIn0.V9uxCad_Lvh8WfNatVwARi-Iu44haAoD42v0OlaW8iM\",\n        \"userId\": \"2xAgjO3to\",\n        \"userDetails\": {\n        \"email\": \"kanchandugar@gmail.com\",\n        \"mobileNo\": \"+919568488393\",\n        \"userName\": \"kanchan\",\n        \"fullName\": \"Kanchan  Dugar (kanchandugar@gmail.com)\",\n        \"lastName\": \"Dugar\",\n        \"firstName\": \"Kanchan \",\n        \"userId\": \"2xAgjO3to\"\n        }\n    }\n}",
           "type": "object"
         }
       ]
@@ -720,10 +586,10 @@ define({ "api": [
   },
   {
     "group": "User",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "type": "post",
     "url": "/api/v1/users/signup",
-    "title": "User Sign Up.",
+    "title": "User Sign Up",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -780,7 +646,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n    \"error\": false,\n    \"message\": \"User created\",\n    \"status\": 200,\n    \"data\": {\n        \"__v\": 0,\n        \"_id\": \"5ea31ab35291094744d9a09c\",\n        \"createdOn\": \"2020-04-24T16:58:27.000Z\",\n        \"userName\": \"lisa\",\n        \"fullName\": \"lisa anchalia (lisa)\",\n        \"lastName\": \"anchalia\",\n        \"firstName\": \"lisa\",\n        \"userId\": \"6B9PLxgoK\"\n    }\n}",
+          "content": "{\n    \"error\": false,\n    \"message\": \"User created\",\n    \"status\": 200,\n    \"data\": {\n        \"__v\": 0,\n        \"_id\": \"5ece95afdcf1411cf7b866cf\",\n        \"createdOn\": \"2020-05-27T16:30:39.000Z\",\n        \"email\": \"kanchandugar@gmail.com\",\n        \"mobileNo\": \"+919568488393\",\n        \"userName\": \"kanchan\",\n        \"fullName\": \"Kanchan  Dugar (kanchandugar@gmail.com)\",\n        \"lastName\": \"Dugar\",\n        \"firstName\": \"Kanchan \",\n        \"userId\": \"2xAgjO3to\"\n    }\n}",
           "type": "object"
         }
       ]
@@ -811,10 +677,10 @@ define({ "api": [
   },
   {
     "group": "User",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "type": "post",
     "url": "/api/v1/users/:userId/delete",
-    "title": "User logout.",
+    "title": "User logout",
     "header": {
       "fields": {
         "Header": [

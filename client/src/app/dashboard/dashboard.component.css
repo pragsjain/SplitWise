@@ -6,9 +6,10 @@
 .group-section{
     width: 20%;
     padding-left: 1rem;
+    min-width: 160px;
 }
 .your-share-section{
-    width: 60%;
+    width: 80%;
     padding: 0 1rem;
 }
 .yourShareArray{
@@ -20,14 +21,19 @@
     padding-right: 1rem;
 }
 @media only screen and (max-width: 600px) {
+    .dashboard-page{
+        display: block;
+        padding: 0px;
+    }
     .group-section,.your-share-section{
-        width: 100%;
+        width: 100% !important;
+        padding: 0.5rem;
     }
 }
-.material-icons.close-class {
-    position: relative;
-    bottom: -5px;
-    float: right;
+.material-icons.deleteGroupIcon {
+    position: absolute;
+    bottom: 2px;
+    right: 0px;
  }
  .material-icons.groupIcon {
     position: relative;
@@ -55,11 +61,20 @@
  li{
      list-style: none;
      cursor: pointer;
+     position: relative;
  }
  li a.groupName {
-    font-size: 1.25rem;
+    font-size: 0.8rem;
+    font-weight: 500;
     color: #666;
+    cursor: pointer;
     text-transform: uppercase;
+    width: 60%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: absolute;
+    padding-top: 7px;
  }
 
  li:hover {

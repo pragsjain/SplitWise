@@ -21,8 +21,8 @@ let setRouter = (app) => {
 
      /**
      * @apiGroup Group
-     * @apiVersion  1.0.0
-     * @api {get} /api/v1/groups/all Get all groups
+     * @apiVersion  0.0.1
+     * @api {get} /api/v1/groups/:userId/all Get all groups for a User
      *
      * @apiHeader  {string} Authorization auth-token of the user. (auth headers) (required)
      * 
@@ -40,34 +40,70 @@ let setRouter = (app) => {
             "status": 200,
             "data": [
                 {
-                "groupId": "stjcwBEaq",
-                "created": "2020-04-22T11:25:03.000Z",
-                "watchers": [
-                    "Gaurav Dugar (gauri)"
+                "groupId": "nXSO1O5ZG",
+                "created": "2020-05-26T12:24:58.000Z",
+                "groupMembers": [
+                    {
+                    "userId": "KwMD65RIY",
+                    "firstName": "Pragati",
+                    "lastName": "Dugar",
+                    "fullName": "Pragati Dugar (pragsjainprags@gmail.com)",
+                    "password": "$2a$10$S3Mkpc2diOcD3B/CBWSrxeUt/N7lzErLh7cdB7kKBvOYLV.zCZulS",
+                    "userName": "prags",
+                    "mobileNo": "",
+                    "email": "pragsjainprags@gmail.com",
+                    "createdOn": "2020-05-26T12:21:04.000Z"
+                    }
+                    {
+                    "userId": "iwtLFJxMJ",
+                    "firstName": "Yuvraj",
+                    "lastName": "Dugar",
+                    "fullName": "Yuvraj Dugar (yuvrajdugar@gmail.com)",
+                    "password": "$2a$10$JRH7zpZ2wQvavz8Zg8TNjOcxoshykWcU/uC8G2mJYpz3M2nvycPPK",
+                    "userName": "yuvraj",
+                    "mobileNo": "",
+                    "email": "yuvrajdugar@gmail.com",
+                    "createdOn": "2020-05-26T12:24:25.000Z"
+                    }
                 ],
-                "assignee": "Gaurav Dugar (gauri)",
-                "reporter": "Pragati Dugar (prags)",
-                "status": "In Progress",
-                "description": "<h1>sf<em><u> sdasdds d ds dd </u></em></h1>",
-                "title": "sfssada d  s d fd"
+                "groupName": "Ahmedabad Trip"
                 },
                 {
-                "groupId": "XKpilZuU7",
-                "created": "2020-04-22T11:36:59.000Z",
-                "watchers": [],
-                "assignee": "Pragati Dugar (prags)",
-                "reporter": "Pragati Dugar (prags)",
-                "status": "Done",
-                "description": "<h1><em><u>wdsed</u><span class=\"ql-cursor\">﻿</span></em></h1>",
-                "title": "wdw"
+                "groupId": "7UyizcPMw",
+                "created": "2020-05-26T13:08:25.000Z",
+                "groupMembers": [
+                    {
+                    "userId": "Bt9sf2ew7",
+                    "firstName": "Akshay",
+                    "lastName": "Soni",
+                    "fullName": "Akshay Soni (mailakkiy@gmail.com)",
+                    "password": "$2a$10$1s2mIQ8m/GXA3a5FlCFxCeF6ro34AqLTPIuW0N83iM6uBpInvyS2S",
+                    "userName": "akshay.soni",
+                    "mobileNo": "",
+                    "email": "mailakkiy@gmail.com",
+                    "createdOn": "2020-05-26T13:07:40.000Z"
+                    },
+                    {
+                    "userId": "KwMD65RIY",
+                    "firstName": "Pragati",
+                    "lastName": "Dugar",
+                    "fullName": "Pragati Dugar (pragsjainprags@gmail.com)",
+                    "password": "$2a$10$S3Mkpc2diOcD3B/CBWSrxeUt/N7lzErLh7cdB7kKBvOYLV.zCZulS",
+                    "userName": "prags",
+                    "mobileNo": "",
+                    "email": "pragsjainprags@gmail.com",
+                    "createdOn": "2020-05-26T12:21:04.000Z"
+                    }
+                ],
+                "groupName": "Himachal Ki Masti"
                 }
             ]
-            }
+        }
     */
 
     /**
      * @apiGroup Group
-     * @apiVersion  1.0.0
+     * @apiVersion  0.0.1
      * @api {get} /api/v1/groups/view/:groupId Get Group Detail
      *
      * @apiHeader  {string} Authorization auth-token of the user. (auth headers) (required)
@@ -87,25 +123,42 @@ let setRouter = (app) => {
             "message": "All Group Details Found",
             "status": 200,
             "data": {
-                "_id": "5ea0298f2b395d093cc9b376",
-                "groupId": "stjcwBEaq",
+                "_id": "5ecd0a9adcf1411cf7b866bc",
+                "groupId": "nXSO1O5ZG",
+                "created": "2020-05-26T12:24:58.000Z",
                 "__v": 0,
-                "created": "2020-04-22T11:25:03.000Z",
-                "watchers": [
-                "Gaurav Dugar (gauri)"
+                "groupMembers": [
+                {
+                    "createdOn": "2020-05-26T12:21:04.000Z",
+                    "email": "pragsjainprags@gmail.com",
+                    "mobileNo": "",
+                    "userName": "prags",
+                    "password": "$2a$10$S3Mkpc2diOcD3B/CBWSrxeUt/N7lzErLh7cdB7kKBvOYLV.zCZulS",
+                    "fullName": "Pragati Dugar (pragsjainprags@gmail.com)",
+                    "lastName": "Dugar",
+                    "firstName": "Pragati",
+                    "userId": "KwMD65RIY"
+                },
+                {
+                    "createdOn": "2020-05-26T12:23:45.000Z",
+                    "email": "khushidugar@gmail.com",
+                    "mobileNo": "",
+                    "userName": "khushi",
+                    "password": "$2a$10$D6gZ3a5SQzivl5RUFbp5heVQJsISSjV5355Qcwxrle31QgXK9N976",
+                    "fullName": "Khushi Dugar (khushidugar@gmail.com)",
+                    "lastName": "Dugar",
+                    "firstName": "Khushi",
+                    "userId": "kLvhBFqEt"
+                }
                 ],
-                "assignee": "Gaurav Dugar (gauri)",
-                "reporter": "Pragati Dugar (prags)",
-                "status": "In Progress",
-                "description": "<h1>sf<em><u> some thing here </u></em></h1>",
-                "title": "sfssada d  s d fd"
+                "groupName": "Ahmedabad Trip"
             }
-        }
+            }
     */
 
      /**
      * @apiGroup Group
-     * @apiVersion  1.0.0
+     * @apiVersion  0.0.1
      * @api {get} /api/v1/groups/view/:groupId/delete Delete Group 
      *
      * @apiHeader  {string} Authorization auth-token of the user. (auth headers) (required)
@@ -120,7 +173,7 @@ let setRouter = (app) => {
      * @apiSuccess {object} myResponse shows error status, message, http status code, result.
      * 
      * @apiSuccessExample {object} Success-Response:
-         {
+       {
             "error": false,
             "message": "Group is Deleted Successfully",
             "status": 200,
@@ -131,47 +184,10 @@ let setRouter = (app) => {
         }
     */
 
-     /**
-     * @apiGroup Group
-     * @apiVersion  1.0.0
-     * @api {get} /api/v1/groups/:groupId/edit Edit Group
-     *
-     * @apiHeader  {string} Authorization auth-token of the user. (auth headers) (required)
-     * 
-     * @apiHeaderExample  {json} Request-Example:
-         {
-            "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkXVCJ9.eyJqd3RpZCI6Imk2ejAwUkJWcyIsImlhdCI6MTU4Nzc0ODA2MDA3MywiZXhwIjoxNTg3ODM0NDYwLCJzdWIiOiJhdXRoVG9rZW4iLCJpc3MiOiJlZENoYXQiLCJkYXRhIjp7InVzZXJOYW1lIjoibGlzYSIsImZ1bGxOYW1lIjoibGlzYSBhbmNoYWxpYSAobGlzYSkiLCJsYXN0TmFtZSI6ImFuY2hhbGlhIiwiZmlyc3ROYW1lIjoibGlzYSIsInVzZXJJZCI6IjZCOVBMeGdvSyJ9fQ.iqXZDKNfG-kHZLVSPJLJpRWw7IBezEBtbKFrnYyOQPg"
-         }
-     *
-     * @apiParam {string} groupId Group Id. (body params) (required)
-     * 
-     * @apiSuccess {object} myResponse shows error status, message, http status code, result.
-     * 
-     * @apiSuccessExample {object} Success-Response:
-         {
-            "error": false,
-            "message": "All Group Details Found",
-            "status": 200,
-            "data": {
-                "_id": "5ea029cd2b395d093cc9b377",
-                "groupId": "rWm7i0ApM",
-                "__v": 0,
-                "created": "2020-04-22T11:26:05.000Z",
-                "watchers": [
-                "Gaurav Dugar (gauri)"
-                ],
-                "assignee": "Gaurav Dugar (gauri)",
-                "reporter": "Pragati Dugar (prags)",
-                "status": "Not picked",
-                "description": "<p>Edited Description here</p>",
-                "title": "Edited Group "
-            }
-        }
-    */
 
      /**
      * @apiGroup Group
-     * @apiVersion  1.0.0
+     * @apiVersion  0.0.1
      * @api {get} /api/v1/groups/create Create Group
      *
      * @apiHeader  {string} Authorization auth-token of the user. (auth headers) (required)
@@ -191,15 +207,34 @@ let setRouter = (app) => {
             "status": 200,
             "data": {
                 "__v": 0,
-                "groupId": "Qj2dU-1MV",
-                "_id": "5ea325135291094744d9a0a0",
-                "created": "2020-04-24T17:42:43.000Z",
-                "watchers": [],
-                "assignee": "Pragati Dugar (prags)",
-                "reporter": "lisa anchalia (lisa)",
-                "status": "Open",
-                "description": "",
-                "title": "Socket Group "
+                "groupId": "0PTQa_DQq",
+                "created": "2020-05-27T17:04:28.000Z",
+                "_id": "5ece9d9cdcf1411cf7b866d2",
+                "groupMembers": [
+                {
+                    "userId": "KwMD65RIY",
+                    "firstName": "Pragati",
+                    "lastName": "Dugar",
+                    "fullName": "Pragati Dugar (pragsjainprags@gmail.com)",
+                    "password": "$2a$10$S3Mkpc2diOcD3B/CBWSrxeUt/N7lzErLh7cdB7kKBvOYLV.zCZulS",
+                    "userName": "prags",
+                    "mobileNo": "",
+                    "email": "pragsjainprags@gmail.com",
+                    "createdOn": "2020-05-26T12:21:04.000Z"
+                },
+                {
+                    "userId": "kLvhBFqEt",
+                    "firstName": "Khushi",
+                    "lastName": "Dugar",
+                    "fullName": "Khushi Dugar (khushidugar@gmail.com)",
+                    "password": "$2a$10$D6gZ3a5SQzivl5RUFbp5heVQJsISSjV5355Qcwxrle31QgXK9N976",
+                    "userName": "khushi",
+                    "mobileNo": "",
+                    "email": "khushidugar@gmail.com",
+                    "createdOn": "2020-05-26T12:23:45.000Z"
+                }
+                ],
+                "groupName": "goa trip"
             }
         }
     */

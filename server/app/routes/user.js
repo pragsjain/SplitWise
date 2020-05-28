@@ -26,8 +26,8 @@ let setRouter = (app) => {
 
     /**
      * @apiGroup User
-     * @apiVersion  1.0.0
-     * @api {post} /api/v1/users/login User Login.
+     * @apiVersion  0.0.1
+     * @api {post} /api/v1/users/login User Login
      *
      * @apiParam {string} userName userName of the user. (body params) (required)
      * @apiParam {string} password password of the user. (body params) (required)
@@ -35,19 +35,21 @@ let setRouter = (app) => {
      * @apiSuccess {object} myResponse shows error status, message, http status code, result.
      * 
      * @apiSuccessExample {object} Success-Response:
-         {
+        {
             "error": false,
             "message": "Login Successful",
             "status": 200,
             "data": {
-                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqd3RpZCI6InpDSXVRbHEwWiIsImlhdCI6MTU4Nzc0NjU5NDUzMywiZXhwIjoxNTg3ODMyOTk0LCJzdWIiOiJhdXRoVG9rZW4iLCJpc3MiOiJlZENoYXQiLCJkYXRhIjp7InVzZXJOYW1lIjoicHJhZ3MiLCJmdWxsTmFtZSI6IlByYWdhdGkgRHVnYXIgKHByYWdzKSIsImxhc3ROYW1lIjoiRHVnYXIiLCJmaXJzdE5hbWUiOiJQcmFnYXRpIiwidXNlcklkIjoiSkRxandTVy16In19.qE8iYfyelv15chdd-BLsefXX8DpfCijZdqYj3F51d2I",
-                "userId": "JDqjwSW-z",
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqd3RpZCI6IkVGODdtNmNsTSIsImlhdCI6MTU5MDU5NzUxNjQxNiwiZXhwIjoxNTkwNjgzOTE2LCJzdWIiOiJhdXRoVG9rZW4iLCJpc3MiOiJlZENoYXQiLCJkYXRhIjoiMnhBZ2pPM3RvIn0.V9uxCad_Lvh8WfNatVwARi-Iu44haAoD42v0OlaW8iM",
+                "userId": "2xAgjO3to",
                 "userDetails": {
-                "userName": "prags",
-                "fullName": "Pragati Dugar (prags)",
+                "email": "kanchandugar@gmail.com",
+                "mobileNo": "+919568488393",
+                "userName": "kanchan",
+                "fullName": "Kanchan  Dugar (kanchandugar@gmail.com)",
                 "lastName": "Dugar",
-                "firstName": "Pragati",
-                "userId": "JDqjwSW-z"
+                "firstName": "Kanchan ",
+                "userId": "2xAgjO3to"
                 }
             }
         }
@@ -66,8 +68,8 @@ let setRouter = (app) => {
 
      /**
      * @apiGroup User
-     * @apiVersion  1.0.0
-     * @api {post} /api/v1/users/signup User Sign Up.
+     * @apiVersion  0.0.1
+     * @api {post} /api/v1/users/signup User Sign Up
      *
      * @apiParam {string} createdOn Date of the user creation. (body params) (required)
      * @apiParam {string} firstName First Name of the user. (body params) (required)
@@ -84,13 +86,15 @@ let setRouter = (app) => {
             "status": 200,
             "data": {
                 "__v": 0,
-                "_id": "5ea31ab35291094744d9a09c",
-                "createdOn": "2020-04-24T16:58:27.000Z",
-                "userName": "lisa",
-                "fullName": "lisa anchalia (lisa)",
-                "lastName": "anchalia",
-                "firstName": "lisa",
-                "userId": "6B9PLxgoK"
+                "_id": "5ece95afdcf1411cf7b866cf",
+                "createdOn": "2020-05-27T16:30:39.000Z",
+                "email": "kanchandugar@gmail.com",
+                "mobileNo": "+919568488393",
+                "userName": "kanchan",
+                "fullName": "Kanchan  Dugar (kanchandugar@gmail.com)",
+                "lastName": "Dugar",
+                "firstName": "Kanchan ",
+                "userId": "2xAgjO3to"
             }
         }
      *
@@ -108,8 +112,8 @@ let setRouter = (app) => {
 
     /**
      * @apiGroup User
-     * @apiVersion  1.0.0
-     * @api {post} /api/v1/users/:userId/delete User logout.
+     * @apiVersion  0.0.1
+     * @api {post} /api/v1/users/:userId/delete User logout
      *
      * @apiHeader  {string} Authorization auth-token of the user. (auth headers) (required)
      * 

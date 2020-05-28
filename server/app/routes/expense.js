@@ -19,10 +19,10 @@ let setRouter = (app) => {
 
     app.post(baseUrl+'/create',auth.isAuthenticated,expenseController.createExpense);
 
-     /**
-     * @apiExpense Expense
-     * @apiVersion  1.0.0
-     * @api {get} /api/v1/expenses/all Get all expenses
+    /**
+     * @apiGroup Expense
+     * @apiVersion  0.0.1
+     * @api {get} /api/v1/expenses/:groupId/all Get all expenses for a Group
      *
      * @apiHeader  {string} Authorization auth-token of the user. (auth headers) (required)
      * 
@@ -38,36 +38,145 @@ let setRouter = (app) => {
             "error": false,
             "message": "All Expense Details Found",
             "status": 200,
-            "data": [
+            "data": {
+                "count": 2,
+                "expenseList": [
                 {
-                "expenseId": "stjcwBEaq",
-                "created": "2020-04-22T11:25:03.000Z",
-                "watchers": [
-                    "Gaurav Dugar (gauri)"
-                ],
-                "assignee": "Gaurav Dugar (gauri)",
-                "reporter": "Pragati Dugar (prags)",
-                "status": "In Progress",
-                "description": "<h1>sf<em><u> sdasdds d ds dd </u></em></h1>",
-                "title": "sfssada d  s d fd"
+                    "expenseId": "zTU_G-M3f",
+                    "expenseName": "Magic show Tickets",
+                    "amount": 900,
+                    "groupId": "nXSO1O5ZG",
+                    "addedOn": "2020-05-26T12:26:19.617Z",
+                    "addedBy": "Pragati Dugar (pragsjainprags@gmail.com)",
+                    "expenseHistory": [
+                    {
+                        "expenseHistoryNotesBy": "Pragati Dugar (pragsjainprags@gmail.com) created expense 'Magic show Tickets'"
+                    }
+                    ],
+                    "splitOption": "equal",
+                    "expenseMembers": [
+                    {
+                        "owedShare": 300,
+                        "isOwer": true,
+                        "paidShare": 900,
+                        "isSolePayer": true,
+                        "isMultiplePayer": false,
+                        "userId": "KwMD65RIY",
+                        "firstName": "Pragati",
+                        "lastName": "Dugar",
+                        "fullName": "Pragati Dugar (pragsjainprags@gmail.com)",
+                        "password": "$2a$10$S3Mkpc2diOcD3B/CBWSrxeUt/N7lzErLh7cdB7kKBvOYLV.zCZulS",
+                        "userName": "prags",
+                        "mobileNo": "",
+                        "email": "pragsjainprags@gmail.com",
+                        "createdOn": "2020-05-26T12:21:04.000Z"
+                    },
+                    {
+                        "owedShare": 300,
+                        "isOwer": true,
+                        "paidShare": 0,
+                        "isSolePayer": false,
+                        "isMultiplePayer": false,
+                        "userId": "kLvhBFqEt",
+                        "firstName": "Khushi",
+                        "lastName": "Dugar",
+                        "fullName": "Khushi Dugar (khushidugar@gmail.com)",
+                        "password": "$2a$10$D6gZ3a5SQzivl5RUFbp5heVQJsISSjV5355Qcwxrle31QgXK9N976",
+                        "userName": "khushi",
+                        "mobileNo": "",
+                        "email": "khushidugar@gmail.com",
+                        "createdOn": "2020-05-26T12:23:45.000Z"
+                    },
+                    {
+                        "owedShare": 300,
+                        "isOwer": true,
+                        "paidShare": 0,
+                        "isSolePayer": false,
+                        "isMultiplePayer": false,
+                        "userId": "iwtLFJxMJ",
+                        "firstName": "Yuvraj",
+                        "lastName": "Dugar",
+                        "fullName": "Yuvraj Dugar (yuvrajdugar@gmail.com)",
+                        "password": "$2a$10$JRH7zpZ2wQvavz8Zg8TNjOcxoshykWcU/uC8G2mJYpz3M2nvycPPK",
+                        "userName": "yuvraj",
+                        "mobileNo": "",
+                        "email": "yuvrajdugar@gmail.com",
+                        "createdOn": "2020-05-26T12:24:25.000Z"
+                    }
+                    ]
                 },
                 {
-                "expenseId": "XKpilZuU7",
-                "created": "2020-04-22T11:36:59.000Z",
-                "watchers": [],
-                "assignee": "Pragati Dugar (prags)",
-                "reporter": "Pragati Dugar (prags)",
-                "status": "Done",
-                "description": "<h1><em><u>wdsed</u><span class=\"ql-cursor\">﻿</span></em></h1>",
-                "title": "wdw"
+                    "expenseId": "TtkQyc3vp",
+                    "expenseName": "Dinner at Lalit Palace",
+                    "amount": 2000,
+                    "groupId": "nXSO1O5ZG",
+                    "addedOn": "2020-05-26T12:27:19.377Z",
+                    "addedBy": "Pragati Dugar (pragsjainprags@gmail.com)",
+                    "expenseHistory": [
+                    {
+                        "expenseHistoryNotesBy": "Pragati Dugar (pragsjainprags@gmail.com) created expense 'Dinner at Lalit Palace'"
+                    }
+                    ],
+                    "splitOption": "equal",
+                    "expenseMembers": [
+                    {
+                        "owedShare": 666.6666666666666,
+                        "isOwer": true,
+                        "paidShare": 2000,
+                        "isSolePayer": true,
+                        "isMultiplePayer": false,
+                        "userId": "KwMD65RIY",
+                        "firstName": "Pragati",
+                        "lastName": "Dugar",
+                        "fullName": "Pragati Dugar (pragsjainprags@gmail.com)",
+                        "password": "$2a$10$S3Mkpc2diOcD3B/CBWSrxeUt/N7lzErLh7cdB7kKBvOYLV.zCZulS",
+                        "userName": "prags",
+                        "mobileNo": "",
+                        "email": "pragsjainprags@gmail.com",
+                        "createdOn": "2020-05-26T12:21:04.000Z"
+                    },
+                    {
+                        "owedShare": 666.6666666666666,
+                        "isOwer": true,
+                        "paidShare": 0,
+                        "isSolePayer": false,
+                        "isMultiplePayer": false,
+                        "userId": "kLvhBFqEt",
+                        "firstName": "Khushi",
+                        "lastName": "Dugar",
+                        "fullName": "Khushi Dugar (khushidugar@gmail.com)",
+                        "password": "$2a$10$D6gZ3a5SQzivl5RUFbp5heVQJsISSjV5355Qcwxrle31QgXK9N976",
+                        "userName": "khushi",
+                        "mobileNo": "",
+                        "email": "khushidugar@gmail.com",
+                        "createdOn": "2020-05-26T12:23:45.000Z"
+                    },
+                    {
+                        "owedShare": 666.6666666666666,
+                        "isOwer": true,
+                        "paidShare": 0,
+                        "isSolePayer": false,
+                        "isMultiplePayer": false,
+                        "userId": "iwtLFJxMJ",
+                        "firstName": "Yuvraj",
+                        "lastName": "Dugar",
+                        "fullName": "Yuvraj Dugar (yuvrajdugar@gmail.com)",
+                        "password": "$2a$10$JRH7zpZ2wQvavz8Zg8TNjOcxoshykWcU/uC8G2mJYpz3M2nvycPPK",
+                        "userName": "yuvraj",
+                        "mobileNo": "",
+                        "email": "yuvrajdugar@gmail.com",
+                        "createdOn": "2020-05-26T12:24:25.000Z"
+                    }
+                    ]
                 }
-            ]
+                ]
             }
+        }
     */
 
     /**
-     * @apiExpense Expense
-     * @apiVersion  1.0.0
+     * @apiGroup Expense
+     * @apiVersion  0.0.1
      * @api {get} /api/v1/expenses/view/:expenseId Get Expense Detail
      *
      * @apiHeader  {string} Authorization auth-token of the user. (auth headers) (required)
@@ -87,25 +196,77 @@ let setRouter = (app) => {
             "message": "All Expense Details Found",
             "status": 200,
             "data": {
-                "_id": "5ea0298f2b395d093cc9b376",
-                "expenseId": "stjcwBEaq",
+                "_id": "5ecd0ac7dcf1411cf7b866bd",
+                "expenseId": "zTU_G-M3f",
+                "expenseName": "Magic show Tickets",
+                "amount": 900,
+                "groupId": "nXSO1O5ZG",
+                "addedOn": "2020-05-26T12:26:19.617Z",
+                "addedBy": "Pragati Dugar (pragsjainprags@gmail.com)",
                 "__v": 0,
-                "created": "2020-04-22T11:25:03.000Z",
-                "watchers": [
-                "Gaurav Dugar (gauri)"
+                "expenseHistory": [
+                {
+                    "expenseHistoryNotesBy": "Pragati Dugar (pragsjainprags@gmail.com) created expense 'Magic show Tickets'"
+                }
                 ],
-                "assignee": "Gaurav Dugar (gauri)",
-                "reporter": "Pragati Dugar (prags)",
-                "status": "In Progress",
-                "description": "<h1>sf<em><u> some thing here </u></em></h1>",
-                "title": "sfssada d  s d fd"
+                "splitOption": "equal",
+                "expenseMembers": [
+                {
+                    "createdOn": "2020-05-26T12:21:04.000Z",
+                    "email": "pragsjainprags@gmail.com",
+                    "mobileNo": "",
+                    "userName": "prags",
+                    "password": "$2a$10$S3Mkpc2diOcD3B/CBWSrxeUt/N7lzErLh7cdB7kKBvOYLV.zCZulS",
+                    "fullName": "Pragati Dugar (pragsjainprags@gmail.com)",
+                    "lastName": "Dugar",
+                    "firstName": "Pragati",
+                    "userId": "KwMD65RIY",
+                    "isMultiplePayer": false,
+                    "isSolePayer": true,
+                    "paidShare": 900,
+                    "isOwer": true,
+                    "owedShare": 300
+                },
+                {
+                    "createdOn": "2020-05-26T12:23:45.000Z",
+                    "email": "khushidugar@gmail.com",
+                    "mobileNo": "",
+                    "userName": "khushi",
+                    "password": "$2a$10$D6gZ3a5SQzivl5RUFbp5heVQJsISSjV5355Qcwxrle31QgXK9N976",
+                    "fullName": "Khushi Dugar (khushidugar@gmail.com)",
+                    "lastName": "Dugar",
+                    "firstName": "Khushi",
+                    "userId": "kLvhBFqEt",
+                    "isMultiplePayer": false,
+                    "isSolePayer": false,
+                    "paidShare": 0,
+                    "isOwer": true,
+                    "owedShare": 300
+                },
+                {
+                    "createdOn": "2020-05-26T12:24:25.000Z",
+                    "email": "yuvrajdugar@gmail.com",
+                    "mobileNo": "",
+                    "userName": "yuvraj",
+                    "password": "$2a$10$JRH7zpZ2wQvavz8Zg8TNjOcxoshykWcU/uC8G2mJYpz3M2nvycPPK",
+                    "fullName": "Yuvraj Dugar (yuvrajdugar@gmail.com)",
+                    "lastName": "Dugar",
+                    "firstName": "Yuvraj",
+                    "userId": "iwtLFJxMJ",
+                    "isMultiplePayer": false,
+                    "isSolePayer": false,
+                    "paidShare": 0,
+                    "isOwer": true,
+                    "owedShare": 300
+                }
+                ]
             }
         }
     */
 
      /**
-     * @apiExpense Expense
-     * @apiVersion  1.0.0
+     * @apiGroup Expense
+     * @apiVersion  0.0.1
      * @api {get} /api/v1/expenses/view/:expenseId/delete Delete Expense 
      *
      * @apiHeader  {string} Authorization auth-token of the user. (auth headers) (required)
@@ -132,8 +293,8 @@ let setRouter = (app) => {
     */
 
      /**
-     * @apiExpense Expense
-     * @apiVersion  1.0.0
+     * @apiGroup Expense
+     * @apiVersion  0.0.1
      * @api {get} /api/v1/expenses/:expenseId/edit Edit Expense
      *
      * @apiHeader  {string} Authorization auth-token of the user. (auth headers) (required)
@@ -153,25 +314,73 @@ let setRouter = (app) => {
             "message": "All Expense Details Found",
             "status": 200,
             "data": {
-                "_id": "5ea029cd2b395d093cc9b377",
-                "expenseId": "rWm7i0ApM",
+                "_id": "5ecea38fdcf1411cf7b866d3",
+                "expenseId": "q3P7Q8w1C",
+                "expenseName": "Adventure Sports",
+                "amount": 10000,
+                "groupId": "nXSO1O5ZG",
+                "addedOn": "2020-05-27T17:30:30.190Z",
+                "addedBy": "Pragati Dugar (pragsjainprags@gmail.com)",
                 "__v": 0,
-                "created": "2020-04-22T11:26:05.000Z",
-                "watchers": [
-                "Gaurav Dugar (gauri)"
+                "updatedBy": "Pragati Dugar (pragsjainprags@gmail.com)",
+                "updatedOn": "2020-05-27T17:32:14.893Z",
+                "expenseHistory": [
+                {
+                    "expenseHistoryNotesBy": "Pragati Dugar (pragsjainprags@gmail.com) created expense 'Adventure Sports'"
+                },
+                {
+                    "expenseHistoryNotesBy": "Pragati Dugar (pragsjainprags@gmail.com) updated expense 'Adventure Sports'",
+                    "expenseHistoryNotes": [
+                    "Khushi Dugar (khushidugar@gmail.com) is removed from Expense",
+                    "Pragati Dugar (pragsjainprags@gmail.com) share changed from Rs.3333.33 to Rs.6000.00",
+                    "Yuvraj Dugar (yuvrajdugar@gmail.com) share changed from Rs.3333.33 to Rs.4000.00"
+                    ]
+                }
                 ],
-                "assignee": "Gaurav Dugar (gauri)",
-                "reporter": "Pragati Dugar (prags)",
-                "status": "Not picked",
-                "description": "<p>Edited Description here</p>",
-                "title": "Edited Expense "
+                "splitOption": "percentage",
+                "expenseMembers": [
+                {
+                    "createdOn": "2020-05-26T12:21:04.000Z",
+                    "email": "pragsjainprags@gmail.com",
+                    "mobileNo": "",
+                    "userName": "prags",
+                    "password": "$2a$10$S3Mkpc2diOcD3B/CBWSrxeUt/N7lzErLh7cdB7kKBvOYLV.zCZulS",
+                    "fullName": "Pragati Dugar (pragsjainprags@gmail.com)",
+                    "lastName": "Dugar",
+                    "firstName": "Pragati",
+                    "userId": "KwMD65RIY",
+                    "isMultiplePayer": false,
+                    "isSolePayer": true,
+                    "paidShare": 10000,
+                    "isOwer": true,
+                    "owedShare": 6000,
+                    "owedPercentageShare": 60
+                },
+                {
+                    "createdOn": "2020-05-26T12:24:25.000Z",
+                    "email": "yuvrajdugar@gmail.com",
+                    "mobileNo": "",
+                    "userName": "yuvraj",
+                    "password": "$2a$10$JRH7zpZ2wQvavz8Zg8TNjOcxoshykWcU/uC8G2mJYpz3M2nvycPPK",
+                    "fullName": "Yuvraj Dugar (yuvrajdugar@gmail.com)",
+                    "lastName": "Dugar",
+                    "firstName": "Yuvraj",
+                    "userId": "iwtLFJxMJ",
+                    "isMultiplePayer": false,
+                    "isSolePayer": false,
+                    "paidShare": 0,
+                    "isOwer": true,
+                    "owedShare": 4000,
+                    "owedPercentageShare": 40
+                }
+                ]
             }
         }
     */
 
      /**
-     * @apiExpense Expense
-     * @apiVersion  1.0.0
+     * @apiGroup Expense
+     * @apiVersion  0.0.1
      * @api {get} /api/v1/expenses/create Create Expense
      *
      * @apiHeader  {string} Authorization auth-token of the user. (auth headers) (required)
@@ -191,17 +400,71 @@ let setRouter = (app) => {
             "status": 200,
             "data": {
                 "__v": 0,
-                "expenseId": "Qj2dU-1MV",
-                "_id": "5ea325135291094744d9a0a0",
-                "created": "2020-04-24T17:42:43.000Z",
-                "watchers": [],
-                "assignee": "Pragati Dugar (prags)",
-                "reporter": "lisa anchalia (lisa)",
-                "status": "Open",
-                "description": "",
-                "title": "Socket Expense "
+                "expenseId": "q3P7Q8w1C",
+                "expenseName": "Adventure Sports",
+                "amount": 10000,
+                "groupId": "nXSO1O5ZG",
+                "addedOn": "2020-05-27T17:30:30.190Z",
+                "addedBy": "Pragati Dugar (pragsjainprags@gmail.com)",
+                "_id": "5ecea38fdcf1411cf7b866d3",
+                "expenseHistory": [
+                {
+                    "expenseHistoryNotesBy": "Pragati Dugar (pragsjainprags@gmail.com) created expense 'Adventure Sports'"
+                }
+                ],
+                "splitOption": "equal",
+                "expenseMembers": [
+                {
+                    "owedShare": 3333.3333333333335,
+                    "isOwer": true,
+                    "paidShare": 10000,
+                    "isSolePayer": true,
+                    "isMultiplePayer": false,
+                    "userId": "KwMD65RIY",
+                    "firstName": "Pragati",
+                    "lastName": "Dugar",
+                    "fullName": "Pragati Dugar (pragsjainprags@gmail.com)",
+                    "password": "$2a$10$S3Mkpc2diOcD3B/CBWSrxeUt/N7lzErLh7cdB7kKBvOYLV.zCZulS",
+                    "userName": "prags",
+                    "mobileNo": "",
+                    "email": "pragsjainprags@gmail.com",
+                    "createdOn": "2020-05-26T12:21:04.000Z"
+                },
+                {
+                    "owedShare": 3333.3333333333335,
+                    "isOwer": true,
+                    "paidShare": 0,
+                    "isSolePayer": false,
+                    "isMultiplePayer": false,
+                    "userId": "kLvhBFqEt",
+                    "firstName": "Khushi",
+                    "lastName": "Dugar",
+                    "fullName": "Khushi Dugar (khushidugar@gmail.com)",
+                    "password": "$2a$10$D6gZ3a5SQzivl5RUFbp5heVQJsISSjV5355Qcwxrle31QgXK9N976",
+                    "userName": "khushi",
+                    "mobileNo": "",
+                    "email": "khushidugar@gmail.com",
+                    "createdOn": "2020-05-26T12:23:45.000Z"
+                },
+                {
+                    "owedShare": 3333.3333333333335,
+                    "isOwer": true,
+                    "paidShare": 0,
+                    "isSolePayer": false,
+                    "isMultiplePayer": false,
+                    "userId": "iwtLFJxMJ",
+                    "firstName": "Yuvraj",
+                    "lastName": "Dugar",
+                    "fullName": "Yuvraj Dugar (yuvrajdugar@gmail.com)",
+                    "password": "$2a$10$JRH7zpZ2wQvavz8Zg8TNjOcxoshykWcU/uC8G2mJYpz3M2nvycPPK",
+                    "userName": "yuvraj",
+                    "mobileNo": "",
+                    "email": "yuvrajdugar@gmail.com",
+                    "createdOn": "2020-05-26T12:24:25.000Z"
+                }
+                ]
             }
-        }
+            }
     */
     
 
