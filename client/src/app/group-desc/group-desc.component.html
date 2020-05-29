@@ -9,7 +9,7 @@
     <span *ngFor="let element of this.groupList; let lastItem = last;">
         <li (click)="editGroup(element.groupId)"><i class="material-icons groupIcon"> bookmark</i>
         <a class="groupName" title="{{element.groupName}}">{{element.groupName}} </a>&nbsp;
-        <i class="material-icons deleteGroupIcon"  (click)="removeGroup(element.groupId,$event);">cancel </i>
+        <!-- <i class="material-icons deleteGroupIcon"  (click)="removeGroup(element.groupId,$event);">cancel </i> -->
         </li>
     </span>
     </div>
