@@ -9,7 +9,7 @@
     <span *ngFor="let element of this.groupList; let lastItem = last;">
         <li (click)="editGroup(element.groupId)"><i class="material-icons groupIcon"> bookmark</i>
         <a class="groupName" title="{{element.groupName}}">{{element.groupName}} </a>&nbsp;
-        <i class="material-icons deleteGroupIcon"  (click)="removeGroup(element.groupId)">cancel </i>
+        <i class="material-icons deleteGroupIcon"  (click)="removeGroup(element.groupId,$event);">cancel </i>
         </li>
     </span>
     </div>
@@ -28,7 +28,7 @@
                     (click)="addEditLabel='Add';resetExpense()">Add Expense</button> &nbsp;
                 </div>
             </div>
-            <div *ngIf="isExpenseRecords" class="card-text">
+            <div *ngIf="countExpense>0" class="card-text">
                 <div *ngFor="let expense of expenseList">
                     <div class="expenseUnxpanded" (click)="expense.isExpand=!expense.isExpand">
                     <div class="expListFlex">
@@ -117,6 +117,10 @@
                     </ul>
                 </nav>
             </div>
+            <div *ngIf="countExpense==0" class="noExpense">
+                <p>No Expense Found</p>
+                <p>Add one !</p>
+            </div>
         </div>
     </div>
 </div>
@@ -130,7 +134,8 @@
         <span *ngFor="let element of this.group?.groupMembers;">
             <li><i class="material-icons faceIcon"> face</i> &nbsp;
                 <a class="groupMemberName" (click)="editGroup(element.groupId)"><b>{{element.firstName}} {{element.lastName}}</b>&nbsp; </a>
-                <span>{{calculateBalance(element) }}</span>
+                <span *ngIf="countExpense>0">{{calculateBalance(element) }}</span>
+                <span *ngIf="countExpense==0">owes nothing !</span>
                 <hr>
             </li>
         </span>

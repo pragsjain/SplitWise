@@ -7,11 +7,17 @@
     <br>
     <form [formGroup]="RequestResetForm" >
       <mat-form-field class="field-full-width">
+        <input matInput placeholder ="User Name*" formControlName="userName" #userName>
+      </mat-form-field>
+      <mat-error *ngIf="(RequestResetForm.get('userName').touched) && RequestResetForm.get('userName').errors?.required">
+        User Name is required 
+      </mat-error>
+      <!-- <mat-form-field class="field-full-width">
         <input matInput placeholder ="Email" formControlName="email" #email>
       </mat-form-field>
       <mat-error *ngIf="!RequestResetForm.get('email').valid && !IsvalidForm">
         Please enter a valid email!
-      </mat-error>
+      </mat-error> -->
       <button type="submit" class=" btn btn-primary" 
       (click)="RequestResetUser(RequestResetForm)">Reset Password</button>
     </form>

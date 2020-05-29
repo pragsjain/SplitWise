@@ -20,7 +20,6 @@ export class GroupDescComponent implements OnInit {
   currentUserName;
   createGroupForm:FormGroup;
   group;
-  isExpenseRecords:boolean;
   createExpenseForm:FormGroup;
   expense;
   expenseList=[];
@@ -139,7 +138,7 @@ export class GroupDescComponent implements OnInit {
       //console.log(this.expenseMembers)
       //console.log(this.createExpenseForm.value)
       let expenseFormValue=this.createExpenseForm.value;
-      let expenseHistoryNotesBy=`${this.currentUserName} created expense '${expenseFormValue.expenseName}'`;
+      let expenseHistoryNotesBy=`${this.currentUserName} created expense '${expenseFormValue.expenseName}' for group ${this.group.groupName}`;
       let expenseHistoryObj ={
         expenseHistoryNotesBy:expenseHistoryNotesBy
       }
@@ -166,6 +165,9 @@ export class GroupDescComponent implements OnInit {
           //jQuery("#myModal").modal("hide");
           this.closeBtn.nativeElement.click();
           this.toastr.success('Expense Added');
+          //so that when a new expense is added it goes to new page
+          if(this.expenseList.length==this.numberOfExpensePerPage)
+          this.page=this.page+1
           this.getAllExpenses();
           this.notify(this.expenseMembers,expenseHistoryObj);
           this.expenseHistoryNotes=[]
@@ -180,7 +182,7 @@ export class GroupDescComponent implements OnInit {
       //console.log(this.expenseMembers)
       //console.log(this.createExpenseForm.value)
       this.onFormChanges()
-      let expenseHistoryNotesBy=`${this.currentUserName} updated expense '${this.createExpenseForm.value.expenseName}'`;
+      let expenseHistoryNotesBy=`${this.currentUserName} updated expense '${this.createExpenseForm.value.expenseName}' for group ${this.group.groupName}`;
       let expenseHistoryObj ={
         expenseHistoryNotesBy:expenseHistoryNotesBy,
         expenseHistoryNotes:this.expenseHistoryNotes
@@ -283,15 +285,16 @@ export class GroupDescComponent implements OnInit {
       this.expenseList=res.data.expenseList;
       //change here
       this.countExpense=res.data.count
-      this.lastPage=Math.ceil(res.data.count/this.numberOfExpensePerPage);
-      this.isExpenseRecords=this.expenseList.length>0?true:false
       this.getAllExpensesForGroupBalance();
+      this.lastPage=Math.ceil(res.data.count/this.numberOfExpensePerPage);
       }
       else{
-       this.toastr.error(res.message)
+        this.countExpense=0;
+        this.expenseList=[];
       }
     },(error)=>{
-      console.log('error',error);
+      this.countExpense=0;
+      this.expenseList=[];
     })
   }
 
@@ -302,7 +305,7 @@ export class GroupDescComponent implements OnInit {
       this.expenseListGroupBalance=res.data.expenseList;
       }
       else{
-       this.toastr.error(res.message)
+        console.log('error');
       }
     },(error)=>{
       console.log('error',error);
@@ -343,9 +346,12 @@ export class GroupDescComponent implements OnInit {
   deleteExpense(expense){
     this.appService.deleteExpense(expense.expenseId).subscribe( (res) =>{
       console.log(res);
+      //so that when a expense is deleted and thats last expense on that page ,page number should decrease
+      if(this.expenseList.length==1 && this.page!==1)
+      this.page=this.page-1;
       this.getAllExpenses();
 
-      let expenseHistoryNotesBy=`${this.currentUserName} deleted expense '${expense.expenseName}'`;
+      let expenseHistoryNotesBy=`${this.currentUserName} deleted expense '${expense.expenseName}' from group ${this.group.groupName}`;
       let expenseHistoryObj ={
         expenseHistoryNotesBy:expenseHistoryNotesBy
       }
@@ -540,7 +546,8 @@ export class GroupDescComponent implements OnInit {
     this.router.navigate(['/group-new']);
   }
 
-  removeGroup(groupId){
+  removeGroup(groupId,$event:Event){
+    $event.stopPropagation();
     this.appService.deleteGroup(groupId).subscribe( (res) =>{
       console.log(res);
       this.getAllGroups()
@@ -569,8 +576,9 @@ export class GroupDescComponent implements OnInit {
   notify(expenseMembers,expenseHistoryObj){
     let notification={}
     notification['expenseMembers']=expenseMembers;
-    notification['expenseHistoryObj']=expenseHistoryObj
-    console.log('sendnotification',notification)
+    notification['expenseHistoryObj']=expenseHistoryObj;
+    notification['groupId']=this.group.groupId;
+    console.log('sendnotification',notification);
     this.socketService.socket.emit('sendnotification', notification);
   }
   

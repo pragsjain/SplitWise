@@ -29,6 +29,7 @@ export class DashboardComponent implements OnInit {
       if(!res.error){
       this.isGroupList=true;
       this.groupList=res.data;
+      this.yourShareArray=[];
       this.groupList.forEach(element => {
         this.getAllExpensesforYourShare(element.groupId,element.groupName);
       });
@@ -36,7 +37,7 @@ export class DashboardComponent implements OnInit {
       }
       else{
         this.isGroupList=false;
-        this.toastr.error(res.message)
+        console.log(res.message)
         }
       },(error)=>{
         this.isGroupList=false;
@@ -48,7 +49,8 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/group-new']);
   }
 
-  removeGroup(groupId){
+  removeGroup(groupId,$event:Event){
+    $event.stopPropagation();
     this.appService.deleteGroup(groupId).subscribe( (res) =>{
       console.log(res);
       this.getAllGroups()
@@ -77,7 +79,9 @@ export class DashboardComponent implements OnInit {
         this.yourShareArray.push(yourShare);
       }
       else{
-       this.toastr.error(res.message)
+        let yourShare=`${res.message} for Group <b>${groupName}</b></span>`;
+        this.yourShareArray.push(yourShare);
+       //this.toastr.error(res.message)
       }
     },(error)=>{
       console.log('error',error);

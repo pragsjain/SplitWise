@@ -8,10 +8,7 @@ const logger = require('./../libs/loggerLib');
 const ExpenseModel = mongoose.model('Expense')
 
 let getAllExpense = (req, res) => {
-    if(parseInt(req.query.numberOfExpensePerPage)==0 && parseInt(req.query.page==0))
-    getAllExpenseWithPagination(req, res)
-    else
-    {
+    if(parseInt(req.query.numberOfExpensePerPage)==0 && parseInt(req.query.page)==0){
         ExpenseModel.find({ 'groupId': req.params.groupId })
             .select('-__v -_id')
             .lean() //make it plain javascript object,not mongoose object
@@ -35,10 +32,15 @@ let getAllExpense = (req, res) => {
                     })
                 }
             })
+    }   
+    else
+    {
+        getAllExpenseWithPagination(req, res)
     }
 }// end get all expenses
 
 let getAllExpenseWithPagination = (req, res) => {
+    console.log('getAllExpenseWithPagination');
     let numberOfExpensePerPage=parseInt(req.query.numberOfExpensePerPage);
     let page=parseInt(req.query.page);
     console.log(page,numberOfExpensePerPage);

@@ -127,7 +127,8 @@ function sendMail(msg){
         to: element.email,
         from: 'atestmail2020@gmail.com',
         subject: msg.expenseHistoryObj.expenseHistoryNotesBy,
-        text: expenseHistoryNotes
+        text:  'Greetings from SplitWise!'+'\n\n' + expenseHistoryNotes+ '\n\n' +
+        'Have a nice day ! \n' 
     }
     transporter.sendMail(mailOptions, (err, info) => {
         console.log('err', err);

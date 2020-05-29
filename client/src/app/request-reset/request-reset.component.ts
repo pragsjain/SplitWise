@@ -21,7 +21,8 @@ export class RequestResetComponent implements OnInit {
 
   ngOnInit(): void {
     this.RequestResetForm = new FormGroup({
-      'email': new FormControl(null, [Validators.required, Validators.email]),
+      //'email': new FormControl(null, [Validators.required, Validators.email]),
+      'userName': new FormControl('',[Validators.required])
     });
   }
 
@@ -31,15 +32,20 @@ export class RequestResetComponent implements OnInit {
       this.IsvalidForm = true;
       this.appService.requestReset(this.RequestResetForm.value).subscribe(
         data => {
-          this.RequestResetForm.reset();
-          this.toastr.success("Reset password link send to email sucessfully.")
-          setTimeout(() => {
-            this.router.navigate(['login']);
-          }, 3000);
+          if(!data.error){
+            this.RequestResetForm.reset();
+            this.toastr.success("Reset password link send to email sucessfully.")
+            setTimeout(() => {
+              this.router.navigate(['login']);
+            }, 3000);
+         }
+          else {
+            this.toastr.error(data.message)
+          }
         },
         err => {
           if (err.error.message) {
-            this.toastr.error(err.error.message)
+            this.toastr.error('Some error occured '+err.error.message)
           }
         }
       );

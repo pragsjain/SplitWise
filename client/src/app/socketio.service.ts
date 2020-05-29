@@ -30,7 +30,8 @@ export class SocketioService {
           });
         }
         console.log(expenseHistoryNotes);
-          this.toastr.info(expenseHistoryNotes,data.expenseHistoryObj.expenseHistoryNotesBy, {enableHtml: true})   
+          this.toastr.info(expenseHistoryNotes,data.expenseHistoryObj.expenseHistoryNotesBy, {enableHtml: true}) 
+          .onTap.subscribe(()=>this.router.navigate(['/group',data.groupId])); 
        }
      });  
     })         

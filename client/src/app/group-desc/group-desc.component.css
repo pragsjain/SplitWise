@@ -16,7 +16,12 @@
     width: 20%;
     padding-right: 1rem;
 }
-
+.noExpense{
+    text-align: center;
+    font-weight: 500;
+    color: #666;
+    padding: 1rem ;
+}
 @media only screen and (max-width: 600px) {
     .group-desc-page{
         display:block;

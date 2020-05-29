@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   createLoginForm: FormGroup;
   user: SocialUser;
   subscription;
-  hide:boolean;
+  hide:boolean=true;
 
   constructor(
     private appService: AppService,

@@ -8,9 +8,13 @@
         <span *ngFor="let element of this.groupList; let lastItem = last;">
             <li (click)="editGroup(element.groupId)"><i class="material-icons groupIcon"> bookmark</i>
                 <a class="groupName">{{element.groupName}} </a>&nbsp;
-            <i class="material-icons deleteGroupIcon" (click)="removeGroup(element.groupId)">cancel </i>
+            <i class="material-icons deleteGroupIcon" (click)="removeGroup(element.groupId,$event)">cancel </i>
             </li>
         </span>
+    </div>
+    <div *ngIf="!isGroupList" class="noGroupList">
+        <p>No Groups Found</p>
+        <p>Add one !</p>
     </div>
 </div>
 <div class="your-share-section" *ngIf="yourShareArray.length>0" >
@@ -25,4 +29,5 @@
         <hr>
     </div>
 
+</div>
 </div>

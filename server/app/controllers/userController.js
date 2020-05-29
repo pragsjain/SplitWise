@@ -400,17 +400,17 @@ let logout = (req, res) => {
 let resetPassword = (req, res) => {
     let findUser = () => {
         return new Promise((resolve, reject) => {
-            if (req.body.email) {
+            if (req.body.userName) {
                 console.log(req.body);
-                UserModel.findOne({ 'email': req.body.email }, (err, userDetails) => {
+                UserModel.findOne({ 'userName': req.body.userName }, (err, userDetails) => {
                     if (err) {
                         console.log(err)
                         logger.error('Failed To Retrieve User Data', 'userController: resetPassword()', 10)
-                        let apiResponse = response.generate(true, 'Failed To Find User with this Email / User Name.Please Try Again !', 500, null)
+                        let apiResponse = response.generate(true, 'Failed To Find User with this User Name.Please Try Again !', 500, null)
                         reject(apiResponse)
                     } else if (check.isEmpty(userDetails)) {
                         logger.error('No User Found', 'userController: resetPassword()', 7)
-                        let apiResponse = response.generate(true, 'No user found matching this Email ', 404, null)
+                        let apiResponse = response.generate(true, 'No user found matching this User Name ', 404, null)
                         reject(apiResponse)
                     } else {
                         logger.info('User Found', 'userController: resetPassword()', 10)
@@ -418,7 +418,7 @@ let resetPassword = (req, res) => {
                     }
                 });
             } else {
-                let apiResponse = response.generate(true, '"Email" parameter is missing', 400, null)
+                let apiResponse = response.generate(true, '"User Name" parameter is missing', 400, null)
                 reject(apiResponse)
             }
         })
@@ -451,11 +451,12 @@ let resetPassword = (req, res) => {
             var mailOptions = {
                 to: userDetails.email,
                 from: 'atestmail2020@gmail.com',
-                subject: 'Node.js Password Reset',
-                text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
+                subject: 'SplitWise Password Reset',
+                text: 'Greetings from SplitWise!'+'\n\n'+'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
                     'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
                     'http://localhost:4200/response-reset-password/' + resettoken.resettoken + '\n\n' +
-                    'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+                    'If you did not request this, please ignore this email and your password will remain unchanged.\n'+
+                    'Have a nice day! \n'
             }
             transporter.sendMail(mailOptions, (err, info) => {
                 console.log('err', err);
@@ -474,8 +475,8 @@ let resetPassword = (req, res) => {
             res.send(apiResponse);
         })
         .catch((err) => {
-            let apiResponse = response.generate(true, 'Reset password failed.', 404, null)
-            res.send(apiResponse)
+            //let apiResponse = response.generate(true, 'Reset password failed.', 404, null)
+            res.send(err)
         })
 
 }

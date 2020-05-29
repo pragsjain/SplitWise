@@ -1,34 +1,38 @@
 .dashboard-page{
     padding-top: 1rem;
     padding-left: 1rem;
-    display: flex;
 }
 .group-section{
     width: 20%;
     padding-left: 1rem;
     min-width: 160px;
+    display: inline-block;
+    vertical-align: top;
 }
 .your-share-section{
-    width: 80%;
+    width: 79%;
     padding: 0 1rem;
+    display: inline-block;
+}
+
+@media only screen and (max-width: 600px) {
+    .dashboard-page{
+        display: block;
+        width: 100%;
+        padding: 0px;
+    }
+    .group-section,.your-share-section{
+        padding: 0.5rem;
+        display: block;
+        width: 100%;
+    }
+}
+.noGroupList{
+    padding-left: 0.5rem;
 }
 .yourShareArray{
     padding-left: 1rem;
     color: #666;
-}
-.group-balance-section{
-    width: 20%;
-    padding-right: 1rem;
-}
-@media only screen and (max-width: 600px) {
-    .dashboard-page{
-        display: block;
-        padding: 0px;
-    }
-    .group-section,.your-share-section{
-        width: 100% !important;
-        padding: 0.5rem;
-    }
 }
 .material-icons.deleteGroupIcon {
     position: absolute;
